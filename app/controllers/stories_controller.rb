@@ -13,4 +13,8 @@ class StoriesController < ApplicationController
       render :action => :new, flash: {error: "#{@story.errors.full_message.join(', ')}"}
     end
   end
+
+  def index
+    
+  end
 end

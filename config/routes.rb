@@ -1,6 +1,13 @@
 FirstBook::Application.routes.draw do
-  root to: 'users#new'
+  root to: 'signups#new'
   
+  get '/registration', to: 'users#new'
+  resources :users, :only => [:create]
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
   resources :stories, :except => [:destroy]
-  resources :users, :only => [:new, :create]
+  resources :signups, :only => [:new, :create]
 end

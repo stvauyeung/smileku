@@ -1,0 +1,24 @@
+<div class="container-narrow">
+  <div class="jumbotron pagination-centered">
+    <h1 class="giant">Smileku</h1><br>
+    <h1><i class="icon-spinner"></i> Infinite Stories</h1>
+  </div>
+  <hr>
+
+  <div class="row-fluid marketing">
+    <div class="span5 offset1">
+      <h2>What is Smileku?</h2>
+          <p>Smileku is a novel way to write. Here, people around the world come together to co-author stories.</p>
+          <p>Each story begins with a 500 word block known as a Ku. After the first Ku, anyone can add additional Kus to the story.  As the story grows, readers vote on their favorite Kus and in turn shape how the story is read.</p>
+      </div>
+    <div class="span5">
+      <h4>Be the first to join</h4>
+        <p>We're looking for enthusiastic writers.  If you'd like to be part of this group, please sign up in the form below.  We'll contact you with next steps.</p>
+        <%= form_for @signup do |f| %>
+          <%= f.text_field :firstname, :placeholder => "First Name" %><br>
+          <%= f.text_field :email, :placeholder => "Email Address" %><br>
+          <%= f.submit "Notify me!", :class => "btn" %>
+        <% end %>
+    </div>
+  </div>
+</div>
