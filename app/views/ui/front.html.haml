@@ -1,0 +1,14 @@
+.container-narrow
+  .jumbotron.row-fluid
+    .front-left.span5
+      %h1.giant Smileku
+      %h1 &infin; Infinite Stories
+    .front-right.span4.offset2
+      %h4 Welcome to Smileku
+      %p Join writers around the world and co-create stories for future generations.
+      = form_for "" do |f|
+        = f.text_field :firstname, :placeholder => "First Name"
+        %br
+        = f.text_field :email, :placeholder => "Email Address"
+        %br
+        = f.submit "Join Now", :class => "btn"

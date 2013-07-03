@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'sqlite3'
 gem 'pry'
+gem 'haml-rails'
 
 # add font awesome
 gem 'font-awesome-rails'

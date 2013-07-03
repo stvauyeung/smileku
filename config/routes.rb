@@ -1,6 +1,8 @@
 FirstBook::Application.routes.draw do
   root to: 'signups#new'
   
+  get 'ui(/:action)', controller: 'ui'
+  
   get '/registration', to: 'users#new'
   resources :users, :only => [:create]
 
