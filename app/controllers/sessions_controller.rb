@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to stories_path, :flash => {:success => "Welcome back #{user.username}!"}
     else
       flash.now[:error] = "Sorry, username or password was incorrect, please try again."
-      render '/login'
+      render :new
     end
   end
 
@@ -17,5 +17,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, :notice => "You've successfully signed out."
   end
-
 end

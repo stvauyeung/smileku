@@ -36,7 +36,6 @@ describe UsersController do
 				post :create, :user => {username: "Joe", email: "joe@aol.com", password: ""}
 				expect(flash[:error]).to be_present
 			end
-			it "displays bootstrap errors"
 		end
 	end
 end
