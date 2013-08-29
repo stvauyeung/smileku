@@ -7,6 +7,7 @@ gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.0.1'
+gem 'bootstrap_form', '~> 0.3.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development, :test do

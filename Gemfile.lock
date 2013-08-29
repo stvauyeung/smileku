@@ -32,6 +32,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
+    bootstrap_form (0.3.2)
     builder (3.0.4)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -137,6 +138,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 2.3.0.1)
+  bootstrap_form (~> 0.3.2)
   coffee-rails (~> 3.2.1)
   font-awesome-rails
   haml-rails
