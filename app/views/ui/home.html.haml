@@ -1,0 +1,16 @@
+.row-fluid
+  %h1 Stories
+  .stories.row
+    %h4 Recent Stories
+    - 5.times do
+      .story.span2
+        = link_to "", nil do
+          %img(src="/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg")
+        %p= link_to "Three ways to write a story", "#"
+  .stories.row
+    %h4 Recommended Stories
+    - 5.times do
+      .story.span2
+        = link_to "", nil do
+          %img(src="/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg")
+        %p= link_to "Something of a long title: Vanity is to blame", "#"
