@@ -1,11 +1,50 @@
 require 'spec_helper'
 
-describe SessionController do
+describe SessionsController do
 	describe "POST create" do
 		context "with valid user" do
-			it "redirects to stories page"
-			it "sets session to user id"
-			it "displays flash success"
+			let(:bob) { Fabricate(:user) }
+			it "redirects to stories page" do
+				post :create, username: bob.username, password: bob.password
+				response.should redirect_to stories_path
+			end
+			it "sets session to user id" do
+				post :create, username: bob.username, password: bob.password
+				expect(session[:user_id]).to eq(bob.id)
+			end
+			it "displays flash success" do
+				post :create, username: bob.username, password: bob.password
+				expect(flash[:success]).to be_present
+			end
+		end
+
+		context "with invalid user" do
+			it "renders the login page" do
+				post :create, username: "", password: "password"
+				response.should render_template :new
+			end
+			it "displays flash error" do
+				post :create, username: "", password: "password"
+				expect(flash[:error]).to be_present
+			end
+		end
+	end
+
+	describe "POST destroy" do
+		let(:bob) { Fabricate(:user) }
+		before { session[:user_id] = bob.id }
+		
+		it "sets session to nil" do
+			post :destroy
+			expect(session[:user_id]).to be_nil
+		end
+		it "redirects to root path" do
+			post :destroy
+			response.should redirect_to root_path
+		end
+		it "displays flash success" do
+			post :destroy
+			expect(flash[:success]).to be_present
 		end
 	end
 end
