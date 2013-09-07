@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :stories
+  has_many :kus
 
   has_secure_password
   validates :password, :presence => true,  :on => :save
