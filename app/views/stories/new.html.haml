@@ -3,20 +3,19 @@
 		%header.span12
 			%h2 Start a new story
 	.row
-		%form
+		=form_for @story do |f|
 			%fieldset
 				.span5
-					%label Story Title
-					%input.span5
-					%label Description
-					%textarea.span5(rows="3")
-					%br
-					%label Large Image
-					%input
-					%label Small Image
-					%input
+					=f.label :title, "Story Title"
+					=f.text_field :title
+					=f.label :description
+					=f.text_area :description, class: "span5", rows: 3
+					=f.label :large_cover_url, "Large cover"
+					=f.text_field :large_cover_url
+					=f.label :small_cover_url, "Small cover"
+					=f.text_field :small_cover_url
 				.span7
-					%label Body:
-					%textarea.span7(rows="15")
-					%fieldset.action
-					%input(type="submit" class="btn")
+					=fields_for @ku do |k|
+						=k.label :body
+						=k.text_area :body, class: "span7", rows: 15
+					=f.submit "Publish", class: "btn"

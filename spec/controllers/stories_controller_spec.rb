@@ -24,9 +24,19 @@ describe StoriesController do
 			let(:action) { post :create }
 		end
 		context "successful story creation" do
-			it "should create a new story"
-			it "should create a new ku"
-			it "should set the ku belonging to the story"
+			let(:bob) { Fabricate(:user) }
+			before do
+				sign_in_user(bob)
+				post :create, story: Fabricate.attributes_for(:story), ku: Fabricate.attributes_for(:ku)
+			end
+
+			it "should save a new story" do
+				expect(Story.count).to eq(1)
+			end
+			it "should save a new ku"
+			it "should set the story to belong to current user"
+			it "should set the ku to belong to the current user"
+			it "should set the ku to belong to the story"
 			it "should rediret to story path"
 		end
 		context "failed story creation"
