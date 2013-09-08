@@ -8,9 +8,12 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(params[:story])
-    @story.user = User.first
-    if @story.save
-      redirect_to stories_path, flash: {success: "Your story was published."}
+    @ku = Ku.new(params[:ku])
+    if @story.save && @ku.save
+      @story.update_column(:user_id, current_user.id)
+      @ku.update_column(:user_id, current_user.id)
+      @story.kus << @ku
+      redirect_to story_path(@story), flash: {success: "Your story was published."}
     else
       render :action => :new, flash: {error: "#{@story.errors.full_message.join(', ')}"}
     end

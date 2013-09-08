@@ -33,11 +33,21 @@ describe StoriesController do
 			it "should save a new story" do
 				expect(Story.count).to eq(1)
 			end
-			it "should save a new ku"
-			it "should set the story to belong to current user"
-			it "should set the ku to belong to the current user"
-			it "should set the ku to belong to the story"
-			it "should rediret to story path"
+			it "should save a new ku" do
+				expect(Ku.count).to eq(1)
+			end
+			it "should set the story to belong to current user" do
+				expect(Story.last.user).to eq(bob)
+			end
+			it "should set the ku to belong to the current user" do
+				expect(Ku.last.user).to eq(bob)
+			end
+			it "should set the ku to belong to the story" do
+				expect(Story.last.kus).to eq([Ku.last])
+			end
+			it "should redirect to story path" do
+				response.should redirect_to story_path(Story.last)
+			end
 		end
 		context "failed story creation"
 	end
