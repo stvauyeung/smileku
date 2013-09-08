@@ -1,10 +1,12 @@
 class StoriesController < ApplicationController
+  before_filter :require_login
+
   def new
     @story = Story.new
+    @ku = Ku.new
   end
 
   def create
-    binding.pry
     @story = Story.new(params[:story])
     @story.user = User.first
     if @story.save
