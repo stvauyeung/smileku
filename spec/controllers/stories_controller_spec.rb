@@ -23,6 +23,7 @@ describe StoriesController do
 		it_behaves_like "require_login" do
 			let(:action) { post :create }
 		end
+		
 		context "successful story creation" do
 			let(:bob) { Fabricate(:user) }
 			before do
@@ -49,6 +50,11 @@ describe StoriesController do
 				response.should redirect_to story_path(Story.last)
 			end
 		end
-		context "failed story creation"
+
+		context "failed story creation" do
+			it "does not create a new story"
+			it "does not create a new ku"
+			it "renders the new template"
+		end
 	end
 end
