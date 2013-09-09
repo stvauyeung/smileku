@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, except: [:index]
 
   def new
     @story = Story.new
@@ -19,6 +19,10 @@ class StoriesController < ApplicationController
   end
 
   def index
+    @stories = Story.most_recent
+  end
+
+  def show
     
   end
 
