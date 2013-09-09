@@ -52,9 +52,21 @@ describe StoriesController do
 		end
 
 		context "failed story creation" do
-			it "does not create a new story"
-			it "does not create a new ku"
-			it "renders the new template"
+			let(:bob) { Fabricate(:user) }
+			before { sign_in_user(bob) }
+
+			it "does not create a new story" do
+				post :create, story: Fabricate.attributes_for(:invalid_story), ku: Fabricate.attributes_for(:ku)
+				expect(Story.count).to eq(0)
+			end
+			it "does not create a new ku" do
+				post :create, story: Fabricate.attributes_for(:story), ku: Fabricate.attributes_for(:invalid_ku)
+				expect(Ku.count).to eq(0)
+			end
+			it "renders the new template" do
+				post :create, story: Fabricate.attributes_for(:story), ku: Fabricate.attributes_for(:invalid_ku)
+				response.should render_template(:new)
+			end
 		end
 	end
 end

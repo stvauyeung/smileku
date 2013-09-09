@@ -3,16 +3,12 @@
 		%header.span12
 			%h2 Start a new story
 	.row
-		=form_for @story do |f|
+		=bootstrap_form_for @story do |f|
 			%fieldset
 				.span5
-					=f.label :title, "Story Title"
 					=f.text_field :title, class: "span5"
-					=f.label :description
 					=f.text_area :description, class: "span5", rows: 3
-					=f.label :large_cover_url, "Large cover"
 					=f.text_field :large_cover_url
-					=f.label :small_cover_url, "Small cover"
 					=f.text_field :small_cover_url
 				.span7
 					=fields_for @ku do |k|
