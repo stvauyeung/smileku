@@ -23,7 +23,7 @@ class StoriesController < ApplicationController
   end
 
   def show
-    
+    @story = Story.find(params[:id])
   end
 
   private

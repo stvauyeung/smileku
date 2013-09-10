@@ -5,6 +5,6 @@ class Story < ActiveRecord::Base
   validates :large_cover_url, presence: true
 
   def self.most_recent
-  	last(6).reverse
+  	last(10).reverse
   end
 end
