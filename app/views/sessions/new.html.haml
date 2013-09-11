@@ -5,8 +5,8 @@
         %header
           %h1 Sign in
         %fieldset
-          =label_tag :email, 'Email Address'
-          =email_field :email, params[:email]
+          =label_tag :username, 'Username'
+          =text_field :username, params[:username]
           =label_tag :password, 'Password'
           =password_field_tag :password
         %fieldset.action

@@ -11,21 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625021022) do
+ActiveRecord::Schema.define(:version => 20130906045730) do
 
-  create_table "signups", :force => true do |t|
-    t.string   "firstname"
-    t.string   "email"
+  create_table "kus", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.integer  "parent_id"
+    t.integer  "number"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "stories", :force => true do |t|
     t.string   "title"
-    t.string   "body"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.text     "description"
+    t.string   "large_cover_url"
+    t.string   "small_cover_url"
   end
 
   create_table "users", :force => true do |t|

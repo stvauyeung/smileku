@@ -1,13 +1,23 @@
 %section.container
 	.row
-		.span8
-			%form
+		%header
+			%h2 Start a new story
+	.row
+		%form
+			.row
 				%fieldset
-					%label Story Title
-					%input.span8
-					%br
-					%label Write your story
-					%textarea.span8(rows="10")
-				%fieldset.action
-					%input(type="submit" class="btn")
-		.span4
+					.span5
+						%label Story Title
+						%input.span5
+						%label Description
+						%textarea.span5(rows="3")
+						%br
+						%label Large Image
+						%input
+						%label Small Image
+						%input
+					.span7
+						%label Start your story:
+						%textarea.span7(rows="15")
+						%fieldset.action
+						%input(type="submit" class="btn")

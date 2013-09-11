@@ -1,0 +1,17 @@
+%section.container
+	.row
+		%header.span12
+			%h2 Start a new story
+	.row
+		=bootstrap_form_for @story do |f|
+			%fieldset
+				.span5
+					=f.text_field :title, class: "span5"
+					=f.text_area :description, class: "span5", rows: 3
+					=f.text_field :large_cover_url
+					=f.text_field :small_cover_url
+				.span7
+					=fields_for @ku do |k|
+						=k.label :body
+						=k.text_area :body, class: "span7", rows: 15
+					=f.submit "Publish", class: "btn"

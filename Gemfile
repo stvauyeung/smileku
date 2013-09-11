@@ -11,9 +11,14 @@ gem 'bootstrap_form', '~> 0.3.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development, :test do
-	gem 'rspec-rails', '~> 2.0'
+	gem 'rspec-rails', '~> 2.12'
 	gem 'fabrication'
 	gem 'faker'
+end
+
+group :test do
+	gem 'database_cleaner', '~> 1.0.1'
+	gem 'shoulda-matchers'
 end
 # Gems used only for assets and not required
 # in production environments by default.
