@@ -1,5 +1,5 @@
 FirstBook::Application.routes.draw do
-  root to: 'signups#new'
+  root to: 'stories#index'
   
   get 'ui(/:action)', controller: 'ui'
   
