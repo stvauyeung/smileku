@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :require_login, except: [:index]
+  before_filter :require_login, except: [:index, :show]
 
   def new
     @story = Story.new
