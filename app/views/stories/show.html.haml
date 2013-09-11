@@ -7,11 +7,9 @@
 				%h2= @story.title
 		.span7
 			.row
-				%h3 KU#32 by #{link_to 'Bob', '#'}
+				%h3 #{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
 				.well
-					%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus pellentesque leo vel mattis. Cras sed turpis pellentesque, adipiscing erat in, ultricies nulla. Integer congue dictum urna nec consectetur. Aenean at nibh et est malesuada scelerisque. Morbi est urna, vulputate id odio sit amet, posuere varius neque. Fusce dictum, nunc sit amet pretium iaculis, dui felis sollicitudin nibh, vitae vulputate orci elit id massa. Quisque vel scelerisque velit. Integer porttitor mi vel risus scelerisque porttitor. Maecenas tempus vestibulum tortor, ultricies molestie nibh dapibus sed. Nullam at velit lobortis, scelerisque augue posuere, scelerisque diam.
-
-					Nunc quis cursus tellus, eu tincidunt augue. Proin eget iaculis nibh. Sed consectetur tincidunt erat, quis rutrum neque eleifend non. Duis vitae urna eu nisl lobortis interdum. Ut purus mi, mollis ornare euismod eget, lobortis sit amet dui. Suspendisse vestibulum vulputate libero, vitae suscipit dui auctor a. Sed pulvinar volutpat lacus, sit amet blandit nisi. Cras at lacus nisi. Sed cursus, libero ut auctor scelerisque, felis est sodales risus, eu hendrerit orci ipsum vitae purus. Pellentesque malesuada hendrerit odio vel suscipit. Ut quis mi felis.
+					%p= @ku.body
 			.row
 				.btn-group.pull-right
 					.btn.btn-large Next

@@ -24,6 +24,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @ku = @story.kus.first
   end
 
   private

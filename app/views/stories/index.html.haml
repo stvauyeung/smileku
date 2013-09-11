@@ -5,7 +5,7 @@
     - @stories.each do |story|
       .story.span2
         = link_to image_tag("#{story.small_cover_url}"), story_path(story)
-        %p= link_to "#{story.title} by #{story.user.username}", story_path(story)
+        %p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
   / .stories.row
   /   %h4 Recommended Stories
   /   - 5.times do

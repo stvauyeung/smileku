@@ -7,4 +7,8 @@ class Story < ActiveRecord::Base
   def self.most_recent
   	last(10).reverse
   end
+
+  def truncated_title
+  	title.truncate(25)
+  end
 end

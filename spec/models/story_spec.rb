@@ -12,7 +12,14 @@ describe Story do
 		end
 		let(:subject) { Story.most_recent }
 		it "returns the last six stories by desc" do
-			subject.should eq(Story.last(6).reverse)
+			subject.should eq(Story.last(10).reverse)
+		end
+	end
+
+	describe "#truncated_title" do
+		it "shortens a story title to 25 characters" do
+			story = Fabricate(:story)
+			expect(story.truncated_title.size).to eq(25)
 		end
 	end
 end
