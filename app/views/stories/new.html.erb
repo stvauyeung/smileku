@@ -1,8 +1,0 @@
-<h1>Start a story</h1>
-<%= form_for @story do |f| %>
-  <%= f.label :title, "Story title" %>
-  <%= f.text_field :title %><br>
-  <%= f.label :body, "Where the story begins..." %>
-  <%= f.text_area :body %><br>
-  <%= f.submit "Publish", :class => "btn" %>
-<% end %>

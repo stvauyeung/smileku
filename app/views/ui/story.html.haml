@@ -1,19 +1,19 @@
 %section.container
 	.row
-		.span8
+		.span5
+			.row.span4
+				%img(src="http://ih2.redbubble.net/image.14699308.4227/fc,550x550,creme.jpg")
+			.row.span5
+				%h2 The Adventures of Huckleberry Finn
+		.span7
 			.row
-				.span2
-					%img(src="/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg")
-				.span6
-					%h2 The Adventures of Huckleberry Finn
-					%p KU#32 by #{link_to 'Bob', '#'}
-			.row10
+				%h3 KU#32 by #{link_to 'Bob', '#'}
 				.well
 					%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus pellentesque leo vel mattis. Cras sed turpis pellentesque, adipiscing erat in, ultricies nulla. Integer congue dictum urna nec consectetur. Aenean at nibh et est malesuada scelerisque. Morbi est urna, vulputate id odio sit amet, posuere varius neque. Fusce dictum, nunc sit amet pretium iaculis, dui felis sollicitudin nibh, vitae vulputate orci elit id massa. Quisque vel scelerisque velit. Integer porttitor mi vel risus scelerisque porttitor. Maecenas tempus vestibulum tortor, ultricies molestie nibh dapibus sed. Nullam at velit lobortis, scelerisque augue posuere, scelerisque diam.
 
 					Nunc quis cursus tellus, eu tincidunt augue. Proin eget iaculis nibh. Sed consectetur tincidunt erat, quis rutrum neque eleifend non. Duis vitae urna eu nisl lobortis interdum. Ut purus mi, mollis ornare euismod eget, lobortis sit amet dui. Suspendisse vestibulum vulputate libero, vitae suscipit dui auctor a. Sed pulvinar volutpat lacus, sit amet blandit nisi. Cras at lacus nisi. Sed cursus, libero ut auctor scelerisque, felis est sodales risus, eu hendrerit orci ipsum vitae purus. Pellentesque malesuada hendrerit odio vel suscipit. Ut quis mi felis.
-			.row10
-				%a.span1(href="") Next
-				%a.span1(href="") Skip
-				%a.span1(href="") Random
-		.span4
+			.row.pull-right
+				.btn-group
+					.btn.btn-large Next
+					.btn.btn-large Skip
+					.btn.btn-large Random
