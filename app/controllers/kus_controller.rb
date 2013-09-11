@@ -1,0 +1,3 @@
+class KusController < ApplicationController
+	
+end
