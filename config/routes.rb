@@ -11,7 +11,8 @@ FirstBook::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :stories, :except => [:destroy] do
-  	resources :kus, :only => [:show]
+  	resources :kus, :only => [:show, :new]
   end
+  
   resources :signups, :only => [:new, :create]
 end
