@@ -1,5 +1,10 @@
 class KusController < ApplicationController
 	def new
-		@ku = Ku.new(story_id: params[:story_id], parent_id: params[:ku_id])
+		@story = Story.find(params[:story_id])
+		@ku = @story.kus.build(parent_id: params[:parent_id])
+	end
+
+	def create
+		
 	end
 end
