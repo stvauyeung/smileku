@@ -7,12 +7,12 @@ class KusController < ApplicationController
 	end
 
 	def create
-		story = Story.find(params[:story_id])
-		ku = Ku.create(params[:ku])
-		if ku.save
-			ku.update_attributes(story_id: story.id, user_id: current_user.id)
+		@story = Story.find(params[:story_id])
+		@ku = Ku.create(params[:ku])
+		if @ku.save
+			@ku.update_attributes(story_id: @story.id, user_id: current_user.id)
 			flash[:success] = "You successfully published a ku."
-			redirect_to story_ku_path(story, ku)
+			redirect_to story_ku_path(@story, @ku)
 		else
 			flash[:error] = "You should write something!"
 			render :new
