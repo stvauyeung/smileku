@@ -3,13 +3,13 @@
 		.span5
 			.row.span4
 				=image_tag(@story.large_cover_url)
-			.row.span5
+			.row.span4
 				%h2= @story.title
 		.span7
 			.row
 				%h3 #{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
 				.well
-					%p= @ku.body
+					%p.ku_body= @ku.body
 			.row
 				=link_to "Add a Ku", new_story_ku_path(story_id: @story.id, parent_id: @ku.id), class: "btn btn-large"
 				.btn-group.pull-right

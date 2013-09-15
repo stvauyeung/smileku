@@ -20,6 +20,17 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8cf08c', endColorstr='#ff8cf08c', GradientType=0);
 }
 
+.navbar .brand {
+  float: left;
+  display: block;
+  padding: 5px 20px 15px;
+  margin-left: -20px;
+  font-size: 50px;
+  font-weight: 200;
+  color: #777777;
+  
+}
+
 .content {
   background-color: #FFFFFF;
   padding: 20px;
