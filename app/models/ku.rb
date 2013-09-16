@@ -14,4 +14,26 @@ class Ku < ActiveRecord::Base
 		number = position + 1
 		"KU##{number}"
 	end
+
+	def next_ku
+		if self.children.present?
+			self.children.first
+		elsif self.parent.nil?
+			nil
+		elsif self.parent.children.size > 1
+			siblings = self.parent.children
+			sibling_index = siblings.map { |e| e.id }
+			sibling_index.delete(self.id)
+			Ku.find(sibling_index.sample)
+		elsif self.parent.parent.children.size > 1
+			parent_siblings = self.parent.parent.children
+			parent_sibling_index = parent_siblings.map { |e| e.id }
+			parent_sibling_index.delete(self.parent.id)
+			Ku.find(parent_sibling_index.sample)
+		end
+	end
+
+	def skip_ku
+		
+	end
 end
