@@ -20,8 +20,8 @@ class KusController < ApplicationController
 	end
 
 	def show
-		@story = Story.find(params[:story_id])
 		@ku = Ku.find(params[:id])
+		@story = @ku.story
 		render template: 'shared/show'
 	end
 end

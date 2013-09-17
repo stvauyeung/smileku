@@ -13,6 +13,6 @@
 			.row
 				=link_to "Add a Ku", new_story_ku_path(story_id: @story.id, parent_id: @ku.id), class: "btn btn-large"
 				.btn-group.pull-right
-					.btn.btn-large Next
-					.btn.btn-large Skip
-					.btn.btn-large Random
+					=link_to 'Next', url_for(@ku.next_ku), class: 'btn btn-large'
+					=link_to 'Skip', url_for(@ku.skip_ku), class: 'btn btn-large'
+					=link_to 'Random', url_for(@ku.random_ku), class: 'btn btn-large'
