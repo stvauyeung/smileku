@@ -41,7 +41,11 @@ class Ku < ActiveRecord::Base
 		kus_in_story = self.story.kus
 		kus_index = kus_in_story.map { |e| e.id }
 		kus_index.delete(self.id)
-		Ku.find(kus_index.sample)
+		if kus_index.size > 0
+			Ku.find(kus_index.sample)
+		else
+			nil
+		end
 	end
 
 	private
