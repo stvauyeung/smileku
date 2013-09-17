@@ -65,6 +65,19 @@ describe Ku do
 	end
 
 	describe "#skip_ku" do
+		let(:story2) { Fabricate(:story) }
+		let(:six) { Fabricate(:ku, story_id: story2.id) }
+		let(:seven) { Fabricate(:ku, story_id: story2.id, parent_id: six.id) }
+		let(:eight) { Fabricate(:ku, story_id: story2.id, parent_id: six.id) }
+		let(:nine) { Fabricate(:ku, story_id: story2.id, parent_id: seven.id) }
 
+		before do
+			story2.reload
+			six.reload
+			seven.reload
+		end
+		it "returns a ku from a different branch" do
+			expect(eight.skip_ku).to eq(seven)
+		end
 	end
 end

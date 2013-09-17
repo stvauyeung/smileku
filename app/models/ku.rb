@@ -21,19 +21,35 @@ class Ku < ActiveRecord::Base
 		elsif self.parent.nil?
 			nil
 		elsif self.parent.children.size > 1
-			siblings = self.parent.children
-			sibling_index = siblings.map { |e| e.id }
-			sibling_index.delete(self.id)
-			Ku.find(sibling_index.sample)
-		elsif self.parent.parent.children.size > 1
-			parent_siblings = self.parent.parent.children
-			parent_sibling_index = parent_siblings.map { |e| e.id }
-			parent_sibling_index.delete(self.parent.id)
-			Ku.find(parent_sibling_index.sample)
+			find_siblings(self)
+		else
+			self.parent.skip_ku
 		end
 	end
 
 	def skip_ku
-		
+		if self.parent.nil?
+			nil
+		elsif	self.parent.children.size > 1
+			find_siblings(self)
+		else
+			self.parent.skip_ku
+		end
+	end
+
+	def random_ku
+		kus_in_story = self.story.kus
+		kus_index = kus_in_story.map { |e| e.id }
+		kus_index.delete(self.id)
+		kus_index.sample
+	end
+
+	private
+
+	def find_siblings(ku)
+		siblings = ku.parent.children
+		sibling_index = siblings.map { |e| e.id }
+		sibling_index.delete(ku.id)
+		Ku.find(sibling_index.sample)
 	end
 end
