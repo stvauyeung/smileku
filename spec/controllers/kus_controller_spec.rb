@@ -31,7 +31,7 @@ describe KusController do
 		context "successful creation" do
 			it "redirects to new ku show page" do
 				post :create, ku: {parent_id: first_ku.id, body: "body"}, story_id: story.id
-				response.should redirect_to story_ku_path(story, Ku.find(2))
+				response.should redirect_to ku_path(Ku.find(2))
 			end
 			it "creates a new ku" do
 				post :create, ku: {parent_id: first_ku.id, body: "body"}, story_id: story.id

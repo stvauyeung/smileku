@@ -12,7 +12,7 @@ class KusController < ApplicationController
 		if @ku.save
 			@ku.update_attributes(story_id: @story.id, user_id: current_user.id)
 			flash[:success] = "You successfully published a ku."
-			redirect_to story_ku_path(@story, @ku)
+			redirect_to ku_path(@ku)
 		else
 			flash[:error] = "You should write something!"
 			render :new
