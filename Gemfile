@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'bootstrap_form', '~> 0.3.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'carrierwave'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 2.12'
