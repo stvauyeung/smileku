@@ -5,8 +5,10 @@ gem 'sqlite3'
 gem 'pry'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'figaro'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 2.12'
