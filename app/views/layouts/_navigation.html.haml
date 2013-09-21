@@ -1,8 +1,8 @@
 !!!  
 %html
 	.container
-		=link_to "&infin;".html_safe, root_path, :class => "brand"
 		- if logged_in?
+			=link_to "&infin;".html_safe, root_path, :class => "brand"
 			%ul.nav.pull-right
 				%li
 					=link_to "Invite", "#"
@@ -11,6 +11,7 @@
 				%li
 					=link_to "Logout", logout_path
 		- else
+			=link_to "&infin;".html_safe, front_path, :class => "brand"
 			%ul.nav.pull-right
 				%li
 					=link_to "Sign Up", registration_path

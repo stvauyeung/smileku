@@ -11,8 +11,7 @@
 				.span4
 					=f.text_field :title, class: "span4"
 					=f.text_area :description, class: "span4", rows: 3
-					=f.text_field :large_cover_url
-					=f.text_field :small_cover_url
+					=f.file_field :large_cover, label: "Upload a Cover"
 				.span7
 					=fields_for @ku do |k|
 						=k.label :body

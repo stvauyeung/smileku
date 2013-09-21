@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :logged_in?, :current_user
 
+  def require_logged_out
+    if logged_in?
+      redirect_to stories_path
+    end
+  end
+
   def require_login
   	unless logged_in?
   		flash[:error] = "You must be signed in to do that!"

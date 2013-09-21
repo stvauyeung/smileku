@@ -10,6 +10,8 @@ FirstBook::Application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  match '/front', to: 'statics#front'
+
   resources :stories, :except => [:destroy] do
   	resources :kus, :only => [:new, :create]
   end
