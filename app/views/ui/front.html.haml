@@ -1,14 +1,13 @@
-.container-narrow
+.container
   .jumbotron.row-fluid
-    .front-left.span5
+    .front-left.span7
       %h1.giant Smileku
       %h1 &infin; Infinite Stories
-    .front-right.span4.offset2
-      %h4 Welcome to Smileku
+    .front-right.span4
+      %h3 Welcome to Smileku
       %p Join writers around the world and co-create stories for future generations.
-      = form_for "" do |f|
-        = f.text_field :firstname, :placeholder => "First Name"
-        %br
+      =form_for "" do |f|
+        = f.text_field :username, :placeholder => "Username"
         = f.text_field :email, :placeholder => "Email Address"
-        %br
-        = f.submit "Join Now", :class => "btn"
+        = f.password_field :password, :placeholder => "Password"
+        = f.submit "Create Account", :class => "btn"
