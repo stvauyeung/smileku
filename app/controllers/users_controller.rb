@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_logged_out
+  
   def new
     @user = User.new
   end

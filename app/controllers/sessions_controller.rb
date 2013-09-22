@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :require_logged_out, only: [:new]
+  
   def new    
   end
 
