@@ -69,4 +69,70 @@ describe KusController do
 			end
 		end
 	end
+	describe "GET edit" do
+		let(:bob) { Fabricate(:user) }
+		let(:sam) { Fabricate(:user) }
+		let(:story) { Fabricate(:story) }
+		let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id)}
+
+		context "ku belongs to signed in user" do
+			before { sign_in_user(bob) }
+			it "sets ku as id" do
+				get :edit, id: ku.id
+				expect(assigns[:ku]).to eq(ku)
+			end
+			it "sets story as kus story" do
+				get :edit, id: ku.id
+				expect(assigns[:story]).to eq(story)
+			end
+		end
+
+		context "ku doesn't belong to signed in user" do
+			before { sign_in_user(sam) }
+			it "redirects to show ku page" do
+				get :edit, id: ku.id
+				response.should redirect_to ku_path(ku)
+			end
+			it "sets flash error" do
+				get :edit, id: ku.id
+				expect(flash[:error]).to be_present
+			end
+		end
+	end
+	describe "POST update" do
+		let(:bob) { Fabricate(:user) }
+		let(:story) { Fabricate(:story) }
+		let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id)}
+		before { sign_in_user(bob) }
+		
+		context "successful update" do
+			it "redirects to ku page" do
+				put :update, id: ku.id, ku: { body: "test test" }
+				response.should redirect_to ku_path(ku)
+			end
+			it "changes the ku body" do
+				put :update, id: ku.id, ku: { body: "test test" }
+				expect(ku.reload.body).to eq("test test")
+			end
+			it "flashes success message" do
+				put :update, id: ku.id, ku: { body: "test test" }
+				expect(flash[:success]).to be_present
+			end
+		end
+
+		context "unsuccessful update" do
+			it "does not update the ku" do
+				put :update, id: ku.id, ku: { body: "" }
+				expect(ku.reload.body).to_not eq("")
+			end
+			it "renders the edit template" do
+				put :update, id: ku.id, ku: { body: "" }
+				response.should render_template :edit
+			end
+			it "flashes error message" do
+				put :update, id: ku.id, ku: { body: "" }
+				expect(flash[:error]).to be_present
+			end
+		end
+	end
 end
