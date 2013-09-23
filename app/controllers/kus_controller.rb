@@ -1,6 +1,6 @@
 class KusController < ApplicationController
 	before_filter :require_login, only: [:new, :create]
-	before_filter(only: [:edit]) { |c| c.require_owner Ku.find(params[:id]) }
+	before_filter(only: [:edit, :update]) { |c| c.require_owner Ku.find(params[:id]) }
 
 	def new
 		@story = Story.find(params[:story_id])
