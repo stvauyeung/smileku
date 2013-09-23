@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'sqlite3'
 gem 'pry'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -11,6 +10,7 @@ gem 'mini_magick'
 gem 'fog'
 
 group :development, :test do
+	gem 'sqlite3'
 	gem 'rspec-rails', '~> 2.12'
 	gem 'fabrication'
 	gem 'faker'
@@ -35,6 +35,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+	gem 'pg'
 end
 
 
