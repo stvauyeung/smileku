@@ -4,6 +4,7 @@ gem 'rails', '3.2.12'
 gem 'pry'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'haml-rails'
 gem 'figaro'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -25,7 +26,6 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'haml-rails'
 	gem 'font-awesome-rails'
 	gem 'jquery-rails'
 	gem 'bootstrap-sass', '~> 2.3.0.1'
