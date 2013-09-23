@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def require_owner(content)
+    unless content.user == current_user
+      flash[:error] = "You must be the creator before you can edit!"
+      redirect_to url_for(content)
+    end
+  end
+
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
