@@ -11,8 +11,7 @@
 					="#{@story.description} -- "
 					%a
 						=link_to(@story.user.username, user_path(@story.user))
-			=form_for [@story,@ku] do |f|
-				=hidden_field_tag "ku[parent_id]", params[:parent_id]
+			=form_for @ku do |f|
 				=f.label :body, "Add to the story:"
 				=f.text_area :body, class: "span7", rows: 15
-				=f.submit "Publish", class: "btn btn-large"
+				=f.submit "Update", class: "btn btn-large"

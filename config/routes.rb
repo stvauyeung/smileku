@@ -16,7 +16,7 @@ FirstBook::Application.routes.draw do
   	resources :kus, :only => [:new, :create]
   end
 
-  resources :kus, :only => [:show]
+  resources :kus, :only => [:show, :edit, :update]
   
   resources :signups, :only => [:new, :create]
 end

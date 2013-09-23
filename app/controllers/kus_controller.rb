@@ -1,5 +1,6 @@
 class KusController < ApplicationController
 	before_filter :require_login, only: [:new, :create]
+	before_filter(only: [:edit]) { |c| c.require_owner Ku.find(params[:id]) }
 
 	def new
 		@story = Story.find(params[:story_id])
@@ -17,6 +18,18 @@ class KusController < ApplicationController
 			flash[:error] = "You should write something!"
 			render :new
 		end
+	end
+
+	def edit
+		@ku = Ku.find(params[:id])
+		@story = @ku.story
+	end
+
+	def update
+		@ku = Ku.find(params[:id])
+		@ku.update_attributes(params[:ku])
+		flash[:success] = "You've updated your ku!"
+		redirect_to ku_path(@ku)
 	end
 
 	def show
