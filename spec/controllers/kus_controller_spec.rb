@@ -104,6 +104,7 @@ describe KusController do
 		let(:story) { Fabricate(:story) }
 		let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id)}
 		before { sign_in_user(bob) }
+		
 		context "successful update" do
 			it "redirects to ku page" do
 				put :update, id: ku.id, ku: { body: "test test" }
@@ -116,6 +117,21 @@ describe KusController do
 			it "flashes success message" do
 				put :update, id: ku.id, ku: { body: "test test" }
 				expect(flash[:success]).to be_present
+			end
+		end
+
+		context "unsuccessful update" do
+			it "does not update the ku" do
+				put :update, id: ku.id, ku: { body: "" }
+				expect(ku.reload.body).to_not eq("")
+			end
+			it "renders the edit template" do
+				put :update, id: ku.id, ku: { body: "" }
+				response.should render_template :edit
+			end
+			it "flashes error message" do
+				put :update, id: ku.id, ku: { body: "" }
+				expect(flash[:error]).to be_present
 			end
 		end
 	end

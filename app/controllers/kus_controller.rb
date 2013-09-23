@@ -27,9 +27,13 @@ class KusController < ApplicationController
 
 	def update
 		@ku = Ku.find(params[:id])
-		@ku.update_attributes(params[:ku])
-		flash[:success] = "You've updated your ku!"
-		redirect_to ku_path(@ku)
+		if @ku.update_attributes(params[:ku])
+			flash[:success] = "You've updated your ku!"
+			redirect_to ku_path(@ku)
+		else
+			flash[:error] = "There was something wrong with your edit, try again?"
+			render :edit
+		end
 	end
 
 	def show
