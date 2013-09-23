@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
   def has_secure_password?
   	true
   end
+
+  def owns(object)
+  	if object.user_id == self.id
+  		true
+  	else
+  		false
+  	end
+  end
 end

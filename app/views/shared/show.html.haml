@@ -7,7 +7,11 @@
 				%h2= @story.title
 		.span7
 			.row
-				%h3 #{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
+				%h3 
+					#{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
+					- if current_user.owns(@ku)
+						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
+			.row
 				.well
 					%p.ku_body= @ku.body
 			.row
