@@ -1,0 +1,13 @@
+.container
+	.row
+		.span4
+			%h1= @user.username
+			%h4= "#{@user.kus.count} kus since #{@user.created_at.strftime('%B %Y')}"
+		.span8
+			%h2= "Recent Kus by #{@user.username}"
+			- @user.kus.reverse.each do |ku|
+				.row.row10
+					.span1
+						=link_to image_tag(ku.story.large_cover.preview), ku_path(ku)
+					.span6
+						%p= link_to ku.body.truncate(170), ku_path(ku)
