@@ -4,7 +4,7 @@ FirstBook::Application.routes.draw do
   get 'ui(/:action)', controller: 'ui'
   
   get '/registration', to: 'users#new'
-  resources :users, :only => [:create, :show]
+  resources :users, :only => [:create, :show, :edit]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
