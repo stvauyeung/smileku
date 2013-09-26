@@ -1,0 +1,14 @@
+.container
+	.row
+		.span4
+			%h1 Bobby McBob
+			%h4 204 Kus since January 2009
+		.span8
+			%h2 Recent Kus by Bobby McBob
+			- 8.times do
+				.row.row10
+					.span1
+						=link_to "", nil do
+							=image_tag "/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg"
+					.span6
+						%p= link_to "derpa derp. this be the story bob wrote.", nil

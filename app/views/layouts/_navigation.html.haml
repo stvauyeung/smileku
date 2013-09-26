@@ -7,7 +7,7 @@
 				%li
 					=link_to "Invite", "#"
 				%li
-					=link_to "Profile", "#"
+					=link_to "Profile", user_path(current_user)
 				%li
 					=link_to "Logout", logout_path
 		- else
