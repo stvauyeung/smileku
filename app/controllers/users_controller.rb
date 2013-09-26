@@ -20,6 +20,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
+    if session[:user_id] != params[:id].to_i
+      flash[:error] = "You don't have permissions for that!"
+      redirect_to user_path(User.find(params[:id]))
+    end
+  end
+
+  def update
+    user = User.find(params[:id])
+    if session[:user_id] != params[:id].to_i
+      flash[:error] = "You don't have permissions for that!"
+      redirect_to user_path(User.find(params[:id]))
+    elsif user.authenticate(params[:user][:password])
+      user.update_attributes(params[:user])
+      redirect_to user_path(user)
+    else
+      flash[:error] = "Your password was incorrect, please enter your password to edit."
+      render :edit
+    end    
   end
 end
