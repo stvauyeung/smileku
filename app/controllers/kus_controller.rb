@@ -41,4 +41,8 @@ class KusController < ApplicationController
 		@story = @ku.story
 		render template: 'shared/show'
 	end
+
+	def vote
+		
+	end
 end
