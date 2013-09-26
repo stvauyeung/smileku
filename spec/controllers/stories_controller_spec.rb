@@ -28,6 +28,7 @@ describe StoriesController do
 			let(:bob) { Fabricate(:user) }
 			before do
 				sign_in_user(bob)
+				file = File.open(file_path('public/tmp/mrec1.jpg'))
 				post :create, story: Fabricate.attributes_for(:story), ku: Fabricate.attributes_for(:ku)
 			end
 
