@@ -2,12 +2,11 @@
   .row
     .span6.offset1
       %header
-        %h1 Update Email Info
+        %h1 Update Email
       %br
-      %form.form-horizontal
-        = bootstrap_form_for @user do |f|
-          = f.email_field :email
-          = f.password_field :password
-          .controls
-            = f.submit "Update", class: 'btn'
-            = link_to "Cancel", user_path(@user)
+      = bootstrap_form_for @user do |f|
+        = f.email_field :email
+        = f.password_field :password
+        .controls
+          = f.submit "Update", class: 'btn'
+          = link_to "Cancel", user_path(@user)
