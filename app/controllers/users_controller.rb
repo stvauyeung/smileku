@@ -26,12 +26,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.authenticate(params[:user][:password])
-      @user.update_attributes(params[:user])
+    if @user.authenticate(params[:user][:password]) && @user.update_attributes(params[:user])
       flash[:success] = "You've successfully updated your profile!"
       redirect_to user_path(@user)
     else
-      flash[:error] = "Your password was incorrect, please enter your password to edit."
+      flash[:error] = "There was an error updating your email, please retry password or fix errors below."
       render :edit
     end    
   end
