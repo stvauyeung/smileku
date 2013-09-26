@@ -22,6 +22,10 @@ describe UsersController do
 				post :create, :user => {username: "Joe", email: "joe@aol.com", password: "password"}
 				expect(flash[:success]).to be_present
 			end
+			it "sets session id to new user id" do
+				post :create, :user => {username: "Joe", email: "joe@aol.com", password: "password"}
+				expect(session[:user_id]).to eq(User.last.id)		
+			end
 		end
 		context "invalid user attributes" do
 			it "does not create new user" do
