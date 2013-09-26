@@ -22,8 +22,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_user_math(params_id)
-    
+  def require_user_match(params_id)
+    if session[:user_id] != params_id.to_i
+      flash[:error] = "You don't have permissions for that!"
+      redirect_to user_path(User.find(params_id.to_i))
+    end
   end
 
   def current_user

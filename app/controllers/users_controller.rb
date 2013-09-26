@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_logged_out, only: [:new, :create]
+  before_filter(only: [:update, :edit]) { |c| c.require_user_match params[:id] }
   
   def new
     @user = User.new
@@ -21,19 +22,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if session[:user_id] != params[:id].to_i
-      flash[:error] = "You don't have permissions for that!"
-      redirect_to user_path(User.find(params[:id]))
-    end
   end
 
   def update
     user = User.find(params[:id])
-    if session[:user_id] != params[:id].to_i
-      flash[:error] = "You don't have permissions for that!"
-      redirect_to user_path(User.find(params[:id]))
-    elsif user.authenticate(params[:user][:password])
-      user.update_attributes(params[:user])
+    if user.authenticate(params[:user][:password]) && user.update_attributes(params[:user])
       redirect_to user_path(user)
     else
       flash[:error] = "Your password was incorrect, please enter your password to edit."
