@@ -7,6 +7,7 @@ describe Ku do
 	it { should have_many(:children).class_name('Ku') }
 	it { should belong_to(:parent).class_name('Ku') }
 	it { should validate_presence_of(:body) }
+	it { should have_many(:votes) }
 
 	describe "#author_name" do
 		it "returns the username of ku user" do
