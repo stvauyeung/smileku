@@ -137,22 +137,31 @@ describe KusController do
 	end
 
 	describe "POST vote" do
-		context "signed in user" do
-			let(:bob) { Fabricate(:user) }
-			let(:story) { Fabricate(:story) }
-			let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id)}
-			before { sign_in_user(bob) }
+		let(:bob) { Fabricate(:user) }
+		let(:story) { Fabricate(:story) }
+		let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id)}
+		before { sign_in_user(bob) }
 
-			context "without prior votes" do
-				it "adds a vote to ku on upvote" do
-					put :vote, id: ku.id, value: true
-					expect(ku.vote_count).to eq(1)
-				end
-				it "subtracts a vote from ku on downvote"
-				it "flashes success on vote"
-			end
-			context "with prior vote"
+		it_behaves_like "require_login" do
+			let(:action) { put :vote, id: ku.id, value: true }
 		end
-		context "not signed in user"
+
+		context "without prior votes" do
+			it "adds a vote to ku on upvote" do
+				put :vote, id: ku.id, value: true
+				expect(ku.reload.vote_count).to eq(1)
+			end
+			it "subtracts a vote from ku on downvote" do
+				put :vote, id: ku.id, value: false
+				expect(ku.reload.vote_count).to eq(-1)
+			end
+			it "sets current user as owner of vote" do
+				put :vote, id: ku.id, value: false
+				expect(Vote.last.user).to eq(bob)
+			end
+		end
+		context "with prior vote" do
+
+		end
 	end
 end

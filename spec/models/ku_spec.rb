@@ -81,4 +81,15 @@ describe Ku do
 			expect(eight.skip_ku).to eq(seven)
 		end
 	end
+
+	describe "#vote_count" do
+		let(:ku) { Fabricate(:ku) }
+		before do
+			3.times { Fabricate(:vote, voteable_id: ku.id) }
+			2.times { Fabricate(:vote, voteable_id: ku.id, value: false) }
+		end
+		it "returns the number of votes true minus false" do
+			expect(ku.vote_count).to eq(1)
+		end
+	end
 end

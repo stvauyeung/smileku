@@ -49,6 +49,10 @@ class Ku < ActiveRecord::Base
 		end
 	end
 
+	def vote_count
+		self.votes.where(value: true).count - self.votes.where(value: false).count
+	end
+
 	private
 
 	def find_siblings(ku)
