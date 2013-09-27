@@ -43,6 +43,6 @@ class KusController < ApplicationController
 	end
 
 	def vote
-		
+		render template: 'shared/show'
 	end
 end
