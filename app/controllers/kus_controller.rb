@@ -1,5 +1,5 @@
 class KusController < ApplicationController
-	before_filter :require_login, only: [:new, :create]
+	before_filter :require_login, except: [:show]
 	before_filter(only: [:edit, :update]) { |c| c.require_owner Ku.find(params[:id]) }
 
 	def new
@@ -40,5 +40,27 @@ class KusController < ApplicationController
 		@ku = Ku.find(params[:id])
 		@story = @ku.story
 		render template: 'shared/show'
+	end
+
+	def vote
+		@ku = Ku.find(params[:id])
+		@story = @ku.story
+		if @ku.votes.where(user_id: current_user.id).exists?
+			handle_existing_vote(@ku)
+		else
+			Vote.create(value: params[:value], voteable_type: "Ku", voteable_id: @ku.id, user_id: current_user.id)
+		end
+		render template: 'shared/show'
+	end
+
+	private
+
+	def handle_existing_vote(ku)
+		vote = ku.votes.where(user_id: current_user.id).first
+		if vote.value.to_s == params[:value]
+			vote.destroy
+		else
+			vote.update_attributes(value: params[:value])
+		end
 	end
 end

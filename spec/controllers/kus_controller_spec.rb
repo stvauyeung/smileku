@@ -135,4 +135,55 @@ describe KusController do
 			end
 		end
 	end
+
+	describe "POST vote" do
+		let(:bob) { Fabricate(:user) }
+		let(:story) { Fabricate(:story) }
+		let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id)}
+		before { sign_in_user(bob) }
+
+		it_behaves_like "require_login" do
+			let(:action) { put :vote, id: ku.id, value: true }
+		end
+
+		context "without prior votes" do
+			it "adds a vote to ku on upvote" do
+				put :vote, id: ku.id, value: true
+				expect(ku.reload.vote_count).to eq(1)
+			end
+			it "subtracts a vote from ku on downvote" do
+				put :vote, id: ku.id, value: false
+				expect(ku.reload.vote_count).to eq(-1)
+			end
+			it "sets current user as owner of vote" do
+				put :vote, id: ku.id, value: false
+				expect(Vote.last.user).to eq(bob)
+			end
+		end
+
+		context "with prior vote" do
+			it "deletes vote if new is true and prior is true" do
+				Fabricate(:vote, user: bob, id: ku.id, value: true)
+				put :vote, id: ku.id, value: "true"
+				expect(ku.votes).to be_empty
+			end
+			it "deletes vote if new is false and prior is false" do
+				Fabricate(:vote, user: bob, id: ku.id, value: false)
+				put :vote, id: ku.id, value: "false"
+				expect(ku.reload.vote_count).to eq(0)
+			end
+			it "replaces vote value if new is true and prior is false" do
+				Fabricate(:vote, user: bob, id: ku.id, value: false)
+				put :vote, id: ku.id, value: "true"
+				expect(Vote.count).to eq(1)
+				expect(Vote.last.value).to eq(true)
+			end
+			it "replaces vote falue if new is false and prior is true" do
+				Fabricate(:vote, user: bob, id: ku.id, value: true)
+				put :vote, id: ku.id, value: "false"
+				expect(Vote.count).to eq(1)
+				expect(Vote.last.value).to eq(false)
+			end
+		end
+	end
 end
