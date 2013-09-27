@@ -7,6 +7,7 @@ describe Ku do
 	it { should have_many(:children).class_name('Ku') }
 	it { should belong_to(:parent).class_name('Ku') }
 	it { should validate_presence_of(:body) }
+	it { should have_many(:votes) }
 
 	describe "#author_name" do
 		it "returns the username of ku user" do
@@ -78,6 +79,17 @@ describe Ku do
 		end
 		it "returns a ku from a different branch" do
 			expect(eight.skip_ku).to eq(seven)
+		end
+	end
+
+	describe "#vote_count" do
+		let(:ku) { Fabricate(:ku) }
+		before do
+			3.times { Fabricate(:vote, voteable_id: ku.id) }
+			2.times { Fabricate(:vote, voteable_id: ku.id, value: false) }
+		end
+		it "returns the number of votes true minus false" do
+			expect(ku.vote_count).to eq(1)
 		end
 	end
 end

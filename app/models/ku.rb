@@ -3,6 +3,7 @@ class Ku < ActiveRecord::Base
 	belongs_to :story
 	belongs_to :parent, class_name: 'Ku'
 	has_many :children, class_name: 'Ku', foreign_key: 'parent_id'
+	has_many :votes, as: :voteable
 	validates :body, presence: true
 
 	def author_name
@@ -46,6 +47,10 @@ class Ku < ActiveRecord::Base
 		else
 			nil
 		end
+	end
+
+	def vote_count
+		self.votes.where(value: true).count - self.votes.where(value: false).count
 	end
 
 	private
