@@ -45,7 +45,22 @@ class KusController < ApplicationController
 	def vote
 		@ku = Ku.find(params[:id])
 		@story = @ku.story
-		Vote.create(value: params[:value], voteable_type: "Ku", voteable_id: @ku.id)
-		render template: 'shared/show'
+		if @ku.votes.where(user_id: current_user.id).exists?
+			handle_existing_vote(@ku)
+		else
+			Vote.create(value: params[:value], voteable_type: "Ku", voteable_id: @ku.id, user_id: current_user.id)
+		end
+		redirect_to ku_path(@ku)
+	end
+
+	private
+
+	def handle_existing_vote(ku)
+		vote = ku.votes.where(user_id: current_user.id).first
+		if vote.value.to_s == params[:value]
+			vote.destroy
+		else
+			vote.update_attributes(value: params[:value])
+		end
 	end
 end

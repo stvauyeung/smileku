@@ -160,8 +160,30 @@ describe KusController do
 				expect(Vote.last.user).to eq(bob)
 			end
 		end
-		context "with prior vote" do
 
+		context "with prior vote" do
+			it "deletes vote if new is true and prior is true" do
+				Fabricate(:vote, user: bob, id: ku.id, value: true)
+				put :vote, id: ku.id, value: "true"
+				expect(ku.votes).to be_empty
+			end
+			it "deletes vote if new is false and prior is false" do
+				Fabricate(:vote, user: bob, id: ku.id, value: false)
+				put :vote, id: ku.id, value: "false"
+				expect(ku.reload.vote_count).to eq(0)
+			end
+			it "replaces vote value if new is true and prior is false" do
+				Fabricate(:vote, user: bob, id: ku.id, value: false)
+				put :vote, id: ku.id, value: "true"
+				expect(Vote.count).to eq(1)
+				expect(Vote.last.value).to eq(true)
+			end
+			it "replaces vote falue if new is false and prior is true" do
+				Fabricate(:vote, user: bob, id: ku.id, value: true)
+				put :vote, id: ku.id, value: "false"
+				expect(Vote.count).to eq(1)
+				expect(Vote.last.value).to eq(false)
+			end
 		end
 	end
 end
