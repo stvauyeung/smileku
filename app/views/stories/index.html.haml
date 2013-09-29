@@ -1,11 +1,12 @@
 %section.container
   .row-fluid
     %ul.nav.nav-tabs
-      %li.active= link_to "Read", '#'
-      %li= link_to "Write", new_story_path
+      %li.activities.active= link_to "Read", '#'
+      %li.activities= link_to "Write", new_story_path
     .stories.row
       %header
         %h2 Recent Stories
+      %br
       - @stories.each do |story|
         .story.span2
           = link_to image_tag("#{story.large_cover.preview}"), story_path(story)
