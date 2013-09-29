@@ -1,11 +1,22 @@
+body.front-page {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  background-image: none;
+}
+
 .giant {
   font-size: 750%;
-  padding: 45px;
+  padding-top: 25px;
 }
 
 .jumbotron {
-  min-height: 500px;
-  background: url('night-stars-sky.jpg')
+	margin-top: -19px;
+  min-height: 650px;
+  width: 100%;
+  background: url('Hubble_Mystic_Mountain_2.jpg') repeat scroll center center transparent;
 }
 
 .front-left {
@@ -20,4 +31,10 @@
 .front-right {
   padding-top: 150px;
   color: #FFFFFF;
+  font-size: 120%;
+}
+
+.about-block {
+	font-size: 140%;
+	line-height: 1.3em;
 }
