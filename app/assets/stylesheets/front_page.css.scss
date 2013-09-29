@@ -7,14 +7,27 @@ body.front-page {
   background-image: none;
 }
 
+.content.front-page {
+  background-color: #FFFFFF;
+  padding: 20px;
+  margin: 0 -20px;
+  /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 0px 0px;
+  -moz-box-shadow: 0 0px 0px;
+  box-shadow: 0 0px 0px;
+}
+
 .giant {
   font-size: 750%;
-  padding-top: 25px;
+  padding-top: 35px;
 }
 
 .jumbotron {
 	margin-top: -19px;
-  min-height: 650px;
+  min-height: 660px;
   width: 100%;
   background: url('Hubble_Mystic_Mountain_2.jpg') repeat scroll center center transparent;
 }
@@ -31,10 +44,10 @@ body.front-page {
 .front-right {
   padding-top: 150px;
   color: #FFFFFF;
-  font-size: 120%;
+  font-size: 130%;
 }
 
 .about-block {
-	font-size: 140%;
+	font-size: 145%;
 	line-height: 1.3em;
 }

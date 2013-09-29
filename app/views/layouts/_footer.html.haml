@@ -1,0 +1,40 @@
+.container
+  .row-fluid.row10
+    / .span12
+    /   .span2{style: "width: 15%;"}
+    /     %ul.unstyled
+    /       %li
+    /         GitHub
+    /         %li
+    /           %li
+    /             %a{href: "#"} About us
+    /           %li
+    /             %a{href: "#"} Blog
+    /           %li
+    /             %a{href: "#"} Contact  support
+    /           %li
+    /             %a{href: "#"} Enterprise
+    /           %li
+    /             %a{href: "#"} Site status
+    /   .span2{style: "width: 15%;"}
+    /     %ul.unstyled
+    /       %li
+    /         Applications
+    /         %li
+    /           %li
+    /             %a{href: "#"} Product for Mac
+    /           %li
+    /             %a{href: "#"} Product for Windows
+    /           %li
+    /             %a{href: "#"} Product for Eclipse
+    /           %li
+    /             %a{href: "#"} Product mobile apps
+    %hr
+      .row-fluid
+        .span12
+          .span8
+            %a= link_to('About Us', '#') + " &bull;".html_safe
+            %a= link_to('Terms of service', '#') + " &bull;".html_safe
+            %a= link_to('Contact', '#')
+          .span4
+            %p.muted.pull-right © 2013 Smileku
