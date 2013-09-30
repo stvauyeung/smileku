@@ -1,6 +1,6 @@
 class StaticsController < ApplicationController
-	before_filter :require_logged_out, only: [:front]
-	
+	layout 'front'
+
 	def front
 		@user = User.new
 	end
