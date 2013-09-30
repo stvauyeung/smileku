@@ -1,8 +1,8 @@
 %section.container
   .row-fluid
     %ul.nav.nav-tabs
-      %li.activities.active= link_to "Read", '#'
-      %li.activities= link_to "Write", new_story_path
+      %li.activities.active= link_to '<i class="icon-book"> Read</i>'.html_safe, '#'
+      %li.activities= link_to '<i class="icon-pencil"> Write</i>'.html_safe, new_story_path
     .stories.row
       %header
         %h2 Recent Stories
