@@ -60,4 +60,11 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  #clear uploads/tmp directory
+  config.after(:all) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["public/uploads/tmp/[^.]*"])
+    end
+  end
 end
