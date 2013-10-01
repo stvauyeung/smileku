@@ -31,6 +31,9 @@ end
 group :test do
 	gem 'database_cleaner', '~> 1.0.1'
 	gem 'shoulda-matchers'
+	gem 'capybara'
+	gem 'selenium-webdriver'
+	gem 'launchy'
 end
 # Gems used only for assets and not required
 # in production environments by default.

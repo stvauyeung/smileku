@@ -1,12 +1,12 @@
 %section.sign_in.container
   .row
     .span10.offset1
-      =form_tag "/login", :method => 'post' do |f|
+      =form_tag "/login", :method => 'post' do
         %header
           %h1 Sign in
         %fieldset
           =label_tag :username, 'Username'
-          =text_field :username, params[:username]
+          =text_field_tag :username
           =label_tag :password, 'Password'
           =password_field_tag :password
         %fieldset.action
