@@ -19,7 +19,11 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.most_recent
+    if logged_in?
+      @stories = Story.most_recent
+    else
+      redirect_to '/front'
+    end
   end
 
   def show

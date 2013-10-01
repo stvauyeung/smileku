@@ -9,7 +9,7 @@ end
 # feature spec macro
 def login_user(username, password)
 	visit login_path
-	fill_in 'username_', with: username
+	fill_in 'username', with: username
 	fill_in 'password', with: password
 	click_button 'Sign in'
 end
