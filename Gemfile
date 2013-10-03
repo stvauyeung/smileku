@@ -15,6 +15,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'bootstrap_form', '~> 0.3.2'
+gem 'html-pipeline'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby

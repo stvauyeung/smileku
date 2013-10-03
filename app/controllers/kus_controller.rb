@@ -1,7 +1,6 @@
 class KusController < ApplicationController
 	before_filter :require_login, except: [:show]
 	before_filter(only: [:edit, :update]) { |c| c.require_owner Ku.find(params[:id]) }
-
 	def new
 		@story = Story.find(params[:story_id])
 		@ku = @story.kus.build
@@ -38,6 +37,7 @@ class KusController < ApplicationController
 
 	def show
 		@ku = Ku.find(params[:id])
+		@text = @ku.filter(:body)
 		@story = @ku.story
 		render template: 'shared/show'
 	end
