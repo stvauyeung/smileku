@@ -1,11 +1,11 @@
 class Ku < ActiveRecord::Base
-	require 'Markdown'
 	belongs_to :user
 	belongs_to :story
 	belongs_to :parent, class_name: 'Ku'
 	has_many :children, class_name: 'Ku', foreign_key: 'parent_id'
 	has_many :votes, as: :voteable
 	validates :body, presence: true
+	include Markdown
 
 	def author_name
 		self.user.username

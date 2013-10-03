@@ -1,7 +1,9 @@
 require 'html/pipeline'
 
-class Markdown
-	def self.filter(string)
+module Markdown
+	def filter(attribute)
+		string = self.send(attribute)
+		
 		pipeline = HTML::Pipeline.new [
 	    HTML::Pipeline::MarkdownFilter,
 	    HTML::Pipeline::EmojiFilter

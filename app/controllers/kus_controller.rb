@@ -37,7 +37,7 @@ class KusController < ApplicationController
 
 	def show
 		@ku = Ku.find(params[:id])
-		@text = Markdown.filter(@ku.body)
+		@text = @ku.filter(:body)
 		@story = @ku.story
 		render template: 'shared/show'
 	end
