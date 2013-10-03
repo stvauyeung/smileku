@@ -5,6 +5,7 @@ class Ku < ActiveRecord::Base
 	has_many :children, class_name: 'Ku', foreign_key: 'parent_id'
 	has_many :votes, as: :voteable
 	validates :body, presence: true
+	include Markdown
 
 	def author_name
 		self.user.username
