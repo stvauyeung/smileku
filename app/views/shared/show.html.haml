@@ -13,7 +13,7 @@
 						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
 			.row
 				.well
-					%p.ku_body= @ku.body
+					.ku_body= @text.html_safe
 			.row
 				.span3.reverse-margin
 					=link_to '<i class="icon-thumbs-up"></i>'.html_safe, vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block"

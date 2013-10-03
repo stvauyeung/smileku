@@ -1,4 +1,5 @@
 class Ku < ActiveRecord::Base
+	require 'Markdown'
 	belongs_to :user
 	belongs_to :story
 	belongs_to :parent, class_name: 'Ku'
