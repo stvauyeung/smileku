@@ -38,6 +38,7 @@ class KusController < ApplicationController
 
 	def show
 		@ku = Ku.find(params[:id])
+		@text = HtmlPipeline.filter(@ku.body)
 		@story = @ku.story
 		render template: 'shared/show'
 	end
