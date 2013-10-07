@@ -12,4 +12,8 @@ class Story < ActiveRecord::Base
   def truncated_title
   	title.truncate(25)
   end
+
+  def original_ku
+    self.kus.first(:order => 'created_at ASC')
+  end
 end
