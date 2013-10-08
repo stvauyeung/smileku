@@ -1,0 +1,18 @@
+%section.container
+	.row
+		.span5
+			.row.span5
+				%h2= @story.title
+			.row.span4
+				= image_tag @story.large_cover
+				.well= @story.description
+		.span7
+			.row
+				%h3= "#{@kus.count} Kus since #{@story.created_at.strftime('%B %Y')}"
+				- @kus.each do |k|
+					.row
+						.span1
+							%h5= "#{k.number_in_story}"
+							%p= "by #{k.author_name}"
+						.span6.row10
+							%p= link_to k.body.truncate(170), ku_path(k)

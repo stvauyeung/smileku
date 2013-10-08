@@ -1,19 +1,15 @@
 %section.container
 	.row
 		.span5
-			.row.span4
-				%img(src="http://ih2.redbubble.net/image.14699308.4227/fc,550x550,creme.jpg")
 			.row.span5
 				%h2 The Adventures of Huckleberry Finn
+			.row.span4
+				%img(src="http://ih2.redbubble.net/image.14699308.4227/fc,550x550,creme.jpg")
 		.span7
 			.row
-				%h3 KU#32 by #{link_to 'Bob', '#'}
-				.well
-					%p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus pellentesque leo vel mattis. Cras sed turpis pellentesque, adipiscing erat in, ultricies nulla. Integer congue dictum urna nec consectetur. Aenean at nibh et est malesuada scelerisque. Morbi est urna, vulputate id odio sit amet, posuere varius neque. Fusce dictum, nunc sit amet pretium iaculis, dui felis sollicitudin nibh, vitae vulputate orci elit id massa. Quisque vel scelerisque velit. Integer porttitor mi vel risus scelerisque porttitor. Maecenas tempus vestibulum tortor, ultricies molestie nibh dapibus sed. Nullam at velit lobortis, scelerisque augue posuere, scelerisque diam.
-
-					Nunc quis cursus tellus, eu tincidunt augue. Proin eget iaculis nibh. Sed consectetur tincidunt erat, quis rutrum neque eleifend non. Duis vitae urna eu nisl lobortis interdum. Ut purus mi, mollis ornare euismod eget, lobortis sit amet dui. Suspendisse vestibulum vulputate libero, vitae suscipit dui auctor a. Sed pulvinar volutpat lacus, sit amet blandit nisi. Cras at lacus nisi. Sed cursus, libero ut auctor scelerisque, felis est sodales risus, eu hendrerit orci ipsum vitae purus. Pellentesque malesuada hendrerit odio vel suscipit. Ut quis mi felis.
-			.row.pull-right
-				.btn-group
-					.btn.btn-large Next
-					.btn.btn-large Skip
-					.btn.btn-large Random
+				%h3 28 Kus since September 2013
+				- 6.times do
+					.span1
+						%h5 KU#2 
+					.span6
+						%p= link_to "Nunc quis cursus tellus, eu tincidunt augue. Proin eget iaculis nibh. Sed consectetur tincidunt erat, quis rutrum neque eleifend non...", nil
