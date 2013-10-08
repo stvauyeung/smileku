@@ -28,9 +28,8 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @ku = @story.original_ku
-    @text = @ku.filter(:body)
-    render template: 'shared/show'
+    @description = @story.filter(:description)
+    @kus = @story.kus
   end
 
   private

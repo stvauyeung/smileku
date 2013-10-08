@@ -4,6 +4,7 @@ class Story < ActiveRecord::Base
   validates :title, presence: true
   validates :large_cover, presence: true
   mount_uploader :large_cover, CoverUploader
+  include Markdown
 
   def self.most_recent
   	last(10).reverse

@@ -39,7 +39,6 @@ class KusController < ApplicationController
 		@ku = Ku.find(params[:id])
 		@text = @ku.filter(:body)
 		@story = @ku.story
-		render template: 'shared/show'
 	end
 
 	def vote
