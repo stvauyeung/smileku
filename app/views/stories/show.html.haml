@@ -5,7 +5,7 @@
 				%h2= @story.title
 			.row.span4
 				= image_tag @story.large_cover
-				.well= @story.description
+				.well.row10= @description.html_safe
 		.span7
 			.row
 				%h3= "#{@kus.count} Kus since #{@story.created_at.strftime('%B %Y')}"

@@ -1,0 +1,30 @@
+%section.container
+	.row
+		.span5
+			.row.span4
+				=image_tag(@story.large_cover)
+			.row.span4
+				%h2= @story.title
+				%p= link_to "See the story", story_path(@story)
+		.span7
+			.row
+				%h3
+					#{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
+					- if current_user.present? && current_user.owns(@ku)
+						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
+			.row
+				.well
+					.ku_body= @text.html_safe
+			.row
+				.span3.reverse-margin
+					=link_to '<i class="icon-thumbs-up"></i>'.html_safe, vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block"
+					=link_to '<i class="icon-thumbs-down"></i>'.html_safe, vote_ku_path(@ku, value: false), method: :post, class: "btn btn-large vote-block"
+					%h4= "Score: #{@ku.vote_count}"
+				.span4
+					.row
+						.btn-group.pull-right
+							=link_to_unless @ku.next_ku.nil?, 'Next', url_for(@ku.next_ku), class: 'btn btn-large'
+							=link_to_unless @ku.skip_ku.nil?, 'Skip', url_for(@ku.skip_ku), class: 'btn btn-large'
+							=link_to_unless @ku.random_ku.nil?, 'Random', url_for(@ku.random_ku), class: 'btn btn-large'
+					.row.row10
+						=link_to "Add a Ku", new_story_ku_path(story_id: @story.id, parent_id: @ku.id), class: "btn btn-large pull-right"

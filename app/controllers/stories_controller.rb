@@ -28,6 +28,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @description = @story.filter(:description)
     @kus = @story.kus
   end
 
