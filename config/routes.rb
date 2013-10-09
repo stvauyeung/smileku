@@ -17,6 +17,7 @@ FirstBook::Application.routes.draw do
   end
 
   resources :kus, :only => [:show, :edit, :update] do
+    resources :comments, only: [:new, :create]
     post 'vote', on: :member
   end
   

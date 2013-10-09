@@ -39,6 +39,7 @@ class KusController < ApplicationController
 		@ku = Ku.find(params[:id])
 		@text = @ku.filter(:body)
 		@story = @ku.story
+		@comment = @ku.comments.build
 	end
 
 	def vote
