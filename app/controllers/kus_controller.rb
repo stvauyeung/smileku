@@ -4,6 +4,8 @@ class KusController < ApplicationController
 	def new
 		@story = Story.find(params[:story_id])
 		@ku = @story.kus.build
+		parent = Ku.find(params[:parent_id])
+		@text = parent.filter(:body)
 	end
 
 	def create
