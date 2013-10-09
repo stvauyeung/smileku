@@ -4,6 +4,7 @@ class Ku < ActiveRecord::Base
 	belongs_to :parent, class_name: 'Ku'
 	has_many :children, class_name: 'Ku', foreign_key: 'parent_id'
 	has_many :votes, as: :voteable
+	has_many :comments
 	validates :body, presence: true
 	include Markdown
 

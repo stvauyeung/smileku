@@ -28,3 +28,10 @@
 							=link_to_unless @ku.random_ku.nil?, 'Random', url_for(@ku.random_ku), class: 'btn btn-large'
 					.row.row10
 						=link_to "Add a Ku", new_story_ku_path(story_id: @story.id, parent_id: @ku.id), class: "btn btn-large pull-right"
+			%br
+			.row
+				= render "comments/form"
+				- @ku.comments.each do |c|
+					%hr.row
+					%p= c.body
+					%p.pull-right= "#{time_ago_in_words(c.created_at)} ago by #{link_to c.user.username, user_path(c.user)}".html_safe

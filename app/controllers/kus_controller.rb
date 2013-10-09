@@ -39,6 +39,7 @@ class KusController < ApplicationController
 		@ku = Ku.find(params[:id])
 		@text = @ku.filter(:body)
 		@story = @ku.story
+		@comment = Comment.new
 	end
 
 	def vote
@@ -49,7 +50,7 @@ class KusController < ApplicationController
 		else
 			Vote.create(value: params[:value], voteable_type: "Ku", voteable_id: @ku.id, user_id: current_user.id)
 		end
-		render template: 'shared/show'
+		render 'show'
 	end
 
 	private
