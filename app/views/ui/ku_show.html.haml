@@ -1,0 +1,37 @@
+%section.container
+	.row
+		.span5
+			.row.span4
+				%img(src="http://ih2.redbubble.net/image.14699308.4227/fc,550x550,creme.jpg")
+			.row.span4
+				%h2 Title of something awesome
+				%p= link_to "See the story", '#'
+		.span7
+			.row
+				%h3
+					KU#5 by Dude
+			.row
+				.well
+					Nunc quis cursus tellus, eu tincidunt augue. Proin eget iaculis nibh. Sed consectetur tincidunt erat, quis rutrum neque eleifend non...
+			.row
+				.span3.reverse-margin
+					=link_to '<i class="icon-thumbs-up"></i>'.html_safe, '#', class: "btn btn-large vote-block"
+					=link_to '<i class="icon-thumbs-down"></i>'.html_safe, '#', class: "btn btn-large vote-block"
+					%h4= "Score: 3"
+				.span4
+					.row
+						.btn-group.pull-right
+							=link_to 'Next', '#', class: 'btn btn-large'
+							=link_to 'Skip', '#', class: 'btn btn-large'
+							=link_to 'Random', '#', class: 'btn btn-large'
+					.row.row10
+						=link_to "Add a Ku", '#', class: "btn btn-large pull-right"
+			.row.row10
+				%label Leave a comment:
+				%textarea.span7(rows="7")
+				%fieldset.action
+				%input(type="submit" class="btn")
+				- 6.times do
+					%hr.row
+					%p Doodoo milky jammies dada ya doodoo yaya ga doo ga laalaa doo googoo ya. Doodoo doo ya gaga blankie doedoes boo-boo gaa ga laalaa. Laa gaga yaya gaa doo dada goo da gaga ga dada doodoo.
+					%p.pull-right= "12:05PM 8/3/13, #{link_to 'Dudemeister', '#'}".html_safe

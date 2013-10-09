@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :kus
   has_many :votes
+  has_many :comments
   has_secure_password
   validates :password, :presence => true,  :on => :create
   validates :username, :presence => true, :uniqueness => true
