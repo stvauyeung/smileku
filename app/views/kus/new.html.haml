@@ -6,8 +6,6 @@
 			.row.span4
 				%h2= @story.title
 				%br
-				%h5 Parent text
-				.clear_well= @text.html_safe
 		.span7
 			.well
 				%p.story_description 
@@ -19,3 +17,6 @@
 				=f.label :body, "Add to the story:"
 				=f.text_area :body, class: "span7", rows: 15
 				=f.submit "Publish", class: "btn btn-large"
+			%br
+			%p Review the parent:
+			.clear_well= @text.html_safe
