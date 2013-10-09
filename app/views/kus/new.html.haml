@@ -5,6 +5,9 @@
 				= image_tag @story.large_cover
 			.row.span4
 				%h2= @story.title
+				%br
+				%h5 Parent text
+				.clear_well= @text.html_safe
 		.span7
 			.well
 				%p.story_description 
