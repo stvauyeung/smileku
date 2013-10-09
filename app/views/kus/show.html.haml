@@ -34,4 +34,4 @@
 				- @ku.comments.each do |c|
 					%hr.row
 					%p= c.body
-					%p.pull-right= "#{c.created_at}"
+					%p.pull-right= "#{time_ago_in_words(c.created_at)} ago by #{link_to c.user.username, user_path(c.user)}".html_safe
