@@ -13,7 +13,8 @@ class Ku < ActiveRecord::Base
 	end
 
 	def number_in_story
-		position = self.story.kus.index(self)
+		kus_in_story = self.story.kus.order('created_at ASC')
+		position = kus_in_story.index(self)
 		number = position + 1
 		"KU##{number}"
 	end

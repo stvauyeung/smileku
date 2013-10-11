@@ -5,7 +5,7 @@
 				=image_tag(@story.large_cover)
 			.row.span4
 				%h2= @story.title
-				%p= link_to "See the story", story_path(@story)
+				%p.bold= link_to "<< Back to full story", story_path(@story)
 		.span7
 			.row
 				%h3
@@ -17,8 +17,8 @@
 					.ku_body= @text.html_safe
 			.row
 				.span3.reverse-margin
-					=link_to '<i class="icon-thumbs-up"></i>'.html_safe, vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block"
-					=link_to '<i class="icon-thumbs-down"></i>'.html_safe, vote_ku_path(@ku, value: false), method: :post, class: "btn btn-large vote-block"
+					=link_to "up", vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block-up"
+					=link_to "down", vote_ku_path(@ku, value: false), method: :post, class: "btn btn-large vote-block-down"
 					%h4= "Score: #{@ku.vote_count}"
 				.span4
 					= render "navigation"

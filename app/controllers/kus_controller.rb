@@ -52,7 +52,7 @@ class KusController < ApplicationController
 		else
 			Vote.create(value: params[:value], voteable_type: "Ku", voteable_id: @ku.id, user_id: current_user.id)
 		end
-		render 'show'
+		redirect_to ku_path(@ku)
 	end
 
 	private
