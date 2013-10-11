@@ -16,7 +16,7 @@ class Ku < ActiveRecord::Base
 		kus_in_story = self.story.kus.order('created_at ASC')
 		position = kus_in_story.index(self)
 		number = position + 1
-		"KU##{number}"
+		number
 	end
 
 	def next_ku

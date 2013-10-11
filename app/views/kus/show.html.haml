@@ -9,7 +9,7 @@
 		.span7
 			.row
 				%h3
-					#{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
+					No. #{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
 					- if current_user.present? && current_user.owns(@ku)
 						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
 			.row

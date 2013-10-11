@@ -12,7 +12,7 @@
 				- @kus.each do |k|
 					.row
 						.span1
-							%h5= "#{k.number_in_story}"
+							%h5= "No. #{k.number_in_story}"
 							%p= "by #{k.author_name}"
 						.span6.row10
 							%p= link_to k.body.truncate(170), ku_path(k)
