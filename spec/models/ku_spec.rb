@@ -23,7 +23,7 @@ describe Ku do
 			story = Fabricate(:story)
 			ku1 = Fabricate(:ku, story_id: story.id)
 			ku2 = Fabricate(:ku, story_id: story.id)
-			expect(ku2.number_in_story).to eq("KU#2")
+			expect(ku2.number_in_story).to eq(2)
 		end
 	end
 
@@ -32,54 +32,64 @@ describe Ku do
 		let(:one) { Fabricate(:ku, story_id: story.id) }
 		let(:two) { Fabricate(:ku, story_id: story.id, parent_id: one.id) }
 		let(:three) { Fabricate(:ku, story_id: story.id, parent_id: one.id) }
-		let(:four) { Fabricate(:ku, story_id: story.id, parent_id: two.id) }
-		let(:five) { Fabricate(:ku, story_id: story.id, parent_id: two.id) }
-		
-		let(:story2) { Fabricate(:story) }
-		let(:six) { Fabricate(:ku, story_id: story2.id) }
-		let(:seven) { Fabricate(:ku, story_id: story2.id, parent_id: six.id) }
-		let(:eight) { Fabricate(:ku, story_id: story2.id, parent_id: six.id) }
-		let(:nine) { Fabricate(:ku, story_id: story2.id, parent_id: seven.id) }
+		let(:four) { Fabricate(:ku, story_id: story.id, parent_id: one.id) }
 
 		before do
-			story.reload
+			2.times{ Fabricate(:vote, voteable_id: two.id)}
+			5.times{ Fabricate(:vote, voteable_id: four.id)}
 			one.reload
 			two.reload
-			six.reload
-			seven.reload
-			eight.reload
+			four.reload
 		end
 
-		it "returns the first child of a ku with children" do
-			expect(one.next_ku).to eq(two)
+		it "returns the highest voted child of ku with children" do
+			expect(one.next_ku).to eq(four)
 		end
-		it "returns sibling of ku with no children" do
-			expect(three.next_ku).to eq(two)
-		end
-		it "returns sibling of parent of ku with no children or siblings" do
-			expect(nine.next_ku).to eq(eight)
-		end
-		it "returns nil if no children or siblings or parent siblings" do
-			story = Fabricate(:story)
-			ku = Fabricate(:ku, story_id: story.id)
-			expect(ku.next_ku).to be_nil
+		it "returns nil if no children" do
+			expect(four.next_ku).to be_nil
 		end
 	end
 
-	describe "#skip_ku" do
+	describe "#prev_ku" do
 		let(:story2) { Fabricate(:story) }
 		let(:six) { Fabricate(:ku, story_id: story2.id) }
 		let(:seven) { Fabricate(:ku, story_id: story2.id, parent_id: six.id) }
-		let(:eight) { Fabricate(:ku, story_id: story2.id, parent_id: six.id) }
-		let(:nine) { Fabricate(:ku, story_id: story2.id, parent_id: seven.id) }
+		let(:eight) { Fabricate(:ku, story_id: story2.id, parent_id: seven.id) }
 
 		before do
-			story2.reload
 			six.reload
 			seven.reload
 		end
-		it "returns a ku from a different branch" do
-			expect(eight.skip_ku).to eq(seven)
+
+		it "returns the parent of a ku" do
+			expect(eight.prev_ku).to eq(seven)
+		end
+		it "returns nil if ku has no parent" do
+			expect(six.prev_ku).to be_nil
+		end
+	end
+
+	describe "#alt_ku" do
+		let(:story) { Fabricate(:story) }
+		let(:one) { Fabricate(:ku, story_id: story.id) }
+		let(:two) { Fabricate(:ku, story_id: story.id, parent_id: one.id) }
+		let(:three) { Fabricate(:ku, story_id: story.id, parent_id: one.id) }
+		let(:four) { Fabricate(:ku, story_id: story.id, parent_id: one.id) }
+
+		before do
+			2.times{ Fabricate(:vote, voteable_id: two.id)}
+			5.times{ Fabricate(:vote, voteable_id: four.id)}
+			one.reload
+			two.reload
+			four.reload
+		end
+
+		it "returns highest voted sibling of a ku" do
+			expect(two.alt_ku).to eq(four)
+		end
+
+		it "returns nil if no siblings" do
+			expect(one.alt_ku).to be_nil
 		end
 	end
 

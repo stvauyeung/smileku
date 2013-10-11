@@ -10,7 +10,7 @@ feature "user adds a ku" do
 
 	scenario "user ads valid ku" do
 		visit ku_path(Ku.first)
-		click_link 'Add a Ku'
+		click_link 'add to story'
 		fill_in 'ku_body', with: "Adding to the story"
 		click_button 'Publish'
 		page.should have_content "Adding to the story"
@@ -18,7 +18,7 @@ feature "user adds a ku" do
 
 	scenario "user ads invalid ku" do
 		visit ku_path(Ku.first)
-		click_link 'Add a Ku'
+		click_link 'add to story'
 		fill_in 'ku_body', with: ""
 		click_button 'Publish'
 		page.should have_content "You should write something!"

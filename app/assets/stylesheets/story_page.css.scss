@@ -14,12 +14,17 @@ p.story_description {
 	line-height: 1.2em;
 }
 
-.vote-block {
+.vote-block-up {
 	display: inline-block;
+	font-size: 1.8em;
+	color: green;
 }
 
-h2.vote-block {
+.vote-block-down {
+	display: inline-block;
 	margin-left: 12px;
+	font-size: 1.8em;
+	color: red;
 }
 
 .span3.reverse-margin {

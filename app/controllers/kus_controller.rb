@@ -5,7 +5,7 @@ class KusController < ApplicationController
 		@story = Story.find(params[:story_id])
 		@ku = @story.kus.build
 		parent = Ku.find(params[:parent_id])
-		@text = parent.filter(:body)
+		@text = parent.filter(:body).html_safe
 	end
 
 	def create
@@ -52,7 +52,7 @@ class KusController < ApplicationController
 		else
 			Vote.create(value: params[:value], voteable_type: "Ku", voteable_id: @ku.id, user_id: current_user.id)
 		end
-		render 'show'
+		redirect_to ku_path(@ku)
 	end
 
 	private
