@@ -20,32 +20,23 @@ class Ku < ActiveRecord::Base
 
 	def next_ku
 		if self.children.present?
-			self.children.first
-		elsif self.parent.nil?
-			nil
-		elsif self.parent.children.size > 1
-			find_siblings(self)
+			find_top_voted(self.children)
 		else
-			self.parent.skip_ku
+			nil
 		end
 	end
 
-	def skip_ku
-		if self.parent.nil?
-			nil
-		elsif	self.parent.children.size > 1
-			find_siblings(self)
+	def prev_ku
+		if self.parent.present?
+			self.parent
 		else
-			self.parent.skip_ku
+			nil
 		end
 	end
 
-	def random_ku
-		kus_in_story = self.story.kus
-		kus_index = kus_in_story.map { |e| e.id }
-		kus_index.delete(self.id)
-		if kus_index.size > 0
-			Ku.find(kus_index.sample)
+	def alt_ku
+		if self.siblings.present?
+			find_top_voted(self.siblings)
 		else
 			nil
 		end
@@ -55,12 +46,19 @@ class Ku < ActiveRecord::Base
 		self.votes.where(value: true).count - self.votes.where(value: false).count
 	end
 
-	private
+	def siblings
+		if self.parent.present?
+			siblings = self.parent.children
+			sibling_index = siblings.map { |e| e.id }
+			sibling_index.delete(self.id)
+			sibling_index.map!{ |i| Ku.find(i) }
+		else
+			nil
+		end
+	end
 
-	def find_siblings(ku)
-		siblings = ku.parent.children
-		sibling_index = siblings.map { |e| e.id }
-		sibling_index.delete(ku.id)
-		Ku.find(sibling_index.sample)
+	def find_top_voted(kus)
+		vote_hash = Hash[kus.map { |k| [k, k.vote_count] }]
+		vote_hash.max_by{ |k, v| v}.first
 	end
 end
