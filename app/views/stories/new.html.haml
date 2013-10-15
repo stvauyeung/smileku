@@ -5,7 +5,8 @@
 			%li.activities.active= link_to '<i class="icon-pencil"> Write</i>'.html_safe, '#'
 	.row.span12
 		%header
-			%h2 Start a new story
+			%h2 Start a new story 
+			%p= link_to "<i class= 'icon-info-sign'></i> Need help?".html_safe, '#storymodal', :data => {:toggle=>"modal"}
 		%br
 		=bootstrap_form_for @story do |f|
 			%fieldset
@@ -18,3 +19,4 @@
 						=k.label :body
 						=k.text_area :body, class: "span7", rows: 15
 					=f.submit "Publish", class: "btn"
+		= render 'storymodal'
