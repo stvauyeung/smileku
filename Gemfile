@@ -15,14 +15,13 @@ gem 'html-pipeline'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
-group :assets do
-	gem 'uglifier', '>= 1.0.3'
-	gem 'sass-rails',   '~> 3.2.3'
-	gem 'coffee-rails', '~> 3.2.1'
-	gem 'font-awesome-rails'
-	gem 'bootstrap-sass', '~> 2.3.0.1'
-	gem 'bootstrap_form', '~> 0.3.2'
-end
+
+gem 'uglifier', '>= 1.0.3'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass', '~> 2.3.0.1'
+gem 'bootstrap_form', '~> 0.3.2'
 
 group :development, :test do
 	gem 'sqlite3'
