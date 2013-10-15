@@ -1,0 +1,21 @@
+#storymodal.modal.hide.fade{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+	.modal-header
+		%button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+		%h2 Creating a new story
+	.modal-body
+		%h3 The basics
+		%p Starting a new story on Smileku is easy. You must provide four things as the story creator:
+		%dl
+			%dt Title
+			%dd Every story needs a title. Good titles provide cues on what a story is about and how people might add to them.
+			%dt Description
+			%dd Descriptions can be used to create characters, link to references, or provide background information.  Writers will see it as a starting point when adding to your story.
+			%dt Cover Image
+			%dd All stories have covers.  Be creative, a picture is worth a thousand words!
+			%dt Body
+			%dd This is where you write the first ku in your story. Don't worry, you'll do great.
+		%h3 Text formatting
+		%p= "Story description and ku body text can be styled using #{ link_to 'markdown', 'http://daringfireball.net/projects/markdown/basics', target: '_blank'} and both support #{ link_to 'emojis', 'http://www.emoji-cheat-sheet.com/', target: '_blank'}.  This is awfully exciting stuff, so feel free to go crazy. But not too crazy.".html_safe
+		%p Allright, enough reading. Go start that story!
+	.modal-footer
+		%button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
