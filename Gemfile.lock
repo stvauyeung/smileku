@@ -106,6 +106,8 @@ GEM
     json (1.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -221,6 +223,7 @@ DEPENDENCIES
   html-pipeline
   jquery-rails
   launchy
+  letter_opener
   mini_magick
   pg
   pry

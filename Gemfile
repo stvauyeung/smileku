@@ -28,6 +28,7 @@ group :development, :test do
 	gem 'rspec-rails', '~> 2.12'
 	gem 'fabrication'
 	gem 'faker'
+	gem 'letter_opener'
 end
 
 group :test do
