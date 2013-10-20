@@ -29,7 +29,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @description = @story.filter(:description)
-    @kus = @story.kus
+    @kus = @story.kus.order("created_at ASC")
   end
 
   private
