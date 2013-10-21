@@ -7,4 +7,11 @@ class AppMailer < ActionMailer::Base
 			to: @user.email,
 			subject: "Welcome to Smileku. So what's next?")
 	end
+
+	def password_reset_email(user)
+		@user = user
+		mail(
+			to: @user.email,
+			subject: "Your password reset instructions - Smileku")
+	end
 end

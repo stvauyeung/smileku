@@ -10,6 +10,9 @@ FirstBook::Application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  get '/forgot_password', to: 'forgot_passwords#new'
+  resources :forgot_passwords, :only => [:create]
+
   match '/front', to: 'statics#front'
   match '/contact', to: 'statics#contact'
 
