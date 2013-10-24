@@ -7,9 +7,7 @@ class PasswordResetsController < ApplicationController
 		user = User.find_by_token(params[:token])
 		if user 
 			if params[:password].present?
-				user.password = params[:password]
-				user.generate_token
-				user.save!
+				update_password(user, params[:password])
 				flash[:success] = "You've successfully reset your password. Use your new password to login now."
 				redirect_to login_path
 			else
@@ -22,5 +20,13 @@ class PasswordResetsController < ApplicationController
 	end
 
 	def expired
+	end
+
+	private
+
+	def update_password(user, password)
+		user.password = password
+		user.generate_token
+		user.save!
 	end
 end
