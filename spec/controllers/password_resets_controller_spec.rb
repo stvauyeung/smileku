@@ -30,9 +30,9 @@ describe PasswordResetsController do
 				post :create, password: "", token: bob.token
 				expect(bob.reload.authenticate("password")).to eq(bob)			
 			end
-			it "renders the show template" do
+			it "redirects to show template" do
 				post :create, password: "", token: bob.token
-				expect(response).to render_template(:show)
+				expect(response).to redirect_to password_reset_path(bob.token)
 			end
 			it "sets flash error" do
 				post :create, password: "", token: bob.token
@@ -40,6 +40,11 @@ describe PasswordResetsController do
 			end
 		end
 		
-		context "with invalid token"
+		context "with invalid token" do
+			it "redirects to expired token path" do
+				post :create, password: "", token: "asdfwe"
+				response.should redirect_to '/expired_reset'
+			end
+		end
 	end
 end
