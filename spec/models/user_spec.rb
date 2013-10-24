@@ -11,6 +11,11 @@ describe User do
 	it { should validate_uniqueness_of(:username) }
 	it { should validate_uniqueness_of(:email) }
 
+	it "has token on create" do
+		bob = Fabricate(:user)
+		bob.token.should be_present
+	end
+
 	describe '#owns' do
 		let(:sam) { Fabricate(:user) }
 		let(:bob) { Fabricate(:user) }

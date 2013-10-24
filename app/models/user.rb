@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,  :on => :create
   validates :username, :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
+  before_create :generate_token
 
   def has_secure_password?
   	true
@@ -18,5 +19,9 @@ class User < ActiveRecord::Base
   	else
   		false
   	end
+  end
+
+  def generate_token
+    self.token = SecureRandom.urlsafe_base64
   end
 end
