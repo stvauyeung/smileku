@@ -2,6 +2,7 @@ FirstBook::Application.routes.draw do
   root to: 'stories#index'
   
   get 'ui(/:action)', controller: 'ui'
+  get 'posts(/:action)', controller: 'posts'
   
   get '/registration', to: 'users#new'
   resources :users, :except => [:destroy]
