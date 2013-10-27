@@ -1,0 +1,18 @@
+%section.invite.container
+  .row
+    .span6.offset1
+      %form.invite
+      = form_tag action: :create, method: :post do
+        %header
+          %h1 Tell your friends about us!
+          %p If you like what we're doing, please help us spread the word about Smileku.  You can easily <strong><a href="#">send a tweet</a></strong> or email a friend with the form below.
+        %br
+        %fieldset
+          = label_tag :name, "Friend's Name"
+          = text_field_tag :name
+          = label_tag :email, "Friend's Email Address"
+          = text_field_tag :email
+          = label_tag :message, "Invitation Message"
+          = text_area_tag :message, "I'm having a blast writing collaborative stories on Smileku and think you will too!", class: 'span4', rows: 6
+        %fieldset.action
+          = submit_tag "Send Invitation", class: 'btn'
