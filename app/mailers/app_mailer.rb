@@ -14,4 +14,13 @@ class AppMailer < ActionMailer::Base
 			to: @user.email,
 			subject: "Your password reset instructions - Smileku")
 	end
+
+	def invite_email(user, invitee_name, invitee_email, message)
+		@user = user
+		@invitee_name = invitee_name
+		@message = message
+		mail(
+			to: invitee_email,
+			subject: "#{@invitee_name}, a friend on Smileku invites you to join")
+	end
 end
