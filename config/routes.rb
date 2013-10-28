@@ -32,4 +32,5 @@ FirstBook::Application.routes.draw do
   end
   
   resources :signups, :only => [:new, :create]
+  resources :invites, :only => [:new, :create]
 end

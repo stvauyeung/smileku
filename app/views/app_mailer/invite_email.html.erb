@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hi <%= @invitee_name %>,</p> 
+		<p>Your friend <%= link_to "#{@user.username}", user_url(@user, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %> has invited you to join Smileku, a collaborative storytelling website.  Here's a message they wrote for you:</p>
+		<p>"<em><%= @message %></em>"</p>
+		<p><strong><%= link_to "Learn more about Smileku", root_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %></strong></p>
+		<p>- Team Smileku</p>
+  </body>
+</html>
