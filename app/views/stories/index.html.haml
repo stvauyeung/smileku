@@ -7,6 +7,13 @@
           %li.activities= link_to '<i class="icon-pencil"> Write</i>'.html_safe, new_story_path
       .row-fluid
         %h2 Recent Kus
+        - @kus.each do |k|
+          .row-fluid
+            .span1
+              %h5= link_to image_tag(k.story.large_cover.preview), ku_path(k)
+            .span10.row10
+              %p= link_to k.body.truncate(180), ku_path(k)
+          %hr.short-hr
       .row-fluid
         %h2 Recent Stories
         %br

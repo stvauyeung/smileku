@@ -21,6 +21,7 @@ class StoriesController < ApplicationController
   def index
     if logged_in?
       @stories = Story.most_recent
+      @kus = Ku.most_recent
     else
       redirect_to '/front'
     end
