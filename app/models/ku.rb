@@ -12,6 +12,10 @@ class Ku < ActiveRecord::Base
 		self.user.username
 	end
 
+	def cover_preview
+		self.story.large_cover.preview
+	end
+
 	def self.most_recent
   	last(7).reverse
   end
