@@ -8,7 +8,7 @@
 		.span7
 			.well
 				%p.story_description 
-					="#{@story.description} -- "
+					="#{@story.filter(:description)} -- ".html_safe
 					%a
 						=link_to(@story.user.username, user_path(@story.user))
 			=form_for @ku do |f|

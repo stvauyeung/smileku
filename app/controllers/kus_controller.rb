@@ -39,9 +39,9 @@ class KusController < ApplicationController
 
 	def show
 		@ku = Ku.find(params[:id])
-		@text = @ku.filter(:body)
 		@story = @ku.story
 		@comment = Comment.new
+		@comments = @ku.comments.order('created_at DESC')
 	end
 
 	def vote
