@@ -14,7 +14,7 @@
 						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
 			.row
 				.well
-					.ku_body= @text.html_safe
+					.ku_body= @ku.filter(:body).html_safe
 			.row
 				.span3.reverse-margin
 					=link_to "up", vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block-up"
@@ -25,7 +25,7 @@
 			%br
 			.row
 				= render "comments/form"
-				- @ku.comments.each do |c|
+				- @comments.each do |c|
 					%hr.row
 					%p= c.filter(:body).html_safe
 					%p.pull-right= "#{time_ago_in_words(c.created_at)} ago by #{link_to c.user.username, user_path(c.user)}".html_safe
