@@ -12,6 +12,10 @@ class Ku < ActiveRecord::Base
 		self.user.username
 	end
 
+	def self.most_recent
+  	last(7).reverse
+  end
+
 	def number_in_story
 		kus_in_story = self.story.kus.order('created_at ASC')
 		position = kus_in_story.index(self)
