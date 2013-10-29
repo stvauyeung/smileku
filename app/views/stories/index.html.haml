@@ -12,11 +12,10 @@
             .span1
               %h5= link_to image_tag(k.story.large_cover.preview), ku_path(k)
             .span10.row10
-              %p= link_to k.body.truncate(180), ku_path(k)
+              %p= "#{link_to k.body.truncate(180), ku_path(k)} written #{time_ago_in_words(k.created_at)} ago".html_safe
           %hr.short-hr
       .row-fluid
         %h2 Recent Stories
-        %br
         - @stories.each do |story|
           .story
             = link_to image_tag("#{story.large_cover.preview}"), story_path(story)
