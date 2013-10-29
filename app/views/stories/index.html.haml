@@ -1,20 +1,18 @@
-%section.container
+%section.container-fluid
   .row-fluid
-    %ul.nav.nav-tabs
-      %li.activities.active= link_to '<i class="icon-book"> Read</i>'.html_safe, '#'
-      %li.activities= link_to '<i class="icon-pencil"> Write</i>'.html_safe, new_story_path
-    .stories.row
-      %header
+    .span9
+      .row-fluid
+        %ul.nav.nav-tabs
+          %li.activities.active= link_to '<i class="icon-book"> Read</i>'.html_safe, '#'
+          %li.activities= link_to '<i class="icon-pencil"> Write</i>'.html_safe, new_story_path
+      .row-fluid
+        %h2 Recent Kus
+      .row-fluid
         %h2 Recent Stories
-      %br
-      - @stories.each do |story|
-        .story.span2
-          = link_to image_tag("#{story.large_cover.preview}"), story_path(story)
-          %p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
-    / .stories.row
-    /   %h4 Recommended Stories
-    /   - 5.times do
-    /     .story.span2
-    /       = link_to "", nil do
-    /         %img(src="/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg")
-    /       %p= link_to "Something of a long title: Vanity is to blame", "#"
+        %br
+        - @stories.each do |story|
+          .story
+            = link_to image_tag("#{story.large_cover.preview}"), story_path(story)
+            %p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
+    .span3
+      = render 'layouts/sidebar'
