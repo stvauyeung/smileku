@@ -35,6 +35,7 @@ class StoriesController < ApplicationController
 
   private
 
+  # Move to a Story model or a form model for new stories.
   def handle_new_story(story, ku)
     story.save
     ku.save

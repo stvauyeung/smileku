@@ -2,6 +2,11 @@ require 'spec_helper'
 require 'pry'
 
 describe Ku do
+	# These first ones that just test the properites of the model seem to be overkill.
+	# It seems like these tests will just mirror the model and only
+	# catch unintentional deletes that should be caught during a code review.
+	#
+	# Have you read any articles advocating these tests?
 	it { should belong_to(:story) }
 	it { should belong_to(:user) }
 	it { should have_many(:children).class_name('Ku') }
@@ -10,6 +15,8 @@ describe Ku do
 	it { should have_many(:votes) }
 	it { should have_many(:comments) }
 
+	# These tests look pretty through. You might want to create
+	#  a helper method to perform the voting for each of these tests.
 	describe "#author_name" do
 		it "returns the username of ku user" do
 			bob = Fabricate(:user, username: "bobby")

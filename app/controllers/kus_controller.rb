@@ -1,3 +1,6 @@
+# Figure out how to simplify this controller.
+#  - There's a lot of duplication for creating the instance variables
+#  - Mismatches in the instance variables that are created in new/create and edit/update
 class KusController < ApplicationController
 	before_filter :require_login, except: [:show]
 	before_filter(only: [:edit, :update]) { |c| c.require_owner Ku.find(params[:id]) }
@@ -47,6 +50,8 @@ class KusController < ApplicationController
 	def vote
 		@ku = Ku.find(params[:id])
 		@story = @ku.story
+		# Try to place the lines below in the Vote model.
+		#  i.e. Maybe something like Vote.for_ku(@ku, current_user, params[:value])
 		if @ku.votes.where(user_id: current_user.id).exists?
 			handle_existing_vote(@ku)
 		else
@@ -57,6 +62,7 @@ class KusController < ApplicationController
 
 	private
 
+	# Move this to the Vote model
 	def handle_existing_vote(ku)
 		vote = ku.votes.where(user_id: current_user.id).first
 		if vote.value.to_s == params[:value]

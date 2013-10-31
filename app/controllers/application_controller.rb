@@ -30,6 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
+    # This seems dangerous because session data can be modified by the user (e.g. I can set my user_id to anything I want).
+    # Look for a gem for authentication.
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 

@@ -1,4 +1,6 @@
 class Ku < ActiveRecord::Base
+	# So that the parent_id can be directly accessed in the siblings method
+	attr_accessible :parent_id
 	belongs_to :user
 	belongs_to :story
 	belongs_to :parent, class_name: 'Ku'
@@ -21,26 +23,24 @@ class Ku < ActiveRecord::Base
   end
 
 	def number_in_story
-		kus_in_story = self.story.kus.order('created_at ASC')
-		position = kus_in_story.index(self)
+		# Use the 'pluck' method to minimize the amount of data you bring in.
+		ku_ids = self.story.kus.order('created_at ASC').pluck(:id)
+		position = ku_ids.index(self.id)
 		number = position + 1
 		number
 	end
 
 	def next_ku
 		if self.children.present?
-			find_top_voted(self.children)
+			find_top_voted(self.children.all)
 		else
 			nil
 		end
 	end
 
 	def prev_ku
-		if self.parent.present?
-			self.parent
-		else
-			nil
-		end
+		# Minor nitpick - If parent.present? is false, nil is returned by default
+		self.parent
 	end
 
 	def alt_ku
@@ -57,17 +57,18 @@ class Ku < ActiveRecord::Base
 
 	def siblings
 		if self.parent.present?
-			siblings = self.parent.children
-			sibling_index = siblings.map { |e| e.id }
-			sibling_index.delete(self.id)
-			sibling_index.map!{ |i| Ku.find(i) }
+			# Cleaner way of generating the list. Also, reduces the number of queries to 2.
+			self.parent.children.where('id IS DISTINCT FROM ?', id).all
 		else
 			nil
 		end
 	end
 
 	def find_top_voted(kus)
-		vote_hash = Hash[kus.map { |k| [k, k.vote_count] }]
-		vote_hash.max_by{ |k, v| v}.first
+		#Slightly cleaner way of finding the max element.
+		# This would need to be optimized more to reduce the number of SQL queries if the number
+		#   of Ku's gets to be too large (e.g. >10 on average)
+		# Note: this change requires that kus be a ruby array, not a ActiveRecord relation.
+		kus.max(&:vote_count)
 	end
 end

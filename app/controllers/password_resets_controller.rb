@@ -24,6 +24,7 @@ class PasswordResetsController < ApplicationController
 
 	private
 
+	# This should be in the User model.
 	def update_password(user, password)
 		user.password = password
 		user.generate_token

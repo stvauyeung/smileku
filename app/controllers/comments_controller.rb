@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 		if comment.save
 			redirect_to @ku
 		else
+			# Redirect to ku_path. Otherwise @story, @comments, and @comment would be nil.
 			flash[:error] = "There was something wrong with your comment, please try again."
 			render 'kus/show'
 		end
