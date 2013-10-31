@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
       :aws_access_key_id      => ENV['AWS_KEY'],                        # required
       :aws_secret_access_key  => ENV['AWS_SECRET'],                        # required
     }
-    config.fog_directory  = 'smileku'                     # required
+    config.fog_directory  = Rails.env.production? ? 'smileku' : 'smileku-staging'       # required
   else
     config.storage = :file
     config.enable_processing = Rails.env.development?
