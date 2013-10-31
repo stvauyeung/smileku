@@ -1,14 +1,30 @@
 .container
-	.row
+	.row-fluid
 		.span4
-			%h1 Bobby McBob
-			%h4 204 Kus since January 2009
+			.row-fluid
+				= image_tag "/tmp/profile.jpg", height: 250, width: 250
+				%h1 Bobby McBob
+				%h5 Joined January 2009
+			%hr.short-hr
+			.row-fluid
+				.span3.stats-box
+					%h2 3
+					%h4 stories
+				.span3.stats-box
+					%h2 23
+					%h4 kus
 		.span8
-			%h2 Recent Kus by Bobby McBob
-			- 8.times do
-				.row.row10
-					.span1
-						=link_to "", nil do
-							=image_tag "/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg"
-					.span6
-						%p= link_to "derpa derp. this be the story bob wrote.", nil
+			%h2 About Bobby McBob
+			.row-fluid
+				.span10.offset1
+					%p.italic Vix te zril nobis deleniti, prima inani id his. Delectus principes adipiscing an his, ne usu iudico utinam percipit. Cum ne brute latine alterum, ad has mazim solet necessitatibus. Ceteros periculis has ei, nec in cibo affert sadipscing, eum ponderum liberavisse voluptatibus ei. Te mea perpetua repudiandae, at dolorum probatus vim. Iudico oblique antiopam eam ex, tamquam legendos ex nec.
+			%h2 Recent Kus
+			.row-fluid
+				.span10.offset1
+					- 8.times do
+						.row-fluid.row10
+							.span1
+								=link_to "", nil do
+									=image_tag "/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg"
+							.span9
+								%p= link_to "derpa derp. this be the story bob wrote.", nil
