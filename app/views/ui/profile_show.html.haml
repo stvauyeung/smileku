@@ -1,30 +1,35 @@
 .container
 	.row-fluid
-		.span4
+		.span3
 			.row-fluid
 				= image_tag "/tmp/profile.jpg", height: 250, width: 250
 				%h1 Bobby McBob
-				%h5 Joined January 2009
+				%h5 San Francisco, CA
 			%hr.short-hr
 			.row-fluid
-				.span3.stats-box
+				.span4.stats-box
 					%h2 3
 					%h4 stories
-				.span3.stats-box
+				.span4.stats-box
 					%h2 23
 					%h4 kus
-		.span8
-			%h2 About Bobby McBob
+		.span8.offset1
 			.row-fluid
+				%h3 Bobby McBob's Bio
 				.span10.offset1
 					%p.italic Vix te zril nobis deleniti, prima inani id his. Delectus principes adipiscing an his, ne usu iudico utinam percipit. Cum ne brute latine alterum, ad has mazim solet necessitatibus. Ceteros periculis has ei, nec in cibo affert sadipscing, eum ponderum liberavisse voluptatibus ei. Te mea perpetua repudiandae, at dolorum probatus vim. Iudico oblique antiopam eam ex, tamquam legendos ex nec.
-			%h2 Recent Kus
+				%br
+				.span10.offset1
+					%h5= "Website: #{link_to 'Example.com', '#'}".html_safe
+			%hr
+			%h3 Recent Kus
 			.row-fluid
 				.span10.offset1
 					- 8.times do
 						.row-fluid.row10
-							.span1
+							.span2
 								=link_to "", nil do
 									=image_tag "/tmp/#{['story1', 'story2', 'story3', 'story4'].sample}.jpg"
-							.span9
-								%p= link_to "derpa derp. this be the story bob wrote.", nil
+							.span10
+								%h5= "#{link_to "Story Title", "#"} Ku #13".html_safe
+								%p 5 Comments | 2 Votes
