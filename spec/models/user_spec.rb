@@ -16,6 +16,16 @@ describe User do
 		bob.token.should be_present
 	end
 
+	it "sets default value for location" do
+		bob = Fabricate(:user)
+		bob.location.should eq("Earth")
+	end
+	
+	it "sets default value for bio" do
+		bob = Fabricate(:user)
+		bob.bio.should be_present
+	end
+
 	describe '#owns' do
 		let(:sam) { Fabricate(:user) }
 		let(:bob) { Fabricate(:user) }

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
   before_create :generate_token
+  before_create :default_values
 
   def has_secure_password?
   	true
@@ -23,5 +24,12 @@ class User < ActiveRecord::Base
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64
+  end
+
+  private
+
+  def default_values
+    self.bio ||= "This person hasn't written their bio yet.."
+    self.location ||= "Earth"
   end
 end
