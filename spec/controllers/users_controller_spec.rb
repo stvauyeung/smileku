@@ -71,12 +71,19 @@ describe UsersController do
 	describe 'PUT update' do
 		let(:bob) { Fabricate(:user) }
 		let(:tom) { Fabricate(:user) }
+		
 		context 'profile owned by current user' do
 			before { sign_in_user(bob) }
 			it 'updates email with correct pw' do
-				put :update, id: bob.id, user: { email: 'bob@bob.com', password: bob.password }
+				put :update, id: bob.id, user: { email: 'bob@bob.com', password: bob.password, bio: "Really enjoy writing!", location: "San Francisco" }
 				expect(bob.reload.email).to eq('bob@bob.com')
+				expect(bob.reload.bio).to eq('Really enjoy writing!')
+				expect(bob.reload.location).to eq('San Francisco')
 			end
+		end
+
+		context 'incorrect password entered' do
+			before { sign_in_user(bob) }
 			it 'does not update email with incorrect pw' do
 				put :update, id: bob.id, user: { email: 'bob@bob.com', password: 'abcd' }
 				expect(bob.reload.email).to_not eq('bob@bob.com')
@@ -90,6 +97,7 @@ describe UsersController do
 				expect(flash[:error]).to be_present
 			end
 		end
+		
 		context 'profile not owned by current user' do
 			before { sign_in_user(tom) }
 			it 'should not update user info' do

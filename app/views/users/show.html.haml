@@ -3,7 +3,10 @@
 		.span3
 			.row-fluid
 				=image_tag @user.photo.normal
-				%h1= @user.username
+				%h1
+					= @user.username
+					- if current_user.present? && current_user.id == @user.id
+						=link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-mini'
 				%h5= @user.location
 			%hr.short-hr
 			.row-fluid
@@ -21,7 +24,7 @@
 				- if @user.website?
 					%br
 					.span10.offset1
-						%h5= "Website: #{link_to @user.website, @user.site_link}".html_safe
+						%h5= "Website: #{link_to @user.website, @user.site_link, :target => '_blank'}".html_safe
 			%hr
 			%h3 Recent Kus
 			.row-fluid

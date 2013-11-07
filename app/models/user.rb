@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'uri'
   has_many :stories
   has_many :kus
   has_many :votes
@@ -25,6 +26,18 @@ class User < ActiveRecord::Base
 
   def generate_token
     self.token = SecureRandom.urlsafe_base64
+  end
+
+  def site_link
+    uri = URI::parse(self.website)
+    if uri.scheme.nil? && uri.host.nil?
+      unless uri.path.nil?
+        uri.scheme = "http"
+        uri.host = uri.path
+        uri.path = ""
+      end
+    end
+    uri.to_s
   end
 
   private
