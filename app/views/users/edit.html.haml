@@ -4,8 +4,9 @@
       = bootstrap_form_for @user do |f|
         %header
           %h1 Update Your Information
+        %br
         %fieldset
-          =f.file_field :photo, label: "Profile image"
+          =f.file_field :photo, label: "Profile photo"
           =f.text_area :bio, label: "Tell people about yourself", class: "span5", rows: 6
           =f.text_field :website, label: "Your website"
           =f.text_field :location, label: "Where do you live?"
