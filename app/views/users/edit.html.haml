@@ -1,12 +1,17 @@
 %section.account.container
   .row
     .span6.offset1
-      %header
-        %h1 Update Email
-      %br
       = bootstrap_form_for @user do |f|
-        = f.email_field :email
-        = f.password_field :password
+        %header
+          %h1 Update Your Information
+        %br
+        %fieldset
+          =f.file_field :photo, label: "Profile photo"
+          =f.text_area :bio, label: "Tell people about yourself", class: "span5", rows: 6
+          =f.text_field :website, label: "Your website"
+          =f.text_field :location, label: "Where do you live?"
+          =f.text_field :email, label: "Update your email"
+          = f.password_field :password, label: "Enter password to save"
         .controls
           = f.submit "Update", class: 'btn'
           = link_to "Cancel", user_path(@user)
