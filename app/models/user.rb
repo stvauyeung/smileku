@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   before_create :generate_token
   before_create :default_values
+  mount_uploader :photo, ProfileUploader
 
   def has_secure_password?
   	true
@@ -30,6 +31,6 @@ class User < ActiveRecord::Base
 
   def default_values
     self.bio ||= "This person hasn't written their bio yet.."
-    self.location ||= "Earth"
+    self.location ||= "Planet Earth"
   end
 end

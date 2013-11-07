@@ -1,15 +1,35 @@
 .container
-	.row
-		.span4
-			%h1= @user.username
-			%h4= "#{@user.kus.count} kus since #{@user.created_at.strftime('%B %Y')}"
-			- if current_user.present? && current_user == @user
-				=link_to 'Update Profile', edit_user_path(@user), class: 'btn btn-mini'
-		.span8
-			%h2= "Recent Kus by #{@user.username}"
-			- @user.kus.reverse.each do |ku|
-				.row.row10
-					.span1
-						=link_to image_tag(ku.story.large_cover.preview), ku_path(ku)
-					.span6
-						%p= link_to ku.body.truncate(170), ku_path(ku)
+	.row-fluid
+		.span3
+			.row-fluid
+				=image_tag @user.photo.normal
+				%h1= @user.username
+				%h5= @user.location
+			%hr.short-hr
+			.row-fluid
+				.span4.stats-box
+					%h2= @user.stories.count
+					%h4 stories
+				.span4.stats-box
+					%h2= @user.kus.count
+					%h4 kus
+		.span8.offset1
+			.row-fluid
+				%h3= "#{@user.username}'s Bio"
+				.span10.offset1
+					%p.italic= @user.bio
+				- if @user.website?
+					%br
+					.span10.offset1
+						%h5= "Website: #{link_to @user.website, @user.site_link}".html_safe
+			%hr
+			%h3 Recent Kus
+			.row-fluid
+				.span10.offset1
+					- @kus.each do |k|
+						.row-fluid.row10
+							.span2
+								=link_to "#{image_tag k.story.large_cover.preview}".html_safe, ku_path(k)
+							.span10
+								%h5= "#{link_to k.story.title, ku_path(k)} Ku ##{k.number_in_story}".html_safe
+								%p= "#{k.comments.count} Comments | #{k.vote_count} Votes"

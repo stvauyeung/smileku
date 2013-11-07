@@ -18,7 +18,7 @@ describe User do
 
 	it "sets default value for location" do
 		bob = Fabricate(:user)
-		bob.location.should eq("Earth")
+		bob.location.should eq("Planet Earth")
 	end
 	
 	it "sets default value for bio" do
