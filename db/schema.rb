@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021113324) do
+ActiveRecord::Schema.define(:version => 20131107032755) do
 
   create_table "comments", :force => true do |t|
     t.text     "body",       :limit => 255
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20131021113324) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "token"
+    t.string   "location"
+    t.text     "bio"
+    t.string   "website"
+    t.string   "photo"
   end
 
   create_table "votes", :force => true do |t|
