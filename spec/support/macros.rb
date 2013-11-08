@@ -1,9 +1,9 @@
 def sign_in_user(user=nil)
-	user.present? ? session[:user_id] = user.id : session[:user_id] = Fabricate(:user).id
+	user.present? ? session[:user_token] = user.token : session[:user_token] = Fabricate(:user).token
 end
 
 def clear_current_user
-	session[:user_id] = nil
+	session[:user_token] = nil
 end
 
 # feature spec macro

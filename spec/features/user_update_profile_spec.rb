@@ -8,21 +8,21 @@ feature "user updates profile" do
 
 	scenario "user updates email address with right password" do
 		click_link 'Profile'
-		page.should have_content "Recent Kus by bob"
+		page.should have_content "bob's Bio"
 		
-		click_link 'Update Profile'
-		fill_in 'Email', with: 'bobby.b@yahoo.com'
-		fill_in 'Password', with: 'password'
+		click_link 'Edit Profile'
+		fill_in 'Update your email', with: 'bobby.b@yahoo.com'
+		fill_in 'Enter password to save', with: 'password'
 		click_button 'Update'
 		page.should have_content "You've successfully updated your profile!"
 	end
 
 	scenario "user updates email without right password" do
 		click_link 'Profile'
-		page.should have_content "Recent Kus by bob"
+		page.should have_content "bob's Bio"
 		
-		click_link 'Update Profile'
-		fill_in 'Email', with: 'bobby.b@yahoo.com'
+		click_link 'Edit Profile'
+		fill_in 'Update your email', with: 'bobby.b@yahoo.com'
 		click_button 'Update'
 		page.should have_content "There was an error updating your email, please retry password or fix errors below."
 	end

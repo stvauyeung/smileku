@@ -24,7 +24,7 @@ describe UsersController do
 			end
 			it "sets session id to new user id" do
 				post :create, :user => {username: "Joe", email: "joe@aol.com", password: "password"}
-				expect(session[:user_id]).to eq(User.last.id)		
+				expect(session[:user_token]).to eq(User.last.token)		
 			end
 		end
 		context "invalid user attributes" do

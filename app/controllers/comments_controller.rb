@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 			redirect_to @ku
 		else
 			flash[:error] = "There was something wrong with your comment, please try again."
-			render 'kus/show'
+			redirect_to @ku
 		end
 	end
 end
