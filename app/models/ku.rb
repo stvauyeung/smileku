@@ -21,8 +21,8 @@ class Ku < ActiveRecord::Base
   end
 
 	def number_in_story
-		kus_in_story = self.story.kus.order('created_at ASC')
-		position = kus_in_story.index(self)
+		ku_ids = self.story.kus.order('created_at ASC').pluck(:id)
+		position = ku_ids.index(self.id)
 		number = position + 1
 		number
 	end
@@ -36,11 +36,7 @@ class Ku < ActiveRecord::Base
 	end
 
 	def prev_ku
-		if self.parent.present?
-			self.parent
-		else
-			nil
-		end
+		self.parent
 	end
 
 	def alt_ku

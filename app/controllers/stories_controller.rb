@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
     @story = Story.new(params[:story])
     @ku = Ku.new(params[:ku])
     if @story.valid? && @ku.valid?
-      handle_new_story(@story, @ku)
+      @story.set_first_ku(@ku, current_user)
       redirect_to story_path(@story), flash: {success: "Your story was published."}
     else
       flash[:error] = "Whoops! #{@story.errors.full_messages.join(', ')} #{@ku.errors.full_messages.join(', ')}"
@@ -31,15 +31,5 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @description = @story.filter(:description)
     @kus = @story.kus.order("created_at ASC")
-  end
-
-  private
-
-  def handle_new_story(story, ku)
-    story.save
-    ku.save
-    story.update_column(:user_id, current_user.id)
-    ku.update_column(:user_id, current_user.id)
-    story.kus << @ku
   end
 end
