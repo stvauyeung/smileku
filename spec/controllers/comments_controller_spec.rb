@@ -32,7 +32,7 @@ describe CommentsController do
 			end
 			it "renders the ku show page" do
 				post :create, comment: { body: "" }, ku_id: ku.id
-				expect(response).to render_template('kus/show')
+				expect(response).to redirect_to ku_path(ku)
 			end
 			it "displays flash error" do
 				post :create, comment: { body: "" }, ku_id: ku.id

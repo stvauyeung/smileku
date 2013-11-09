@@ -28,6 +28,12 @@ class User < ActiveRecord::Base
     self.token = SecureRandom.urlsafe_base64
   end
 
+  def update_password(password)
+    self.password = password
+    generate_token
+    save!
+  end
+
   def site_link
     uri = URI::parse(self.website)
     if uri.scheme.nil? && uri.host.nil?

@@ -10,7 +10,7 @@ class ForgotPasswordsController < ApplicationController
 			redirect_to login_path
 		else
 			flash[:error] = params[:email].blank? ? "Email cannot be blank." : "Sorry, we have no record of anyone with that email address."
-			redirect_to '/forgot_password'
+			redirect_to forgot_password_path
 		end
 	end
 end

@@ -10,7 +10,7 @@ describe SessionsController do
 			end
 			it "sets session to user id" do
 				post :create, username: bob.username, password: bob.password
-				expect(session[:user_id]).to eq(bob.id)
+				expect(session[:user_token]).to eq(bob.token)
 			end
 			it "displays flash success" do
 				post :create, username: bob.username, password: bob.password
@@ -32,11 +32,11 @@ describe SessionsController do
 
 	describe "POST destroy" do
 		let(:bob) { Fabricate(:user) }
-		before { session[:user_id] = bob.id }
+		before { session[:user_token] = bob.token }
 		
 		it "sets session to nil" do
 			post :destroy
-			expect(session[:user_id]).to be_nil
+			expect(session[:user_token]).to be_nil
 		end
 		it "redirects to root path" do
 			post :destroy

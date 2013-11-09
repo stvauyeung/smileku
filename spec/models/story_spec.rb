@@ -19,7 +19,7 @@ describe Story do
 	describe "#truncated_title" do
 		it "shortens a story title to 25 characters" do
 			story = Fabricate(:story)
-			expect(story.truncated_title.size).to eq(25)
+			expect(story.truncated_title.size).to be <= 25
 		end
 	end
 end
