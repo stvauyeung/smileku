@@ -11,7 +11,7 @@ FirstBook::Application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get '/forgot_password', to: 'forgot_passwords#new'
+  get '/forgot_password', to: 'forgot_passwords#new', as: 'forgot_password'
   resources :forgot_passwords, :only => [:create]
   resources :password_resets, :only => [:show, :create]
   get '/expired_reset', to: 'password_resets#expired'
