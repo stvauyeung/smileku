@@ -5,6 +5,12 @@ class Story < ActiveRecord::Base
   validates :large_cover, presence: true
   mount_uploader :large_cover, CoverUploader
   include Markdown
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
+  end
 
   def self.most_recent
   	last(10).reverse

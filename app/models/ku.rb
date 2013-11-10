@@ -7,6 +7,8 @@ class Ku < ActiveRecord::Base
 	has_many :comments
 	validates :body, presence: true
 	include Markdown
+	extend FriendlyId
+	friendly_id :url_format, use: :slugged
 
 	def author_name
 		self.user.username
@@ -66,4 +68,13 @@ class Ku < ActiveRecord::Base
 		vote_hash = Hash[kus.map { |k| [k, k.vote_count] }]
 		vote_hash.max_by{ |k, v| v}.first
 	end
+
+	# friendly_id methods
+	def url_format
+    "#{story.title} Ku #{number_in_story} by #{user.username}"
+  end
+
+  def should_generate_new_friendly_id?
+  	new_record? || slug.blank?
+  end
 end

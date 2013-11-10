@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_secure_password
   validates :password, :presence => true,  :on => :create
-  validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "contains letters, numbers or underscore"}, length: { maximum: 30 }
+  validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
   validates :email, :presence => true, :uniqueness => true
   before_create :generate_token
   before_create :default_values
