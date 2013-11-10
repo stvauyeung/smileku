@@ -9,7 +9,7 @@
     <h1>Welcome to Smileku, <%= @user.username %></h1>
     <p>Thank you for joining us at our small corner of the internet. Whether you're published and famous or aspiring to greatness, we hope Smileku will be a place for you to write more often and have fun doing it.</p>
     <p>Feel free to <a href="mailto:contact@smileku.com?Subject=New%20member%20question" target="_top">drop us a line</a> if you have any questions.</p>
-    <p><%= link_to 'Login and start writing!', login_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "pwreset") %></p>
+    <p><%= link_to 'Login and start writing!', login_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "welcome") %></p>
     <p>- Team Smileku</p>
   </body>
 </html>

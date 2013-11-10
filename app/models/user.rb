@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
   has_many :comments
   has_secure_password
   validates :password, :presence => true,  :on => :create
-  validates :username, :presence => true, :uniqueness => true
+  validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
   validates :email, :presence => true, :uniqueness => true
   before_create :generate_token
   before_create :default_values
   mount_uploader :photo, ProfileUploader
+  extend FriendlyId
+  friendly_id :username
 
   def has_secure_password?
   	true
