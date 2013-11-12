@@ -12,6 +12,7 @@ gem 'fog'
 gem 'jquery-rails'
 gem 'html-pipeline'
 gem 'friendly_id', '~> 4.0.10'
+gem 'metamagic'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
