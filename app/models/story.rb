@@ -24,11 +24,11 @@ class Story < ActiveRecord::Base
     self.kus.first(:order => 'created_at ASC')
   end
 
-  def set_first_ku(ku, user)
-    self.save
-    ku.save
-    self.update_column(:user_id, user.id)
-    ku.update_column(:user_id, user.id)
-    self.kus << ku
-  end
+  # def set_first_ku(ku, user)
+  #   self.save
+  #   ku.save
+  #   self.update_column(:user_id, user.id)
+  #   ku.update_column(:user_id, user.id)
+  #   self.kus << ku
+  # end
 end
