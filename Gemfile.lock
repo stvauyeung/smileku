@@ -114,6 +114,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metamagic (2.0.6)
+      rails (>= 3.0.0)
     method_source (0.8.2)
     mime-types (1.25)
     mini_magick (3.6.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   letter_opener
+  metamagic
   mini_magick
   pg
   pry
