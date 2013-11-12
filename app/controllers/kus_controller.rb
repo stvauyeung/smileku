@@ -13,9 +13,8 @@ class KusController < ApplicationController
 
 	def create
 		@story = Story.find(params[:story_id])
-		@ku = Ku.create(params[:ku])
+		@ku = Ku.create(params[:ku].merge!(story_id: @story.id, user_id: current_user.id))
 		if @ku.save
-			@ku.update_attributes(story_id: @story.id, user_id: current_user.id)
 			flash[:success] = "You successfully published a ku."
 			redirect_to ku_path(@ku)
 		else

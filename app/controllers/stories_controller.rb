@@ -7,10 +7,9 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.new(params[:story])
-    @ku = Ku.new(params[:ku])
-    if @story.valid? && @ku.valid?
-      @story.set_first_ku(@ku, current_user)
+    @story = Story.new(params[:story].merge!(user_id: current_user.id))
+    if @story.save
+      @ku = Ku.create(params[:ku].merge!(story_id: @story.id, user_id: current_user.id))
       redirect_to story_path(@story), flash: {success: "Your story was published."}
     else
       flash[:error] = "Whoops! #{@story.errors.full_messages.join(', ')} #{@ku.errors.full_messages.join(', ')}"

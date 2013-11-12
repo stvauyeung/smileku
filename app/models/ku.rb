@@ -25,7 +25,11 @@ class Ku < ActiveRecord::Base
 	def number_in_story
 		ku_ids = self.story.kus.order('created_at ASC').pluck(:id)
 		position = ku_ids.index(self.id)
-		number = position + 1
+		if position
+			number = position + 1
+		else
+			number = ku_ids.size + 1
+		end
 		number
 	end
 
