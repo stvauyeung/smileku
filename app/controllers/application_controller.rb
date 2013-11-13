@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_user_match(params_id)
-    if current_user.id != params_id.to_i
+  def require_user_match(slug)
+    if current_user.to_param != slug
       flash[:error] = "You don't have permissions for that!"
       redirect_to user_path(User.find(params_id))
     end
