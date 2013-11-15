@@ -3,8 +3,9 @@ require 'spec_helper'
 describe KusController do
 	describe "GET new" do
 		let(:story) { Fabricate(:story) }
-		let(:first_ku) { Fabricate(:ku, story_id: story.id) }
-		before { sign_in_user }
+		let(:bob) { Fabricate(:user) }
+		let(:first_ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id) }
+		before { sign_in_user(bob) }
 
 		it_behaves_like "require_login" do
 			let(:action) { get :new, story_id: story.id, parent_id: first_ku.id }
@@ -22,7 +23,7 @@ describe KusController do
 	describe "POST create" do
 		let(:bob) { Fabricate(:user) }
 		let(:story) { Fabricate(:story) }
-		let(:first_ku) { Fabricate(:ku, story_id: story.id) }
+		let(:first_ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id) }
 		before { sign_in_user(bob) }
 
 		it_behaves_like "require_login" do

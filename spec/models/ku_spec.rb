@@ -6,14 +6,14 @@ describe Ku do
 	it { should belong_to(:user) }
 	it { should have_many(:children).class_name('Ku') }
 	it { should belong_to(:parent).class_name('Ku') }
-	it { should validate_presence_of(:body) }
 	it { should have_many(:votes) }
 	it { should have_many(:comments) }
 
 	describe "#author_name" do
 		it "returns the username of ku user" do
+			story = Fabricate(:story)
 			bob = Fabricate(:user, username: "bobby")
-			ku = Fabricate(:ku, user_id: bob.id)
+			ku = Fabricate(:ku, user_id: bob.id, story_id: story.id)
 			expect(ku.author_name).to eq("bobby")
 		end
 	end

@@ -42,9 +42,5 @@ describe SessionsController do
 			post :destroy
 			response.should redirect_to root_path
 		end
-		it "displays flash success" do
-			post :destroy
-			expect(flash[:success]).to be_present
-		end
 	end
 end

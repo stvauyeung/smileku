@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe CommentsController do
 	describe "POST create" do
-		let(:ku) { Fabricate(:ku) }
+		let(:story) { Fabricate(:story) }
 		let(:bob) { Fabricate(:user) }
+		let(:ku) { Fabricate(:ku, story_id: story.id, user_id: bob.id) }
 		before { sign_in_user(bob) }
 
 		it_behaves_like "require_login" do
