@@ -13,7 +13,7 @@ feature "user creates a new story" do
 		fill_in 'Body', with: "Body of the story"
 		attach_file 'Upload a Cover', 'spec/fixtures/mrec1.jpg'
 		click_button 'Publish'
-		page.should have_content "Your story was published."
+		page.should have_content "Body of the story"
 	end
 	scenario "user creates an invalid story" do
 		fill_in 'Description', with: "Some description of a story"

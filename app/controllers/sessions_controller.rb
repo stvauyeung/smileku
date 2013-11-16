@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_token] = nil
-    redirect_to root_path, :flash => { success: "You've successfully signed out." }
+    redirect_to root_path
   end
 end

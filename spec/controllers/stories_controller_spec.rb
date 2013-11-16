@@ -28,7 +28,7 @@ describe StoriesController do
 			let(:bob) { Fabricate(:user) }
 			before do
 				sign_in_user(bob)
-				post :create, story: Fabricate.attributes_for(:story, large_cover: fixture_file_upload('/mrec1.jpg', 'image/jpg')), ku: Fabricate.attributes_for(:ku)
+				post :create, story: Fabricate.attributes_for(:story, large_cover: fixture_file_upload('/mrec1.jpg', 'image/jpg')), ku: { body: "test body"}
 			end
 
 			it "should save a new story" do
@@ -55,8 +55,8 @@ describe StoriesController do
 			let(:bob) { Fabricate(:user) }
 			before { sign_in_user(bob) }
 
-			it "does not create a new story" do
-				post :create, story: Fabricate.attributes_for(:invalid_story), ku: Fabricate.attributes_for(:ku)
+ 			it "does not create a new story" do
+				post :create, story: Fabricate.attributes_for(:invalid_story), ku: { body: "test body"}
 				expect(Story.count).to eq(0)
 			end
 			it "does not create a new ku" do
