@@ -28,7 +28,7 @@ gem 'bootstrap_form', '~> 0.3.2'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'rspec-rails', '~> 2.12'
-	gem 'fabrication'
+	gem 'fabrication', '~>2.5.0'
 	gem 'faker'
 	gem 'letter_opener'
 end

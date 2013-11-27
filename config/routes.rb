@@ -31,7 +31,7 @@ FirstBook::Application.routes.draw do
     end
   end
 
-  resources :posts, :only => [:new, :index, :show]
+  resources :posts, :only => [:new, :create, :index, :show]
   
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]

@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def require_admin
+    if current_user.nil?
+      flash[:error] = "You must be signed in to do that!"
+      redirect_to login_path
+    elsif current_user.admin == false
+      flash[:error] = "You don't have permissions for that page!"
+      redirect_to root_path
+    end
+  end
+
   def require_owner(content)
     unless content.user == current_user
       flash[:error] = "You must be the creator before you can edit!"
