@@ -30,6 +30,8 @@ FirstBook::Application.routes.draw do
       post 'vote'
     end
   end
+
+  resources :posts, :only => [:new, :index, :show]
   
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]
