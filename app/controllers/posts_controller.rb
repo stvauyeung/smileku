@@ -10,7 +10,14 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		
+		@post = Post.new(params[:post])
+		if @post.save
+			flash[:success] = "Post created!"
+			redirect_to post_path(@post)
+		else
+			flash[:error] = "There were errors with your post!"
+			render :new
+		end
 	end
 
 	def show

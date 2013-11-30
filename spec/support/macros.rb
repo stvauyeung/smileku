@@ -2,6 +2,10 @@ def sign_in_user(user=nil)
 	user.present? ? session[:user_token] = user.token : session[:user_token] = Fabricate(:user).token
 end
 
+def sign_in_admin(admin=nil)
+	admin.present? ? session[:user_token] = admin.token : session[:user_token] = Fabricate(:admin).token
+end
+
 def clear_current_user
 	session[:user_token] = nil
 end

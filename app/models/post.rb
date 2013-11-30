@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
 	validates :text, presence: true
 	validates :header, presence: true
 	validates :mrec, presence: true
+	mount_uploader :mrec, PostMrecUploader
+	mount_uploader :header, PostHeaderUploader
 end
