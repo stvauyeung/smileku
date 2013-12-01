@@ -1,7 +1,14 @@
 .container
-	%section.ui-index
-		%ul
-			- Dir.glob('app/views/posts/*.html.haml').sort.each do |file|
-				- post = File.basename(file,'.html.haml')
-				-  unless post == 'index' || post.match(/^_/)
-					%li= link_to post.titleize, action: post unless post == 'index'
+	.row
+		.span11.offset1
+			.row
+				.span6
+					%h1 Posts by Smileku
+			%br
+			.row
+				.span6
+					%ul
+						- @posts.each do |p|
+							.li
+								= p.created_at.strftime("%B %d, %Y")
+								%h3= link_to(p.title, post_path(p))

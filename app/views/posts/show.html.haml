@@ -1,0 +1,14 @@
+.container
+	.row
+		.span11.offset1
+			.row
+				.header-pic
+					=image_tag(@post.header)
+					.p= "#{link_to('Photo Credit', @post.photo_link, :target => "_blank")}".html_safe
+			.row
+				.span6
+					%h1= @post.title
+					%p= @post.created_at.strftime("Posted %B %d, %Y")
+			.row
+				.span6
+					%p= @post.filter(:text).html_safe

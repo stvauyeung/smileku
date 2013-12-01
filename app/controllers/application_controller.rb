@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :logged_in?, :current_user
+  before_filter :set_recent_posts
+
+  def set_recent_posts
+    @recent_posts = Post.last(2).reverse
+  end
 
   def require_logged_out
     if logged_in?
@@ -13,6 +18,16 @@ class ApplicationController < ActionController::Base
   		flash[:error] = "You must be signed in to do that!"
   		redirect_to login_path
   	end
+  end
+
+  def require_admin
+    if current_user.nil?
+      flash[:error] = "You must be signed in to do that!"
+      redirect_to login_path
+    elsif current_user.admin == false
+      flash[:error] = "You don't have permissions for that page!"
+      redirect_to root_path
+    end
   end
 
   def require_owner(content)
