@@ -12,6 +12,8 @@ gem 'fog'
 gem 'unf'
 gem 'jquery-rails'
 gem 'html-pipeline'
+gem "github-markdown", '~> 0.6.3'
+gem 'gemoji'
 gem 'friendly_id', '~> 4.0.10'
 gem 'metamagic'
 

@@ -2,7 +2,6 @@ FirstBook::Application.routes.draw do
   root to: 'stories#index'
   
   get 'ui(/:action)', controller: 'ui'
-  get 'posts(/:action)', controller: 'posts'
   
   get '/registration', to: 'users#new'
   resources :users, :except => [:destroy]
@@ -31,7 +30,7 @@ FirstBook::Application.routes.draw do
     end
   end
 
-  resources :posts, :only => [:new, :create, :index, :show]
+  resources :posts, :except => [:destory]
   
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]

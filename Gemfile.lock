@@ -82,6 +82,8 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
+    gemoji (1.4.0)
+    github-markdown (0.6.3)
     haml (4.0.4)
       tilt
     haml-rails (0.4)
@@ -217,6 +219,8 @@ DEPENDENCIES
   fog
   font-awesome-rails
   friendly_id (~> 4.0.10)
+  gemoji
+  github-markdown (~> 0.6.3)
   haml-rails
   html-pipeline
   jquery-rails
