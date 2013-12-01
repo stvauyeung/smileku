@@ -30,7 +30,7 @@ FirstBook::Application.routes.draw do
     end
   end
 
-  resources :posts, :except => [:destory]
+  resources :posts, :except => [:destroy]
   
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]
