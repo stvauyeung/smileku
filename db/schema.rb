@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20131127045943) do
   add_index "kus", ["slug"], :name => "index_kus_on_slug"
 
   create_table "posts", :force => true do |t|
-    t.string   "text"
+    t.text     "text"
     t.string   "title"
     t.string   "header"
     t.string   "mrec"
