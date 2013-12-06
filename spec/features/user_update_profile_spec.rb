@@ -12,7 +12,6 @@ feature "user updates profile" do
 		
 		click_link 'Edit Profile'
 		fill_in 'Update your email', with: 'bobby.b@yahoo.com'
-		fill_in 'Enter password to save', with: 'password'
 		click_button 'Update'
 		page.should have_content "You've successfully updated your profile!"
 	end
@@ -22,7 +21,7 @@ feature "user updates profile" do
 		page.should have_content "bob's Bio"
 		
 		click_link 'Edit Profile'
-		fill_in 'Update your email', with: 'bobby.b@yahoo.com'
+		fill_in 'Update your email', with: ''
 		click_button 'Update'
 		page.should have_content "There was an error updating your email, please retry password or fix errors below."
 	end

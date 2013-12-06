@@ -75,26 +75,22 @@ describe UsersController do
 		context 'profile owned by current user' do
 			before { sign_in_user(bob) }
 			it 'updates email with correct pw' do
-				put :update, id: bob.username, user: { email: 'bob@bob.com', password: bob.password, bio: "Really enjoy writing!", location: "San Francisco" }
+				put :update, id: bob.username, user: { email: 'bob@bob.com', bio: "Really enjoy writing!", location: "San Francisco" }
 				expect(bob.reload.email).to eq('bob@bob.com')
 				expect(bob.reload.bio).to eq('Really enjoy writing!')
 				expect(bob.reload.location).to eq('San Francisco')
 			end
 		end
 
-		context 'incorrect password entered' do
+		context 'no email address' do
 			before { sign_in_user(bob) }
-			it 'does not update email with incorrect pw' do
-				put :update, id: bob.username, user: { email: 'bob@bob.com', password: 'abcd' }
+			it 'does not update profile with no email' do
+				put :update, id: bob.username, user: { email: '' }
 				expect(bob.reload.email).to_not eq('bob@bob.com')
 			end
-			it 'renders the edit template if incorrect password' do
-				put :update, id: bob.username, user: { email: 'bob@bob.com', password: 'abcd' }
+			it 'renders the edit template if no email entered' do
+				put :update, id: bob.username, user: { email: '' }
 				response.should render_template :edit
-			end
-			it 'displays flash error if incorrect password' do
-				put :update, id: bob.username, user: { email: 'bob@bob.com', password: 'abcd' }
-				expect(flash[:error]).to be_present
 			end
 		end
 		
