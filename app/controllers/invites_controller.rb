@@ -13,7 +13,7 @@ class InvitesController < ApplicationController
 		# It might seem like overkill, but it really helps clean things up.
 		#  Also, do some backend validation that the email is valid.
 		if params[:name].present? && params[:email].present? && params[:message].present?
-			AppMailer.invite_email(user, params[:name], params[:email], params[:message]).deliver
+			AppMailer.delay.invite_email(user, params[:name], params[:email], params[:message])
 			flash[:success] = "Thank you for sharing Smileku, your message has been sent."
 			redirect_to new_invite_path
 		else
