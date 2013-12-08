@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      AppMailer.welcome_email(@user).deliver
+      AppMailer.delay.welcome_email(@user)
       session[:user_token] = @user.token
       redirect_to stories_path, :flash => {:success => "You successfully created an account.  Welcome!"}
     else

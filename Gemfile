@@ -16,6 +16,8 @@ gem "github-markdown", '~> 0.6.3'
 gem 'gemoji'
 gem 'friendly_id', '~> 4.0.10'
 gem 'metamagic'
+gem 'sidekiq'
+gem 'unicorn'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
