@@ -38,4 +38,24 @@ describe User do
 			expect(bob.owns(sams_ku)).to be_false
 		end
 	end
+
+	describe "#is_follower" do
+		let(:sam) { Fabricate(:user) }
+		let(:f1) { Fabricate(:following, follower_id: sam.id) }
+		let(:f2) { Fabricate(:following, follower_id: sam.id) }
+		let(:f3) { Fabricate(:following) }
+		it 'returns followings where user_id is follower_id' do
+			expect(sam.is_follower).to eq([f1, f2])
+		end
+	end
+
+	describe "#is_followed" do
+		let(:sam) { Fabricate(:user) }
+		let(:f1) { Fabricate(:following, followed_id: sam.id) }
+		let(:f2) { Fabricate(:following, followed_id: sam.id) }
+		let(:f3) { Fabricate(:following) }
+		it 'returns followings where user_id is followed_id' do
+			expect(sam.is_followed).to eq([f1, f2])
+		end
+	end
 end

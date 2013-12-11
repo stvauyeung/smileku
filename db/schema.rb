@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202004344) do
+ActiveRecord::Schema.define(:version => 20131211024037) do
 
   create_table "comments", :force => true do |t|
     t.text     "body",       :limit => 255
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(:version => 20131202004344) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  create_table "followings", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "followings", ["followed_id"], :name => "index_followings_on_followed_id"
+  add_index "followings", ["follower_id", "followed_id"], :name => "index_followings_on_follower_id_and_followed_id", :unique => true
+  add_index "followings", ["follower_id"], :name => "index_followings_on_follower_id"
 
   create_table "kus", :force => true do |t|
     t.text     "body"
