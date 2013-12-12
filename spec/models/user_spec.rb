@@ -58,4 +58,16 @@ describe User do
 			expect(sam.is_followed).to eq([f1, f2])
 		end
 	end
+
+	describe "#following?" do
+		let(:sam) { Fabricate(:user) }
+		let(:bob) { Fabricate(:user) }
+		before { Fabricate(:following, follower_id: sam.id, followed_id: bob.id) }
+		it 'returns true if user is following given user' do
+			expect(sam.following?(bob)).to be_true
+		end
+		it 'returns false if user not following given user' do
+			expect(bob.following?(sam)).to be_false
+		end
+	end
 end

@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
   validates :email, :presence => true, :uniqueness => true
 
-  has_many :followings
+  has_many :followings, foreign_key: :follower_id
   has_many :is_follower, class_name: 'Following', foreign_key: :follower_id
   has_many :is_followed, class_name: 'Following', foreign_key: :followed_id
   
@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     self.password = password
     generate_token
     save!
+  end
+
+  def following?(user)
+    followings.find_by_followed_id(user.id)
   end
 
   def site_link
