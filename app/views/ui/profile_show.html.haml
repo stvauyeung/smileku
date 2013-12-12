@@ -3,16 +3,25 @@
 		.span3
 			.row-fluid
 				= image_tag "/tmp/profile.jpg", height: 250, width: 250
-				%h1 Bobby McBob
+				%h1
+					Bobby McBob
+					=link_to 'Follow', '#', class: 'btn btn-info'
 				%h5 San Francisco, CA
 			%hr.short-hr
 			.row-fluid
-				.span4.stats-box
+				.span6.stats-box
 					%h2 3
 					%h4 stories
-				.span4.stats-box
+				.span6.stats-box
 					%h2 23
 					%h4 kus
+			.row-fluid
+				.span6.stats-box
+					%h2 5
+					%h4 followers
+				.span6.stats-box
+					%h2 15
+					%h4 following
 		.span8.offset1
 			.row-fluid
 				%h3 Bobby McBob's Bio
