@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     is_follower.pluck(:followed_id).map! { |u| User.find(u) }
   end
 
+  def follow!(user)
+    followings.create(followed_id: user.id) if self != user
+  end
+
   def site_link
     uri = URI::parse(self.website)
     if uri.scheme.nil? && uri.host.nil?

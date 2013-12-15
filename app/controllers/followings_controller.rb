@@ -3,7 +3,7 @@ class FollowingsController < ApplicationController
 
 	def create
 		@user = User.find(params[:following][:followed_id])
-		current_user.followings.create(followed_id: @user.id) if current_user != @user
+		current_user.follow!(@user)
 		redirect_to @user
 	end
 
