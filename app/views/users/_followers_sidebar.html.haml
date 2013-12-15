@@ -1,12 +1,12 @@
 - unless @user.following.empty?
-	%h4= link_to 'Following', '#'
+	%h4= link_to 'Following', following_user_path(@user)
 	.row-fluid
 		- @user.following.each do |u|
 			.span3.no-space
 				= link_to "#{image_tag u.photo.preview}".html_safe, user_path(u)
 %br
 - unless @user.followers.empty?
-	%h4= link_to 'Followers', '#'
+	%h4= link_to 'Followers', followers_user_path(@user)
 	.row-fluid
 		- @user.followers.each do |u|
 			.span3.no-space
