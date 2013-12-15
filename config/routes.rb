@@ -4,7 +4,11 @@ FirstBook::Application.routes.draw do
   get 'ui(/:action)', controller: 'ui'
   
   get '/registration', to: 'users#new'
-  resources :users, :except => [:destroy]
+  resources :users, :except => [:destroy] do
+    member do
+      get :following, :followers
+    end
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -34,4 +38,5 @@ FirstBook::Application.routes.draw do
   
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]
+  resources :followings, :only => [:create, :destroy]
 end

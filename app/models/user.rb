@@ -4,13 +4,19 @@ class User < ActiveRecord::Base
   has_many :kus
   has_many :votes
   has_many :comments
+
   has_secure_password
-  validates :password, :presence => true,  :on => :create
-  validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
-  validates :email, :presence => true, :uniqueness => true
   before_create :generate_token
   before_create :default_values
   mount_uploader :photo, ProfileUploader
+  validates :password, :presence => true,  :on => :create
+  validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
+  validates :email, :presence => true, :uniqueness => true
+
+  has_many :followings, foreign_key: :follower_id
+  has_many :is_follower, class_name: 'Following', foreign_key: :follower_id
+  has_many :is_followed, class_name: 'Following', foreign_key: :followed_id
+  
   extend FriendlyId
   friendly_id :username
 
@@ -34,6 +40,22 @@ class User < ActiveRecord::Base
     self.password = password
     generate_token
     save!
+  end
+
+  def following?(user)
+    followings.find_by_followed_id(user.id)
+  end
+
+  def followers
+    is_followed.pluck(:follower_id).map! { |u| User.find(u) }
+  end
+
+  def following
+    is_follower.pluck(:followed_id).map! { |u| User.find(u) }
+  end
+
+  def follow!(user)
+    followings.create(followed_id: user.id) if self != user
   end
 
   def site_link
