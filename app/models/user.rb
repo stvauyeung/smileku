@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :followings, foreign_key: :follower_id
   has_many :is_follower, class_name: 'Following', foreign_key: :follower_id
   has_many :is_followed, class_name: 'Following', foreign_key: :followed_id
+
+  has_many :listings
   
   extend FriendlyId
   friendly_id :username
@@ -56,6 +58,10 @@ class User < ActiveRecord::Base
 
   def follow!(user)
     followings.create(followed_id: user.id) if self != user
+  end
+
+  def listed?(story)
+    listings.find_by_story_id(story.id)
   end
 
   def site_link

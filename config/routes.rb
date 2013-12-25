@@ -39,4 +39,5 @@ FirstBook::Application.routes.draw do
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]
   resources :followings, :only => [:create, :destroy]
+  resources :listings, :only => [:create, :destroy]
 end

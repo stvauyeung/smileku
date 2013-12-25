@@ -4,6 +4,7 @@
 		.span4
 			.row-fluid
 				%h2= @story.title
+				= render 'listing_form'
 			.row-fluid
 				= image_tag @story.large_cover
 				.well.row10= @description.html_safe

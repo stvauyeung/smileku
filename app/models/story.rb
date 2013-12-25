@@ -8,6 +8,8 @@ class Story < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  has_many :listings
+
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
   end
