@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe ListingsController do
 	let(:story) { Fabricate(:story) }
@@ -20,5 +21,25 @@ describe ListingsController do
 		end
 	end
 
-	describe 'DELETE destroy'
+	describe 'DELETE destroy' do
+		let(:story) { Fabricate(:story) }
+		let(:bob) { Fabricate(:user) }
+		let(:joe) { Fabricate(:user) }
+		let(:listing) { Fabricate(:listing, user_id: bob.id) }
+
+		it_behaves_like 'require_login' do
+			let(:action) { delete :destroy, id: listing.id }
+		end
+
+		it 'deletes listing if current user is listing user' do
+			sign_in_user(bob)
+			delete :destroy, id: listing.id
+			expect(bob.reload.listings.count).to eq(0)
+		end
+		it 'does not delete listing if current user not listing user' do
+			sign_in_user(joe)
+			delete :destroy, id: listing.id
+			expect(bob.reload.listings.count).to eq(1)
+		end
+	end
 end

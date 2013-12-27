@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :is_follower, class_name: 'Following', foreign_key: :follower_id
   has_many :is_followed, class_name: 'Following', foreign_key: :followed_id
 
-  has_many :listings
+  has_many :listings, foreign_key: :user_id
   
   extend FriendlyId
   friendly_id :username
@@ -62,6 +62,10 @@ class User < ActiveRecord::Base
 
   def listed?(story)
     listings.find_by_story_id(story.id)
+  end
+
+  def listed
+    listings.order('created_at DESC').pluck(:story_id).map! { |s| Story.find(s) }
   end
 
   def site_link

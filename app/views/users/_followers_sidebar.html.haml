@@ -1,3 +1,10 @@
+- unless @user.listed.empty?
+	%h4= link_to 'Story List', listings_user_path(@user)
+	.row-fluid
+		- @user.listed.each do |u|
+			.span3.no-space
+				= link_to "#{image_tag u.large_cover.preview}".html_safe, url_for(u)
+%br
 - unless @user.following.empty?
 	%h4= link_to 'Following', following_user_path(@user)
 	.row-fluid

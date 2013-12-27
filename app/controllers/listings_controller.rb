@@ -8,7 +8,9 @@ class ListingsController < ApplicationController
 	end
 
 	def destroy
-		@story = Story.find(params[:listing][:story_id])
+		listing = Listing.find(params[:id])
+		@story = Story.find(listing.story_id)
+		listing.delete if current_user.id == listing.user_id
 		redirect_to @story
 	end
 end
