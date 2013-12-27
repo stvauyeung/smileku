@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_logged_out, only: [:new, :create]
   before_filter(only: [:update, :edit]) { |c| c.require_user_match params[:id] }
+  before_filter(except: [:new, :create]) { @user = User.find(params[:id]) }
   
   def new
     @user = User.new
@@ -19,16 +20,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @kus = @user.kus
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "You've successfully updated your profile!"
       redirect_to user_path(@user)
@@ -36,17 +31,5 @@ class UsersController < ApplicationController
       flash[:error] = "There was an error updating your email, please retry password or fix errors below."
       render :edit
     end    
-  end
-
-  def following
-    @user = User.find(params[:id])
-  end
-
-  def followers
-    @user = User.find(params[:id])
-  end
-
-  def listings
-    @user = User.find(params[:id])
   end
 end
