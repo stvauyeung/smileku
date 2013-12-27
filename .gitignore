@@ -21,3 +21,6 @@
 /public/public/*
 /public/tmp/*
 /public/uploads/*
+
+# Ignore redis dump
+/dump.rdb
