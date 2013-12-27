@@ -6,7 +6,7 @@ FirstBook::Application.routes.draw do
   get '/registration', to: 'users#new'
   resources :users, :except => [:destroy] do
     member do
-      get :following, :followers
+      get :following, :followers, :listings
     end
   end
 
@@ -39,4 +39,5 @@ FirstBook::Application.routes.draw do
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]
   resources :followings, :only => [:create, :destroy]
+  resources :listings, :only => [:create, :destroy]
 end

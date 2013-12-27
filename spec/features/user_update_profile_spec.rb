@@ -8,7 +8,7 @@ feature "user updates profile" do
 
 	scenario "user updates email address with right password" do
 		click_link 'Profile'
-		page.should have_content "bob's Bio"
+		page.should have_content "Recent Kus"
 		
 		click_link 'Edit Profile'
 		fill_in 'Update your email', with: 'bobby.b@yahoo.com'
@@ -18,7 +18,7 @@ feature "user updates profile" do
 
 	scenario "user updates email without right password" do
 		click_link 'Profile'
-		page.should have_content "bob's Bio"
+		page.should have_content "Recent Kus"
 		
 		click_link 'Edit Profile'
 		fill_in 'Update your email', with: ''

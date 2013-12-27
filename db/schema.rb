@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211024037) do
+ActiveRecord::Schema.define(:version => 20131225183534) do
 
   create_table "comments", :force => true do |t|
     t.text     "body",       :limit => 255
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(:version => 20131211024037) do
   end
 
   add_index "kus", ["slug"], :name => "index_kus_on_slug"
+
+  create_table "listings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "listings", ["story_id"], :name => "index_listings_on_story_id"
+  add_index "listings", ["user_id", "story_id"], :name => "index_listings_on_user_id_and_story_id", :unique => true
+  add_index "listings", ["user_id"], :name => "index_listings_on_user_id"
 
   create_table "posts", :force => true do |t|
     t.text     "text",       :limit => 255
