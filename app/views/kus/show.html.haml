@@ -7,8 +7,6 @@
 			.row.span4
 				%h2= @story.title
 				%p.bold= link_to "<< Back to full story", story_path(@story)
-				%br
-				= render 'social_buttons'
 		.span7
 			.row
 				%h3
@@ -17,7 +15,7 @@
 						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
 			.row
 				.well
-					.ku_body= @ku.filter(:body).html_safe
+					.ku_body= @ku.filter(:body).html_safe				
 			.row
 				.span3.reverse-margin
 					=link_to "up", vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block-up"
@@ -25,6 +23,8 @@
 					%h4= "Score: #{@ku.vote_count}"
 				.span4
 					= render "navigation"
+					%br
+					= render 'social_buttons'
 			%br
 			.row
 				= render "comments/form"
