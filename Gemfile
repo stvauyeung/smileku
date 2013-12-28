@@ -48,7 +48,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 
-group :production do
+group :production, :staging do
 	gem 'pg'
 	gem 'rails_12factor'
 end
