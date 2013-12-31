@@ -9,6 +9,7 @@
 				.span6
 					%h1= @post.title
 					%p= @post.created_at.strftime("Posted %B %d, %Y")
+					= render 'layouts/social_buttons', twitter_message: "#{@post.title}"
 			.row
 				.span6
 					%p= @post.filter(:text).html_safe

@@ -12,6 +12,7 @@
 						- if current_user.present? && current_user.id == @user.id
 							=link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-mini'
 					%h5= @user.location
+					= render 'layouts/social_buttons', twitter_message: "#{@user.username}'s Smileku writer profile"
 					%hr
 					%p.italic= @user.bio
 			%hr

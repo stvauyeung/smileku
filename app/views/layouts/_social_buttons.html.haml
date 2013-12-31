@@ -1,0 +1,7 @@
+.row-fluid.social_bar
+	%div.social_button
+		%a.twitter-share-button{"data-count" => "vertical", "data-text" => twitter_message, "data-via" => "smilekus", "data-lang" => "en", "data-related" => "smilekus", :href => "https://twitter.com/share"} Tweet
+	%div.social_button
+		.fb-share-button{"data-href" => "#{request.original_url}", "data-type" => "box_count"}
+	%div.social_button
+		.g-plusone{"data-annotation" => "bubble", "data-size" => "tall"}
