@@ -26,6 +26,10 @@ class Story < ActiveRecord::Base
     self.kus.first(:order => 'created_at ASC')
   end
 
+  def author_name
+    self.user.username
+  end
+
   # def set_first_ku(ku, user)
   #   self.save
   #   ku.save

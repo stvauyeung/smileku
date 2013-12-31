@@ -5,6 +5,7 @@
 			.row-fluid
 				%h2= @story.title
 				= render 'listing_form'
+				= render 'layouts/social_buttons', twitter_message: "#{@story.title} by #{@story.author_name}"
 			.row-fluid
 				= image_tag @story.large_cover
 				.well.row10= @description.html_safe

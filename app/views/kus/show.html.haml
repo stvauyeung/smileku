@@ -6,6 +6,7 @@
 				=image_tag(@story.large_cover)
 			.row.span4
 				%h2= @story.title
+				= render 'layouts/social_buttons', twitter_message: "#{@story.title} number #{@ku.number_in_story} by #{@ku.author_name}"
 				%p.bold= link_to "<< Back to full story", story_path(@story)
 		.span7
 			.row
@@ -23,8 +24,6 @@
 					%h4= "Score: #{@ku.vote_count}"
 				.span4
 					= render "navigation"
-					%br
-					= render 'social_buttons'
 			%br
 			.row
 				= render "comments/form"

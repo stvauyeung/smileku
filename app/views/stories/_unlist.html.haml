@@ -1,2 +1,2 @@
 = form_for @story.listings.find_by_user_id(current_user.id), html: { method: :delete } do |f|
-	= f.submit 'unlist', class: 'btn btn-success'
+	= f.submit 'unlist', class: 'btn btn-success pull-right'
