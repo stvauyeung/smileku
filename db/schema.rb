@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225183534) do
+ActiveRecord::Schema.define(:version => 20140107235614) do
 
   create_table "comments", :force => true do |t|
     t.text     "body",       :limit => 255
@@ -65,7 +65,10 @@ ActiveRecord::Schema.define(:version => 20131225183534) do
     t.integer  "user_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], :name => "index_posts_on_slug"
 
   create_table "stories", :force => true do |t|
     t.string   "title"
