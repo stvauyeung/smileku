@@ -13,3 +13,7 @@
 			.row
 				.span6
 					%p= @post.filter(:text).html_safe
+					%hr
+			.row
+				.span6
+					= render 'livefyre_comments'

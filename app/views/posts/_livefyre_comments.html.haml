@@ -1,0 +1,19 @@
+/ START: Livefyre Embed
+#livefyre-comments
+%script{:src => "http://zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js", :type => "text/javascript"}
+:javascript
+  (function () {
+      var articleId = fyre.conv.load.makeArticleId(null);
+      fyre.conv.load({}, [{
+          el: 'livefyre-comments',
+          network: "livefyre.com",
+          siteId: "350963",
+          articleId: articleId,
+          signed: false,
+          collectionMeta: {
+              articleId: articleId,
+              url: fyre.conv.load.makeCollectionUrl(),
+          }
+      }], function() {});
+  }());
+/ END: Livefyre Embed
