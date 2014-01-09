@@ -1,0 +1,17 @@
+.row-fluid
+	.span10.offset1
+		%h2 What is Smileku?
+		.p Laboris Shoreditch mollit, ullamco sustainable +1 squid Intelligentsia. Tempor art party squid locavore narwhal aliqua flexitarian gluten-free. Bitters magna cornhole authentic.
+		%br
+		.p Chillwave pariatur Cosby sweater occaecat hella. Officia lo-fi gentrify, PBR&B excepteur before they sold out McSweeney's bespoke aesthetic exercitation Wes Anderson aliqua. Odd Future street art PBR&B, banh mi Wes Anderson whatever selvage yr irony butcher Intelligentsia.
+		%br
+		.row
+			.span8.offset2
+				= link_to "Join the community!", registration_path, class: "btn btn-warning btn-block"
+		%br
+		.center
+			= render 'layouts/twitter_follow'
+		%hr
+		%h3 Recent Posts
+		- @recent_posts.each do |p|
+			.post-image= link_to image_tag(p.mrec), post_path(p)

@@ -3,7 +3,7 @@ FirstBook::Application.routes.draw do
   
   get 'ui(/:action)', controller: 'ui'
   
-  get '/registration', to: 'users#new'
+  get '/registration', to: 'users#new', as: 'registration'
   resources :users, :except => [:destroy] do
     member do
       get :following, :followers, :listings
