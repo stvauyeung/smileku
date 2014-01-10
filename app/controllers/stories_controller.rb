@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_filter :require_login, except: [:index, :show]
+  before_filter(only: [:index]) { |c| c.set_recent_posts(2) }
 
   def new
     @story = Story.new

@@ -1,10 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :logged_in?, :current_user
-  before_filter :set_recent_posts
 
-  def set_recent_posts
-    @recent_posts = Post.last(2).reverse
+  def set_recent_posts(number)
+    @recent_posts = Post.last(number).reverse
   end
 
   def require_logged_out

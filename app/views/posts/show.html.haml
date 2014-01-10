@@ -10,7 +10,7 @@
 				%p= @post.created_at.strftime("Posted %B %d, %Y")
 				= render 'layouts/social_buttons', twitter_message: "#{@post.title}"
 			.row
-				%p= @post.filter(:text).html_safe
+				= @post.filter(:text).html_safe
 				%hr
 			.row
 				= render 'livefyre_comments'
