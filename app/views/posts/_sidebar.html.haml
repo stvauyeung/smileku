@@ -1,0 +1,27 @@
+.row-fluid
+	.span8.offset2
+		- if logged_in?
+			%h2= "Hey #{current_user.username},"
+			.p As the saying goes, writing is 1% inspiration and 99% perspiration.  You're here, sitting down and thinking about writing.  It's a good start...
+			%br
+			.p But you can do so much more.  Stop thinking about writing and start doing!
+			%br
+			.row
+				.span8.offset2
+					= link_to "Start a story!", new_story_path, class: "btn btn-warning btn-block"
+		- else
+			%h2 What is Smileku?
+			.p We're a community of writers dedicated to growing our creativity. Writers on Smileku collaborate on stories, challenging each other to think on our feet and write great stories.  
+			%br
+			.p Smileku is open to writers of all background.  If this sounds like fun, join us!
+			%br
+			.row
+				.span8.offset2
+					= link_to "Join the community!", registration_path, class: "btn btn-warning btn-block"
+		%br
+		.center
+			= render 'layouts/twitter_follow'
+		%hr
+		%h3 Recent Posts
+		- @recent_posts.each do |p|
+			.post-image= link_to image_tag(p.mrec), post_path(p)

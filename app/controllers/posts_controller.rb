@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	before_filter :require_admin, except: [:index, :show]
+	before_filter(only: [:show]) { |c| c.set_recent_posts(3) }
 
 	def index
 		@posts = Post.all.reverse

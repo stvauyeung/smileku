@@ -1,19 +1,18 @@
 .container
-	.row
-		.span11.offset1
+	.row-fluid
+		.span6.offset1
 			.row
 				.header-pic
 					=image_tag(@post.header)
 					.p= "#{link_to('Photo Credit', @post.photo_link, :target => "_blank")}".html_safe
 			.row
-				.span6
-					%h1= @post.title
-					%p= @post.created_at.strftime("Posted %B %d, %Y")
-					= render 'layouts/social_buttons', twitter_message: "#{@post.title}"
+				%h1= @post.title
+				%p= @post.created_at.strftime("Posted %B %d, %Y")
+				= render 'layouts/social_buttons', twitter_message: "#{@post.title}"
 			.row
-				.span6
-					%p= @post.filter(:text).html_safe
-					%hr
+				= @post.filter(:text).html_safe
+				%hr
 			.row
-				.span6
-					= render 'livefyre_comments'
+				= render 'livefyre_comments'
+		.span5
+			= render 'sidebar'
