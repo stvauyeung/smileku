@@ -3,6 +3,7 @@ class StaticsController < ApplicationController
 
 	def front
 		@user = User.new
+		@stories = Story.most_recent(5)
 	end
 
 	def contact

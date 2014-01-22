@@ -1,32 +1,32 @@
-.jumbotron.row-fluid
-	.container
-		.front-left.span7
+.container
+	.row-fluid
+		.span6.front-left
 			%h1.giant Smileku
 			%br
-			%h1 &infin; Infinite Stories
-		.front-right.span4
-			%h3 Welcome to Smileku
-			%p Join writers around the world and co-create stories for future generations. <strong><a href="#about">Learn more</a></strong>
-			%br
+			%h1 Something giant is happening right here.  Be part of a group of avante garde writers collaborating on stories.
+			%h3.pull-right= link_to "Learn more >", '#'
+		.front-right.span4.offset1
 			- if logged_in?
 				= link_to "Start a story", new_story_path, class: "btn btn-large btn-block"
 			- else
-				= link_to "Sign up now", registration_path, class: "btn btn-large btn-block"
-%br
-.container
-	.content.front-page#about
-		.row
-			.span5
-			.about-block.span7
-				%br
-				%h1 What is Smileku?
-				%p Smileku is a place for crowd sourced storytelling.  Our mission is to explore the boundaries of <em>creative writing</em> and <em>journalism</em> using social web technology.  We believe sharing stories with people around the world will help make us a better connected and more compassionate society.  We're looking for writers who feel the same way.
-				%h2 How it works
-				%p At the core of Smileku is the ku.  Kus are units of text that belong to a story.  Anyone can add a ku to a story, and readers comment and cast votes for their favorite ones.  As stories mature, the most popular kus show up first, shaping the way the story is read.
-				%p Anyone can start a story on Smileku.  All that's required is a title, description, image and an awesome first ku.  After your story is started, you or anyone else can add more kus.
-				%p Find a story on a topic you feel passionate about or start one of your own. Have more questions? <strong><a href="mailto:contact@smileku.com?Subject=A%20message" target="_top">Send us a message</a></strong>
-				%br
-				- if logged_in?
-					= link_to "Start a story", new_story_path, class: "btn btn-large btn-block"
-				- else
-					= link_to "Sign up now", registration_path, class: "btn btn-large btn-block"
+				= link_to "Sign up now", registration_path, class: "btn btn-info btn-large btn-block"
+				= link_to "Login", login_path, class: "btn btn-large btn-block"
+	%hr
+	.row-fluid
+		%h1 Stories being written
+		.row-fluid
+			- @stories.each do |story|
+				.story
+					= link_to image_tag("#{story.large_cover.preview}"), story_path(story)
+					%p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
+		%h1 Recent articles
+		.row-fluid
+			- 5.times do
+				.story.span2
+					= link_to "", nil do
+						%img(src="./public/public/tmp/uploads/the-little-thumb.jpg")
+					%p= link_to "Three ways to write a story", "#"
+	%hr
+	.row-fluid.center
+		%h1 Sound like fun?
+		= link_to "Sign up now", registration_path, class: "btn btn-info btn-large"
