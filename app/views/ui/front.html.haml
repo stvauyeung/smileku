@@ -1,14 +1,33 @@
-.jumbotron
-  .container
-    .span7.front-left
+.container
+  .row-fluid
+    .span6.front-left
       %h1.giant Smileku
       %br
-      %h1 &infin; Infinite Stories
-    .span4.front-right
-      %h3 Welcome to Smileku
-      %p Join writers around the world and co-create stories for future generations.
-      =form_for "" do |f|
-        = f.text_field :username, :placeholder => "Username"
-        = f.text_field :email, :placeholder => "Email Address"
-        = f.password_field :password, :placeholder => "Password"
-        = f.submit "Create Account", :class => "btn"
+      %h1 Something giant is happening right here.  Be part of a group of avante garde writers collaborating on stories.
+      %h3.pull-right= link_to "Learn more >", '#'
+    .front-right.span4.offset1
+      - if logged_in?
+        = link_to "Start a story", new_story_path, class: "btn btn-large btn-block"
+      - else
+        = link_to "Sign up now", registration_path, class: "btn btn-info btn-large btn-block"
+        = link_to "Login", login_path, class: "btn btn-large btn-block"
+  %hr
+  .row-fluid
+    %h1 Stories being written
+    .stories.row
+      - 5.times do
+        .story.span2
+          = link_to "", nil do
+            %img(src="./public/public/tmp/uploads/the-little-thumb.jpg")
+          %p= link_to "Three ways to write a story", "#"
+    %h1 Recent articles
+    .stories.row
+      - 5.times do
+        .story.span2
+          = link_to "", nil do
+            %img(src="./public/public/tmp/uploads/the-little-thumb.jpg")
+          %p= link_to "Three ways to write a story", "#"
+  %hr
+  .row-fluid.center
+    %h1 Sound like fun?
+    = link_to "Sign up now", registration_path, class: "btn btn-info btn-large"
