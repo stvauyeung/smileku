@@ -3,7 +3,7 @@
 		.span6.front-left
 			%h1.giant Smileku
 			%br
-			%h1 Something giant is happening right here.  Be part of a group of avante garde writers collaborating on stories.
+			%h1 Short bursts of creativity <br/> to help you write more <br/> and grow as a writer
 			%h4.pull-right= link_to "Learn more >", faq_path
 		.front-right.span4.offset1
 			- if logged_in?
@@ -20,7 +20,7 @@
 					.story
 						= link_to image_tag("#{story.large_cover.preview}"), story_path(story)
 						%p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
-			%h1 Recent articles
+			%h1 From the Smileku blog
 			.row-fluid
 				- @posts.each do |post|
 					.front-post
