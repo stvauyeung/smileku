@@ -14,8 +14,8 @@ class Story < ActiveRecord::Base
     new_record? || slug.blank?
   end
 
-  def self.most_recent
-  	last(10).reverse
+  def self.most_recent(count)
+  	last(count).reverse
   end
 
   def truncated_title

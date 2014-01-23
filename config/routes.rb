@@ -21,6 +21,7 @@ FirstBook::Application.routes.draw do
 
   match '/front', to: 'statics#front'
   match '/contact', to: 'statics#contact'
+  match '/faq', to: 'statics#faq', as: 'faq'
 
   resources :stories, :except => [:destroy] do
   	resources :kus, :only => [:new, :create]
