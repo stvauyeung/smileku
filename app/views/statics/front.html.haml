@@ -13,17 +13,18 @@
 				= link_to "Login", login_path, class: "btn btn-large btn-block"
 	%hr
 	.row-fluid
-		%h1 Stories being written
-		.row-fluid
-			- @stories.each do |story|
-				.story
-					= link_to image_tag("#{story.large_cover.preview}"), story_path(story)
-					%p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
-		%h1 Recent articles
-		.row-fluid
-			- @posts.each do |post|
-				.front-post
-					= link_to image_tag("#{post.mrec}"), post_path(post)
+		.span10.offset1
+			%h1 Stories being written
+			.row-fluid
+				- @stories.each do |story|
+					.story
+						= link_to image_tag("#{story.large_cover.preview}"), story_path(story)
+						%p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
+			%h1 Recent articles
+			.row-fluid
+				- @posts.each do |post|
+					.front-post
+						= link_to image_tag("#{post.mrec}"), post_path(post)
 	%hr
 	.row-fluid.center
 		- if logged_in?
