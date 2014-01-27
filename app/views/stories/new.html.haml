@@ -1,13 +1,9 @@
 - meta :title => "Write something awesome - Smileku", :description => "Start a new collaborative story."
 %section.container
-	.row-fluid
-		%ul.nav.nav-tabs
-			%li.activities=link_to 'Read'.html_safe, stories_path
-			%li.activities.active= link_to 'Write'.html_safe, '#'
 	.row.span12
 		%header
 			%h2 Start a new story 
-			%p= link_to "<i class= 'icon-info-sign'></i> Need help?".html_safe, '#storymodal', :data => {:toggle=>"modal"}
+			%h5= link_to "click for help", '#storymodal', :data => {:toggle=>"modal"}
 		%br
 		=bootstrap_form_for @story do |f|
 			%fieldset

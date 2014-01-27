@@ -3,9 +3,8 @@
   .row-fluid
     .span9
       .row-fluid
-        %ul.nav.nav-tabs
-          %li.activities.active= link_to 'Read', '#'
-          %li.activities= link_to 'Write'.html_safe, new_story_path
+        .start_a_story{:onclick => "window.location='stories/new';", :style => "cursor: pointer;"}
+          %h3 Are you a writer? Click here to start a story.
       .row-fluid
         %h2 Recent Kus
         - @kus.each do |k|
