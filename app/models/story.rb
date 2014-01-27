@@ -19,7 +19,7 @@ class Story < ActiveRecord::Base
   end
 
   def self.find_longest(number)
-    all.sort_by{ |story| story.kus.count }.first(number).reverse
+    all.sort_by{ |story| story.kus.count }.last(number).reverse
   end
 
   def truncated_title
