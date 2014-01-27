@@ -20,11 +20,12 @@
 					.story
 						= link_to image_tag("#{story.large_cover.preview}"), story_path(story)
 						%p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
-			%h1 From the Smileku blog
+			%h1 Articles for writers
 			.row-fluid
 				- @posts.each do |post|
 					.front-post
 						= link_to image_tag("#{post.mrec}"), post_path(post)
+			%h4= link_to "Read more articles >", posts_path
 	%hr
 	.row-fluid.center
 		- if logged_in?

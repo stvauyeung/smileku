@@ -14,8 +14,12 @@ class Story < ActiveRecord::Base
     new_record? || slug.blank?
   end
 
-  def self.most_recent(count)
-  	last(count).reverse
+  def self.most_recent(number)
+  	last(number).reverse
+  end
+
+  def self.find_longest(number)
+    all.sort_by{ |story| story.kus.count }.first(number).reverse
   end
 
   def truncated_title
