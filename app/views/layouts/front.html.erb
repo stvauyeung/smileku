@@ -26,5 +26,7 @@
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
+    <%= render 'layouts/ga' if Rails.env.production? %>
+    <%= render 'layouts/social_scripts' %>
   </body>
-</html>
+</html> 
