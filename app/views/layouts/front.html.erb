@@ -6,6 +6,7 @@
     <title>Smileku - Infinite Stories</title>
     <meta name="description" content="">
     <meta name="author" content="">
+    <%= render 'layouts/ga' if Rails.env.production? %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -26,7 +27,6 @@
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
-    <%= render 'layouts/ga' if Rails.env.production? %>
     <%= render 'layouts/social_scripts' %>
   </body>
 </html> 
