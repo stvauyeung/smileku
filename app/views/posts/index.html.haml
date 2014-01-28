@@ -3,12 +3,15 @@
 		.span11.offset1
 			.row
 				.span6
-					%h1 Posts by Smileku
+					%h1 Writing Tips: helpful articles to teach and inspire writers
 			%br
 			.row
 				.span6
 					%ul
 						- @posts.each do |p|
 							.li
-								= p.created_at.strftime("%B %d, %Y")
 								%h3= link_to(p.title, post_path(p))
+								.bold= p.created_at.strftime("%B %d, %Y")
+								%p= p.filter(:text).truncate(300).html_safe
+								=link_to 'Read More...', post_path(p)
+								%hr
