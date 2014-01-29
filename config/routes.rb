@@ -2,7 +2,8 @@ FirstBook::Application.routes.draw do
   root to: 'stories#index'
   
   get 'ui(/:action)', controller: 'ui'
-  
+  get 'sitemap.xml', to: 'sitemap#index', as: 'sitemap', defaults: { format: 'xml' }
+
   get '/registration', to: 'users#new', as: 'registration'
   resources :users, :except => [:destroy] do
     member do
