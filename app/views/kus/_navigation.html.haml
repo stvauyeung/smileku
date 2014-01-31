@@ -1,7 +1,9 @@
 .row
-	.btn-group.pull-right
-		=link_to_unless @ku.next_ku.nil?, 'next', url_for(@ku.next_ku), class: 'btn btn-large'
-		=link_to_unless @ku.prev_ku.nil?, 'prev', url_for(@ku.prev_ku), class: 'btn btn-large'
-		=link_to_unless @ku.alt_ku.nil?, 'alt', url_for(@ku.alt_ku), class: 'btn btn-large'
-.row.row10
-	=link_to "add to story", new_story_ku_path(story_id: @story.id, parent_id: @ku.id), class: "btn btn-large pull-right"
+	.pull-right
+		- unless @ku.next_ku.nil?
+			=link_to 'next', url_for(@ku.next_ku)
+		- unless @ku.prev_ku.nil?
+			=link_to 'prev', url_for(@ku.prev_ku)
+		- unless @ku.alt_ku.nil?
+			=link_to 'alt', url_for(@ku.alt_ku)
+	
