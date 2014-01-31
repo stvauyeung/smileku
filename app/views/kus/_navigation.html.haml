@@ -1,9 +1,13 @@
-.row
+.row.ku_navigation.italic
+	.span4.reverse-margin
+		=link_to "up vote", vote_ku_path(@ku, value: true), method: :post
+		&bull;
+		=link_to "down vote", vote_ku_path(@ku, value: false), method: :post
+		%p= "total Score: #{@ku.vote_count}"
 	.pull-right
-		- unless @ku.next_ku.nil?
-			=link_to 'next', url_for(@ku.next_ku)
 		- unless @ku.prev_ku.nil?
-			=link_to 'prev', url_for(@ku.prev_ku)
+			=link_to '<<prev', url_for(@ku.prev_ku)
 		- unless @ku.alt_ku.nil?
-			=link_to 'alt', url_for(@ku.alt_ku)
-	
+			=link_to 'alternate', url_for(@ku.alt_ku), class: 'bold'
+		- unless @ku.next_ku.nil?
+			=link_to 'next>>', url_for(@ku.next_ku)
