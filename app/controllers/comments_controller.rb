@@ -5,7 +5,10 @@ class CommentsController < ApplicationController
 		@ku = Ku.find(params[:ku_id])
 		comment = @ku.comments.build(params[:comment].merge!(user: current_user))
 		if comment.save
-			redirect_to @ku
+			respond_to do |format|
+				format.html { redirect_to @ku }
+				format.js
+			end
 		else
 			flash[:error] = "There was something wrong with your comment, please try again."
 			redirect_to @ku

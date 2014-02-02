@@ -49,8 +49,10 @@ class KusController < ApplicationController
 
 	def vote
 		@ku = Ku.find(params[:id])
-		@story = @ku.story
 		Vote.for_ku(@ku, current_user, params[:value])
-		redirect_to ku_path(@ku)
+		respond_to do |format|
+			format.html { redirect_to ku_path(@ku) }
+			format.js
+		end
 	end
 end

@@ -1,4 +1,5 @@
 .row_fluid
+	%h4 Comments
 	= form_for [@ku, @comment] do |f|
 		=f.text_area :body, class: "span4", rows: 3
 		=f.submit "leave a comment", class: "btn pull-right"

@@ -8,10 +8,11 @@
 				%h2= @story.title
 				= render 'layouts/social_buttons', twitter_message: "#{@story.title} number #{@ku.number_in_story} by #{@ku.author_name}"
 				%p.bold= link_to "<< Back to full story", story_path(@story)
-			.row.span4
-				= render "comments/form"
-				%br
-				= render "comments"
+			.row.span4.hidden-phone
+				#comment_block
+					= render "comments/form"
+					%br
+					= render "comments"
 		.span7
 			.row
 				= link_to image_tag(@ku.user.photo, class: 'profile_thumb'), user_path(@ku.user)
