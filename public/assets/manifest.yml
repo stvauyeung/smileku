@@ -17,10 +17,10 @@ profiles/red.png: profiles/red-c0e09a073521ac913620d211a372f56d.png
 profiles/red/index.png: profiles/red-c0e09a073521ac913620d211a372f56d.png
 profiles/yellow.png: profiles/yellow-c609a931d587de171272a386ca8b2074.png
 profiles/yellow/index.png: profiles/yellow-c609a931d587de171272a386ca8b2074.png
-application.js: application-9d3302b67decedb3049e2d7606855d5f.js
-application/index.js: application-9d3302b67decedb3049e2d7606855d5f.js
-application.css: application-7d72f4ab0032c907a574e346f89b20d2.css
-application/index.css: application-7d72f4ab0032c907a574e346f89b20d2.css
+application.js: application-4089923fb923e80427f883518854c929.js
+application/index.js: application-4089923fb923e80427f883518854c929.js
+application.css: application-d155323b9325d3a8b6b701ee9f734d96.css
+application/index.css: application-d155323b9325d3a8b6b701ee9f734d96.css
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png

@@ -1,7 +1,13 @@
-.row
-	.btn-group.pull-right
-		=link_to_unless @ku.next_ku.nil?, 'next', url_for(@ku.next_ku), class: 'btn btn-large'
-		=link_to_unless @ku.prev_ku.nil?, 'prev', url_for(@ku.prev_ku), class: 'btn btn-large'
-		=link_to_unless @ku.alt_ku.nil?, 'alt', url_for(@ku.alt_ku), class: 'btn btn-large'
-.row.row10
-	=link_to "add to story", new_story_ku_path(story_id: @story.id, parent_id: @ku.id), class: "btn btn-large pull-right"
+.row.ku_navigation.italic
+	.span4.reverse-margin#vote_block
+		=link_to "up vote", vote_ku_path(@ku, value: true), method: :post
+		&bull;
+		=link_to "down vote", vote_ku_path(@ku, value: false), method: :post
+		%p{id: "ku_#{@ku.id}_votes"}= "total score: #{@ku.vote_count}"
+	.pull-right
+		- unless @ku.prev_ku.nil?
+			=link_to '<<prev', url_for(@ku.prev_ku)
+		- unless @ku.alt_ku.nil?
+			=link_to 'alternate', url_for(@ku.alt_ku), class: 'bold'
+		- unless @ku.next_ku.nil?
+			=link_to 'next>>', url_for(@ku.next_ku)

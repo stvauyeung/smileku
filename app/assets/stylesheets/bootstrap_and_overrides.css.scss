@@ -4,6 +4,7 @@ $iconWhiteSpritePath: url('/assets/glyphicons-halflings-white.png');
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+
 body {
   padding-top: 40px;
   margin: 0;
@@ -11,7 +12,6 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-image: url('crinkled-paper-background-sml.jpg');
 }
 
 .navbar-inner {

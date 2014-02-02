@@ -2,7 +2,7 @@
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #FCFFFF;
+  background-color: #FFFFFF;
   border: 1px solid #e3e3e3;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -10,9 +10,31 @@
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  color: #808080;
+  color: #000000;
 }
 
 .story_well {
   background-color: #FCFFFF;
+}
+
+.ku_body {
+  font-family: helvetica;
+  font-size: 135%;
+  line-height: 1.3em;
+}
+
+.ku_navigation {
+  font-family: monospace;
+  font-size: 1.4em;
+  line-height: 1.3em; 
+}
+
+.profile_thumb {
+  max-width: 45px;
+}
+
+.comment_thumb {
+  float:left;
+  max-width: 55px;
+  margin-right: 5px;
 }

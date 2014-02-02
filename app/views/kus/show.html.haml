@@ -8,26 +8,29 @@
 				%h2= @story.title
 				= render 'layouts/social_buttons', twitter_message: "#{@story.title} number #{@ku.number_in_story} by #{@ku.author_name}"
 				%p.bold= link_to "<< Back to full story", story_path(@story)
+			.row.span4.hidden-phone
+				#comment_block
+					= render "comments/form"
+					%br
+					= render "comments"
 		.span7
 			.row
-				%h3
-					No. #{@ku.number_in_story} by #{link_to @ku.author_name, user_path(@ku.user)}
+				= link_to image_tag(@ku.user.photo, class: 'profile_thumb'), user_path(@ku.user)
+				= link_to @ku.author_name, user_path(@ku.user), class: 'ku_navigation'
+				.ku_navigation.pull-right
+					ku number #{@ku.number_in_story} 
 					- if current_user.present? && current_user.owns(@ku)
-						=link_to 'Edit', edit_ku_path(@ku), class: 'btn btn-mini'
+						=link_to 'EDIT YOUR KU', edit_ku_path(@ku), class: 'btn btn-mini'
 			.row
-				.well
-					.ku_body= @ku.filter(:body).html_safe				
+				%hr
+				.ku_body= @ku.filter(:body).html_safe				
+				%hr
 			.row
-				.span3.reverse-margin
-					=link_to "up", vote_ku_path(@ku, value: true), method: :post, class: "btn btn-large vote-block-up"
-					=link_to "down", vote_ku_path(@ku, value: false), method: :post, class: "btn btn-large vote-block-down"
-					%h4= "Score: #{@ku.vote_count}"
-				.span4
-					= render "navigation"
-			%br
+				= render "navigation"
+				%hr
 			.row
-				= render "comments/form"
-				- @comments.each do |c|
-					%hr.row
-					%p= c.filter(:body).html_safe
-					%p.pull-right= "#{time_ago_in_words(c.created_at)} ago by #{link_to c.user.username, user_path(c.user)}".html_safe
+				.start_a_story{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.id)}';", :style => "cursor: pointer;"}
+					%h3 add to this story
+				- if @ku.parent.present?
+					.random_write{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.parent.id)}';", :style => "cursor: pointer;"}
+						%h3 write another version
