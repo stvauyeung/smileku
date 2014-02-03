@@ -36,9 +36,7 @@ FirstBook::Application.routes.draw do
     end
   end
 
-  match '/writing-tips', to: 'posts#index', as: 'posts'
-  match '/writing-tips/:id', to: 'posts#show', as: 'post'
-  resources :posts, :except => [:destroy]
+  resources :posts, :except => [:destroy], path: "writing-tips"
   
   resources :signups, :only => [:new, :create]
   resources :invites, :only => [:new, :create]
