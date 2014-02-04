@@ -10,7 +10,10 @@
 				%p.bold= link_to "<< Back to full story", story_path(@story)
 			.row.span4.hidden-phone
 				#comment_block
-					= render "comments/form"
+					- if logged_in?
+						= render "comments/form"
+					-else
+						= render "login_prompt", text: "to leave a comment"
 					%br
 					= render "comments"
 		.span7
@@ -29,8 +32,11 @@
 				= render "navigation"
 				%hr
 			.row
-				.start_a_story{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.id)}';", :style => "cursor: pointer;"}
-					%h3 add to this story
-				- if @ku.parent.present?
-					.random_write{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.parent.id)}';", :style => "cursor: pointer;"}
-						%h3 write another version
+				- if logged_in?
+					.start_a_story{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.id)}';", :style => "cursor: pointer;"}
+						%h3 add to this story
+					- if @ku.parent.present?
+						.random_write{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.parent.id)}';", :style => "cursor: pointer;"}
+							%h3 write another version
+				- else
+					= render "login_prompt", text: "to add to this story"
