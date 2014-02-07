@@ -29,6 +29,7 @@ gem 'coffee-rails', '~> 3.2.1'
 gem 'font-awesome-rails'
 gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'bootstrap_form', '~> 0.3.2'
+gem 'bootstrap-wysihtml5-rails'
 
 group :development, :test do
 	gem 'sqlite3'

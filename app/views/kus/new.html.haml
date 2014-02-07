@@ -16,7 +16,13 @@
 			=form_for [@story,@ku] do |f|
 				=hidden_field_tag "ku[parent_id]", params[:parent_id]
 				=f.label :body, "Add to the story:"
-				=f.text_area :body, class: "span7", rows: 15
+				=f.text_area :body, class: "span7 wysihtml5", rows: 15
+				:javascript
+					$(document).ready(function(){
+						$('.wysihtml5').each(function(i, elem) {
+							$(elem).wysihtml5();
+						});
+					});
 				=f.submit "Publish", class: "btn btn-large"
 			%br
 			%p Review the parent:
