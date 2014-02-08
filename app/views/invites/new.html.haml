@@ -1,19 +1,21 @@
-- meta :title => "Invite a friend to Smileku!", :description => "Collaboration is better with friends."
+- meta :title => "Invite a friend to Smileku!", :description => "Writing is better with friends."
 %section.invite.container
   .row
-    .span6.offset1
-      %form.invite
-      = form_tag action: :create, method: :post do
-        %header
-          %h1 Tell your friends about us!
-          %p If you like what we're doing, please help us spread the word about Smileku.  You can easily <strong><a href="https://twitter.com/intent/tweet?text=Writing+with+people+on+%40smilekus+is+a+blast%21+Try+it+out+at+http%3A%2F%2Fwww.smileku.com%2F%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dinvites" target="_blank">send a tweet</a></strong> or email a friend with the form below.
-        %br
-        %fieldset
+    %form.invite
+    = form_tag action: :create, method: :post do
+      %header.col-md-7
+        %h1 If you like what we're doing, help spread the word!
+        %p We're a community of writers with a mission to helpeach other grow and achieve our writing goals.  Please give a shout out via social, or send a writer a friendly email.
+        %hr
+      .col-md-7
+        .center
+          = render 'layouts/social_buttons', twitter_message: "I'm a writer, and this writing website, Smileku.com, rocks!"
+        %fieldset.form-group
           = label_tag :name, "Friend's Name"
-          = text_field_tag :name
+          = text_field_tag :name, "", class: "form-control"
           = label_tag :email, "Friend's Email Address"
-          = text_field_tag :email
+          = text_field_tag :email, "", class: "form-control"
           = label_tag :message, "Invitation Message"
-          = text_area_tag :message, "I'm having a blast writing collaborative stories on Smileku and think you will too!", class: 'span4', rows: 6
+          = text_area_tag :message, "I'm having a blast writing collaborative stories on Smileku and think you will too!", class: "form-control", rows: 6
         %fieldset.action
           = submit_tag "Send Invitation", class: 'btn'
