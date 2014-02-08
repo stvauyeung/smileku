@@ -1,14 +1,12 @@
-%section.container
-  .row
-    .span6.offset1
-      = form_tag forgot_passwords_path, method: :post do
-        %header
-          %h1 Password trouble?
-          %br
-          %p Don't cry, dry your eyes! We'll send you an email with a link for you to reset your password. Just submit your registration email address below.
-          %br
-        %fieldset
-          = label_tag :email, "Email Address"
-          = text_field_tag :email
-        %fieldset.action
-          = submit_tag "Reset Password", class: "btn"
+.col-md-6.col-md-offset-1
+  = form_tag forgot_passwords_path, method: :post do
+    %header
+      %h1 Password trouble?
+      %br
+      %p Don't cry, dry your eyes! We'll send you an email with a link for you to reset your password. Just submit your registration email address below.
+      %br
+    %fieldset.form-group
+      = label_tag :email, "Email Address"
+      = text_field_tag :email, "", class: "form-control"
+    %fieldset.action
+      = submit_tag "Reset Password", class: "btn center-block"

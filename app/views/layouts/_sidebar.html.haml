@@ -1,4 +1,4 @@
-.row-fluid.sidebar
+.row.sidebar
 	- @recent_posts.each do |p|
 		.post-image= link_to image_tag(p.mrec), post_path(p)
 	%hr

@@ -1,21 +1,19 @@
-!!!  
-%html
-	.container
-		- if logged_in?
-			=link_to "&infin;".html_safe, root_path, :class => "brand"
-			%ul.nav.pull-right
-				%li
-					=link_to "Invite", new_invite_path
-				%li
-					=link_to "Profile", user_path(current_user)
-				%li
-					=link_to "Logout", logout_path
-		- else
-			=link_to "&infin;".html_safe, front_path, :class => "brand"
-			%ul.nav.pull-right
-				%li
-					=link_to "Sign Up", registration_path
-				%li
-					=link_to "Login", login_path
-				%li
-					=link_to "About", faq_path
+.container
+	- if logged_in?
+		=link_to "&infin;".html_safe, root_path, :class => "navbar-brand"
+		%ul.nav.navbar-nav.navbar-right
+			%li
+				=link_to "Invite", new_invite_path
+			%li
+				=link_to "Profile", user_path(current_user)
+			%li
+				=link_to "Logout", logout_path
+	- else
+		=link_to "&infin;".html_safe, front_path, :class => "navbar-brand"
+		%ul.nav.navbar-nav.navbar-right
+			%li
+				=link_to "Sign Up", registration_path
+			%li
+				=link_to "Login", login_path
+			%li
+				=link_to "About", faq_path
