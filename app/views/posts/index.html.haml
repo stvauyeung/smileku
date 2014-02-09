@@ -1,12 +1,10 @@
 .container
 	.row
-		.span11.offset1
+		.col-md-11.col-md-offset-1
 			.row
-				.span6
+				.col-md-9
 					%h1 Writing Tips: helpful articles to teach and inspire writers
-			%br
-			.row
-				.span6
+					%br
 					%ul
 						- @posts.each do |p|
 							.li
