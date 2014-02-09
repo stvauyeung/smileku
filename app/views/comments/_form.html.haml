@@ -1,5 +1,5 @@
-.row
-	%h4 Comments
-	= form_for [@ku, @comment] do |f|
-		=f.text_area :body, class: "col-md-4", rows: 3
-		=f.submit "leave a comment", class: "btn pull-right"
+%h4 Comments
+= form_for [@ku, @comment], class: "form-group" do |f|
+	=f.text_area :body, class: "form-control", rows: 3
+	%br
+	=f.submit "leave a comment", class: "btn"

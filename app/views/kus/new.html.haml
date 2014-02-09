@@ -1,29 +1,30 @@
 - meta :title => "Write something awesome - Smileku", :description => "Keep the story going by adding your part."
 %section.container
 	.row
-		.span5
-			.row.span4
-				= image_tag @story.large_cover
-			.row.span4
-				%h2= @story.title
-				%br
-		.span7
+		.col-md-4
+			= image_tag @story.large_cover, class: "story_image"
+			%h2= @story.title
+			%br
 			.well
 				%p.story_description 
 					="#{@story.filter(:description)} -- ".html_safe
 					%a
 						=link_to(@story.user.username, user_path(@story.user))
-			=form_for [@story,@ku] do |f|
+		.col-md-8
+			.ku_navigation review the parent:
+			%hr
+			.ku_body= @text
+			%hr
+			=form_for [@story,@ku], html: { class: "form-group" } do |f|
+				%header.ku_navigation add to the story:
+				%br
 				=hidden_field_tag "ku[parent_id]", params[:parent_id]
-				=f.label :body, "Add to the story:"
-				=f.text_area :body, class: "span7 wysihtml5", rows: 15
+				=f.text_area :body, class: "wysihtml5 form-control", rows: 15
 				:javascript
 					$(document).ready(function(){
 						$('.wysihtml5').each(function(i, elem) {
 							$(elem).wysihtml5();
 						});
 					});
-				=f.submit "Publish", class: "btn btn-large"
-			%br
-			%p Review the parent:
-			.clear_well= @text
+				%br
+				=f.submit "Publish", class: "btn btn-primary form-control"

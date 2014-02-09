@@ -1,42 +1,39 @@
 - meta :title => "#{@story.title} - Ku Number #{@ku.number_in_story}", :description => "#{@ku.user.username}'s addition to #{@story.title}. #{@story.description}"
-%section.container
-	.row
-		.span5
-			.row.span4
-				=image_tag(@story.large_cover)
-			.row.span4
-				%h2= @story.title
-				= render 'layouts/social_buttons', twitter_message: "#{@story.title} number #{@ku.number_in_story} by #{@ku.author_name}"
-				%p.bold= link_to "<< Back to full story", story_path(@story)
-			.row.span4.hidden-phone
-				#comment_block
-					- if logged_in?
-						= render "comments/form"
-					-else
-						= render "login_prompt", text: "to leave a comment"
-					%br
-					= render "comments"
-		.span7
-			.row
-				= link_to image_tag(@ku.user.photo, class: 'profile_thumb'), user_path(@ku.user)
-				= link_to @ku.author_name, user_path(@ku.user), class: 'ku_navigation'
-				.ku_navigation.pull-right
-					ku number #{@ku.number_in_story} 
-					- if current_user.present? && current_user.owns(@ku)
-						=link_to 'EDIT YOUR KU', edit_ku_path(@ku), class: 'btn btn-mini'
-			.row
-				%hr
-				.ku_body= @ku.filter(:body).html_safe				
-				%hr
-			.row
-				= render "navigation"
-				%hr
-			.row
-				- if logged_in?
-					.start_a_story{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.id)}';", :style => "cursor: pointer;"}
-						%h3 add to this story
-					- if @ku.parent.present?
-						.random_write{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.parent.id)}';", :style => "cursor: pointer;"}
-							%h3 write another version
-				- else
-					= render "login_prompt", text: "to add to this story"
+.row
+	.col-md-4
+		=image_tag(@story.large_cover, class: "story_image")
+		%h2= @story.title
+		= render 'layouts/social_buttons', twitter_message: "#{@story.title} number #{@ku.number_in_story} by #{@ku.author_name}"
+		%p.bold= link_to "<< Back to full story", story_path(@story)
+		.hidden-xs
+			#comment_block
+				-if logged_in?
+					= render "comments/form"
+				-else
+					= render "login_prompt", text: "to leave a comment"
+				%br
+				= render "comments"
+	.col-md-7.col-md-offset-1
+		.row
+			= link_to image_tag(@ku.user.photo, class: 'profile_thumb'), user_path(@ku.user)
+			= link_to @ku.author_name, user_path(@ku.user), class: 'ku_navigation'
+			.ku_navigation.pull-right
+				ku number #{@ku.number_in_story} 
+				- if current_user.present? && current_user.owns(@ku)
+					=link_to 'EDIT YOUR KU', edit_ku_path(@ku), class: 'btn btn-default btn-sm'
+		.row
+			%hr
+			.ku_body= @ku.filter(:body).html_safe				
+			%hr
+		.row
+			= render "navigation"
+			%hr
+		.row
+			- if logged_in?
+				.start_a_story{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.id)}';", :style => "cursor: pointer;"}
+					%h3 add to this story
+				- if @ku.parent.present?
+					.random_write{:onclick => "window.location='#{new_story_ku_path(story_id: @story.id, parent_id: @ku.parent.id)}';", :style => "cursor: pointer;"}
+						%h3 write another version
+			- else
+				= render "login_prompt", text: "to add to this story"
