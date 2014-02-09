@@ -1,12 +1,13 @@
 %section.container
 	.row
-		.span12
-			%h1 While you're at it, drop us a line.
+		%h1 While you're at it, drop us a line.
 	.row.row10
-		.span6
+		.col-md-6
 			%p.about-block This wouldn't be much of a collaborative writing site without the help and honest feedback of our members. Whether you love us, hate us or just think 'meh', we want to know.
 			%p.about-block Your feedback will help make Smileku a better community for collaborative writers.  We'd love to hear from you!
 			%br
-			%h1= mail_to 'contact@smileku.com', 'Email', target: '_blank'
-			%h1= link_to 'Twitter', 'https://twitter.com/smilekus', target: '_blank'
+			%h1
+				= mail_to 'contact@smileku.com', 'Email', target: '_blank'
+				&bull;
+				= link_to 'Tweet', 'https://twitter.com/smilekus', target: '_blank'
 		

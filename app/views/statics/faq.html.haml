@@ -1,22 +1,21 @@
-.container
-	.row-fluid
-		.span7
+.row-fluid
+	.col-md-7
+		%br
+		%ul{id: 'faq-list'}
+			%li 
+				%h1 What is Smileku?
+				%p We think about this one a lot. To be honest, we're not sure yet. At the heart of it, Smileku is a collaborative writing site. It's a place where writers find other writers and engage in communal creative writing projects. Here writers practice their craft and flex their writing muscle. What emerges are unique pieces of literature for the world to enjoy.
+				%p= "Our mission is to help writers grow and achieve their goals.  The best way we know how is by encouraging people to write. The second best way is by sharing everything we know and learn about writing through our blog, #{link_to 'Writing Tips', posts_path}".html_safe
 			%br
-			%ul{id: 'faq-list'}
-				%li 
-					%h1 What is Smileku?
-					%p We think about that one a lot. To be honest, we're not sure yet. At the heart of it, Smileku is a collaborative writing site. It's a place where writers find other writers and engage in communal creative writing projects. Here writers practice their craft and flex their writing muscle. What emerges are unique pieces of literature for the world to enjoy.
-					%p= "Our mission is to help writers grow and achieve their goals.  The best way we know how is by encouraging people to write. The second best way is by sharing everything we know and learn about writing through our blog, #{link_to 'Writing Tips', posts_path}".html_safe
-				%br
-				%li 
-					%h1 How does it work?
-					%p At the core of Smileku is the ku. Kus are units of text that belong to a story. Anyone can add a ku to a story, and readers comment and cast votes for their favorite ones. 
-					%p A ku is required to start a story. All kus written below it link up chronologically. Each ku can have an unlimited number of submissions below, called children. This means any writer can add to a story at any point. As stories mature, the most popular kus appear first, shaping the way the story is read.
-				%br
-				%li 
-					%h1 How do I start?
-					%p= "Our writing community is free and open to join.  All that's required is a unique username, an active email and password.  #{link_to 'Sign up here', registration_path}.".html_safe
-				%br
-				%li 
-					%h1 More questions?
-					%p= "Feel free to send us a message at #{mail_to 'contact@smileku.com', 'contact@smileku.com', subject: 'Questions!'}".html_safe
+			%li 
+				%h1 How does it work?
+				%p At the core of Smileku is the ku. Kus are units of text that belong to a story. Anyone can add a ku to a story, and readers comment and cast votes for their favorite ones. 
+				%p A ku is required to start a story. All kus written below it link up chronologically. Each ku can have an unlimited number of submissions below, called children. This means any writer can add to a story at any point. As stories mature, the most popular kus appear first, shaping the way the story is read.
+			%br
+			%li 
+				%h1 How do I start?
+				%p= "Our writing community is free and open to join.  All that's required is a unique username, an active email and password.  #{link_to 'Sign up here', registration_path}.".html_safe
+			%br
+			%li 
+				%h1 More questions?
+				%p= "Feel free to send us a message at #{mail_to 'contact@smileku.com', 'contact@smileku.com', subject: 'Questions!'}".html_safe
