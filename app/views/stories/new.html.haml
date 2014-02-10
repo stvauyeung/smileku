@@ -1,19 +1,27 @@
 - meta :title => "Write something awesome - Smileku", :description => "Start a new collaborative story."
 %section.container
-	.row.span12
-		%header
-			%h2 Start a new story 
-			%h5= link_to "click for help", '#storymodal', :data => {:toggle=>"modal"}
-		%br
+	.row
 		=bootstrap_form_for @story do |f|
-			%fieldset
-				.span4
-					=f.text_field :title, class: "span4"
-					=f.text_area :description, class: "span4", rows: 3
+			%fieldset.form-group
+				.col-md-4
+					%header
+					%h2 Start a new story 
+					%p.pull-right{"data-target" => "#storymodal", "data-toggle" => "modal"}
+						%a.bold Need help?
+					%br
+					=f.text_field :title, class: "form-control"
+					=f.text_area :description, class: "form-control", rows: 3
 					=f.file_field :large_cover, label: "Upload a Cover"
-				.span7
+				.col-md-8
 					=fields_for @ku do |k|
-						=k.label :body
-						=k.text_area :body, class: "span7", rows: 15
-					=f.submit "Publish", class: "btn"
+						=k.label :body, "Write the first ku", class: "ku_navigation"
+						=k.text_area :body, class: "form-control wysihtml5", rows: 20
+						:javascript
+							$(document).ready(function(){
+								$('.wysihtml5').each(function(i, elem) {
+									$(elem).wysihtml5();
+								});
+							});
+						%br
+						=f.submit "Publish", class: "btn btn-primary btn-block"
 		= render 'storymodal'
