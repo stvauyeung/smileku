@@ -1,8 +1,8 @@
 %h2= "#{@user.username} is following #{@user.following.count} people"
 %br
 - @user.following.each do |u|
-	.row-fluid
-		.span1.offset1
-			%h5= link_to image_tag("#{u.photo.preview}"), url_for(u)
-		.span6.row10
+	.row
+		.col-md-1.col-md-offset-1
+			%h5= link_to image_tag("#{u.photo.preview}", class: "story_image"), url_for(u)
+		.col-md-6.row10
 			%h2= link_to u.username, url_for(u)

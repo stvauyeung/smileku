@@ -1,17 +1,19 @@
 %section.account.container
   .row
-    .span6.offset1
+    .col-md-8.col-md-offset-1
       = bootstrap_form_for @user do |f|
         %header
           %h1 Update Your Information
         %br
-        %fieldset
-          =image_tag @user.photo.preview
-          =f.file_field :photo, label: "Change profile photo"
-          =f.text_area :bio, label: "Tell people about yourself", class: "span5", rows: 6
-          =f.text_field :website, label: "Your website"
-          =f.text_field :location, label: "Where do you live?"
-          =f.text_field :email, label: "Update your email"
-        .controls
-          = f.submit "Update", class: 'btn'
-          = link_to "Cancel", user_path(@user)
+        %fieldset.form-group
+          .col-md-3
+            =image_tag @user.photo.preview, class: "story_image"
+            =f.file_field :photo, label: "Change profile photo"
+          .col-md-8.col-md-offset-1
+            =f.text_area :bio, label: "Tell people about yourself", class: "form-control", rows: 6
+            =f.text_field :website, label: "Your website", class: "form-control"
+            =f.text_field :location, label: "Where do you live?", class: "form-control"
+            =f.text_field :email, label: "Update your email", class: "form-control"
+          .fieldset.action
+            = f.submit "Update", class: 'btn'
+            = link_to "Cancel", user_path(@user)
