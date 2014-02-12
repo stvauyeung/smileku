@@ -19,8 +19,8 @@ profiles/yellow.png: profiles/yellow-c609a931d587de171272a386ca8b2074.png
 profiles/yellow/index.png: profiles/yellow-c609a931d587de171272a386ca8b2074.png
 application.js: application-a69e98a5b6d8de8c73c00cf50822ad3c.js
 application/index.js: application-a69e98a5b6d8de8c73c00cf50822ad3c.js
-application.css: application-e8053c6f064d965f4cfd6816f3062ce4.css
-application/index.css: application-e8053c6f064d965f4cfd6816f3062ce4.css
+application.css: application-b7c8c7f2bd6e44de771555c22423c57d.css
+application/index.css: application-b7c8c7f2bd6e44de771555c22423c57d.css
 bootstrap-wysihtml5.js: bootstrap-wysihtml5-2402b7cde99f9c4bf71c82060df40d95.js
 bootstrap-wysihtml5/index.js: bootstrap-wysihtml5-2402b7cde99f9c4bf71c82060df40d95.js
 bootstrap-wysihtml5.css: bootstrap-wysihtml5-757ecf6fbb670d36519a49c514ec3ea5.css
