@@ -1,10 +1,10 @@
 .row.ku_navigation.italic
-	.span4.reverse-margin#vote_block
+	.col-md-6.reverse-margin#vote_block
 		=link_to "up vote", vote_ku_path(@ku, value: true), method: :post
 		&bull;
 		=link_to "down vote", vote_ku_path(@ku, value: false), method: :post
 		%p{id: "ku_#{@ku.id}_votes"}= "total score: #{@ku.vote_count}"
-	.pull-right
+	.col-md-6.text-right
 		- unless @ku.prev_ku.nil?
 			=link_to '<<prev', url_for(@ku.prev_ku)
 		- unless @ku.alt_ku.nil?

@@ -1,21 +1,22 @@
 - meta :title => "#{@story.title} - a story by #{@story.user.username}", :description => "#{@story.description}"
 %section.container
-	.row-fluid
-		.span4
-			.row-fluid
+	.row
+		.col-md-4
+			.row
 				%h2= @story.title
 				= render 'listing_form'
+				%br
 				= render 'layouts/social_buttons', twitter_message: "#{@story.title} by #{@story.author_name}"
-			.row-fluid
-				= image_tag @story.large_cover
+			.row
+				= image_tag @story.large_cover, class: "story_image"
 				.well.row10= @description.html_safe
-		.span7.offset1
-			.row-fluid
+		.col-md-7.col-md-offset-1
+			.row
 				%h3= "#{@kus.count} Kus since #{@story.created_at.strftime('%B %Y')}"
 				- @kus.each do |k|
-					.row-fluid
-						.span2
+					.row
+						.col-md-2
 							%h5= "No. #{k.number_in_story}"
 							%p= "by #{k.author_name}"
-						.span10.row10
-							%p= link_to k.body.truncate(170), ku_path(k)
+						.col-md-10.row10
+							%p= link_to k.strip_body.truncate(170), ku_path(k)

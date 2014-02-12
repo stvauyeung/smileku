@@ -1,19 +1,15 @@
 - meta :title => "#{@post.title} - Smileku blog", :description => "#{@post.text.truncate(250)}"
 .container
-	.row-fluid
-		.span6.offset1
-			.row
-				.header-pic
-					=image_tag(@post.header)
-					.p= "#{link_to('Photo Credit', @post.photo_link, :target => "_blank")}".html_safe
-			.row
-				%h1= @post.title
-				%p= @post.created_at.strftime("Posted %B %d, %Y")
-				= render 'layouts/social_buttons', twitter_message: "#{@post.title}"
-			.row
-				= @post.filter(:text).html_safe
-				%hr
-			.row
-				= render 'livefyre_comments'
-		.span5
+	.row
+		.col-md-7
+			.header-pic
+				=image_tag(@post.header)
+				.p= "#{link_to('Photo Credit', @post.photo_link, :target => "_blank")}".html_safe
+			%h1= @post.title
+			%p= @post.created_at.strftime("Posted %B %d, %Y")
+			= render 'layouts/social_buttons', twitter_message: "#{@post.title}"
+			= @post.filter(:text).html_safe
+			%hr
+			= render 'livefyre_comments'
+		.col-md-5
 			= render 'sidebar'

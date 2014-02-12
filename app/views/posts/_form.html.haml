@@ -1,8 +1,10 @@
-=bootstrap_form_for @post do |f|
-	%fieldset
-		=f.text_field :title, class: "span7"
-		=f.text_area :text, class: "span7", rows: 15
-		=f.file_field :header, label: "Header Image"
-		=f.text_field :photo_link, class: "span7"
-		=f.file_field :mrec, label: "Preview Image"
-		=f.submit "Publish", class: "btn"
+.col-md-9
+	=bootstrap_form_for @post do |f|
+		%fieldset.form-group
+			=f.text_field :title, class: "form-control"
+			=f.text_area :text, class: "form-control", rows: 15
+			=f.file_field :header, label: "Header Image"
+			=f.text_field :photo_link, class: "form-control"
+			=f.file_field :mrec, label: "Preview Image"
+			%br
+			=f.submit "Publish", class: "btn"

@@ -1,17 +1,25 @@
 %section.container
 	.row
-		.span5
-			.row.span4
-				= image_tag @story.large_cover
-			.row.span4
+		.col-md-4
+			.row
+				= image_tag @story.large_cover, class: "story_image"
+			.row
 				%h2= @story.title
-		.span7
-			.well
-				%p.story_description 
-					="#{@story.filter(:description)} -- ".html_safe
-					%a
-						=link_to(@story.user.username, user_path(@story.user))
-			=form_for @ku do |f|
-				=f.label :body, "Add to the story:"
-				=f.text_area :body, class: "span7", rows: 15
-				=f.submit "Update", class: "btn btn-large"
+				.well
+					%p.story_description 
+						="#{@story.filter(:description)} -- ".html_safe
+						%a
+							=link_to(@story.user.username, user_path(@story.user))
+		.col-md-8
+			=form_for @ku, html: { class: "form-group" } do |f|
+				%header.ku_navigation EDIT YOUR KU:
+				%br
+				=f.text_area :body, class: "form-control wysihtml5", rows: 15
+				:javascript
+					$(document).ready(function(){
+						$('.wysihtml5').wysihtml5({
+							"image": false
+						});
+					});
+				%br
+				=f.submit "Publish Edits", class: "btn btn-primary form-control"

@@ -1,6 +1,6 @@
-.row-fluid.sidebar
+.row.sidebar
 	- @recent_posts.each do |p|
-		.post-image= link_to image_tag(p.mrec), post_path(p)
+		.post-image= link_to image_tag(p.mrec, class: "story_image"), post_path(p)
 	%hr
 	.twitter-box
 	%a.twitter-timeline{"data-widget-id" => "395068179950473216", :href => "https://twitter.com/smilekus"} Tweets by @smilekus

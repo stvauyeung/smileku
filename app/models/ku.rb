@@ -33,6 +33,10 @@ class Ku < ActiveRecord::Base
 		number
 	end
 
+	def strip_body
+		ActionView::Base.full_sanitizer.sanitize(self.body)
+	end
+
 	def next_ku
 		if self.children.present?
 			find_top_voted(self.children)

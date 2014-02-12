@@ -1,9 +1,13 @@
-$iconSpritePath: url('/assets/glyphicons-halflings.png');
+/*$iconSpritePath: url('/assets/glyphicons-halflings.png');
 $iconWhiteSpritePath: url('/assets/glyphicons-halflings-white.png');
-
+*/
 @import "bootstrap";
-@import "bootstrap-responsive";
-
+/*@import "bootstrap-responsive";*/
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 
 body {
   padding-top: 40px;
@@ -23,27 +27,16 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8cf08c', endColorstr='#ff8cf08c', GradientType=0);
 }
 
-.navbar .brand {
+.navbar .navbar-brand {
   float: left;
-  display: block;
-  padding: 5px 20px 15px;
-  margin-left: -20px;
   font-size: 50px;
   font-weight: 200;
-  color: #777777;
-  
 }
 
 .content {
   background-color: #FFFFFF;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
 .quote{

@@ -1,12 +1,15 @@
 - meta :title => "Create your Smileku account", :description => "Join Smileku and create stories with other writers."
 %section.sign_in.container
   .row
-    .span10.offset1
+    .col-md-4.col-md-offset-1
       %h1 Create an account
       = bootstrap_form_for @user do |f|
-        = f.text_field :username
-        = f.text_field :email
-        = f.password_field :password
-        = f.password_field :password_confirmation
-        = f.submit "Create Account", :class => "btn"
+        %fieldset.form-group
+          = f.text_field :username, class: "form-control"
+          = f.text_field :email, class: "form-control"
+          = f.password_field :password, class: "form-control"
+          = f.password_field :password_confirmation, class: "form-control"
+        %fieldset.action
+          = f.submit "Create Account", :class => "btn"
+      %br
       =link_to "Already have an account?", login_path
