@@ -24,4 +24,5 @@
     / ! end of #main
     - if Rails.env.production?
       = render 'layouts/ga'
+    - if Rails.env.production? || Rails.env.staging?
       = render 'layouts/social_scripts'

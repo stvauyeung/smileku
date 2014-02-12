@@ -19,4 +19,4 @@
 							%h5= "No. #{k.number_in_story}"
 							%p= "by #{k.author_name}"
 						.col-md-10.row10
-							%p= link_to k.body.truncate(170), ku_path(k)
+							%p= link_to k.strip_body.truncate(170), ku_path(k)

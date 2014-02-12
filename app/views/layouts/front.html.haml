@@ -23,5 +23,5 @@
               = yield
         %footer
           = render 'layouts/footer'
-    - if Rails.env.production?
+    - if Rails.env.production? || Rails.env.staging?
       = render 'layouts/social_scripts'

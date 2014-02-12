@@ -18,8 +18,8 @@
 						=k.text_area :body, class: "form-control wysihtml5", rows: 20
 						:javascript
 							$(document).ready(function(){
-								$('.wysihtml5').each(function(i, elem) {
-									$(elem).wysihtml5();
+								$('.wysihtml5').wysihtml5({
+									"image": false
 								});
 							});
 						%br

@@ -1,24 +1,24 @@
 %section.container
 	.row
-		.col-md-5
+		.col-md-4
 			.row
 				= image_tag @story.large_cover, class: "story_image"
 			.row
 				%h2= @story.title
-				.well.col-md-10
+				.well
 					%p.story_description 
 						="#{@story.filter(:description)} -- ".html_safe
 						%a
 							=link_to(@story.user.username, user_path(@story.user))
-		.col-md-7
+		.col-md-8
 			=form_for @ku, html: { class: "form-group" } do |f|
 				%header.ku_navigation EDIT YOUR KU:
 				%br
 				=f.text_area :body, class: "form-control wysihtml5", rows: 15
 				:javascript
 					$(document).ready(function(){
-						$('.wysihtml5').each(function(i, elem) {
-							$(elem).wysihtml5();
+						$('.wysihtml5').wysihtml5({
+							"image": false
 						});
 					});
 				%br

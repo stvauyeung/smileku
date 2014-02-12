@@ -12,7 +12,7 @@
             .col-md-1
               %h5= link_to image_tag("#{k.cover_preview}", class: "story_image"), ku_path(k)
             .col-md-10.row10
-              %p= "#{link_to k.body.truncate(180), ku_path(k)} written #{time_ago_in_words(k.created_at)} ago".html_safe
+              %p= "#{link_to k.strip_body.truncate(180), ku_path(k)} written #{time_ago_in_words(k.created_at)} ago".html_safe
           %hr.short-hr
       .row
         %h2 Recent Stories
