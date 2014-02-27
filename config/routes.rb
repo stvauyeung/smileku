@@ -1,5 +1,5 @@
 FirstBook::Application.routes.draw do
-  root to: 'stories#index'
+  root to: 'statics#home'
   
   get 'ui(/:action)', controller: 'ui'
   get 'sitemap.xml', to: 'sitemap#index', as: 'sitemap', defaults: { format: 'xml' }
@@ -20,6 +20,7 @@ FirstBook::Application.routes.draw do
   resources :password_resets, :only => [:show, :create]
   get '/expired_reset', to: 'password_resets#expired'
 
+  match '/home', to: 'statics#home', as: 'home'
   match '/front', to: 'statics#front'
   match '/contact', to: 'statics#contact'
   match '/faq', to: 'statics#faq', as: 'faq'

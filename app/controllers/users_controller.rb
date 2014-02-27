@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       AppMailer.delay.welcome_email(@user)
       session[:user_token] = @user.token
-      redirect_to stories_path, :flash => {:success => "You successfully created an account.  Welcome!"}
+      redirect_to home_path, :flash => {:success => "You successfully created an account.  Welcome!"}
     else
       flash.now[:error] = "There was an issue creating your account, please see below."
       render :action => 'new'
