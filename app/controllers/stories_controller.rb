@@ -20,7 +20,7 @@ class StoriesController < ApplicationController
   end
 
   def index
-    
+    @stories = Story.all
   end
 
   def show
