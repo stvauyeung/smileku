@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_token] = user.token
-      redirect_to stories_path, :flash => {:success => "Welcome back #{user.username}!"}
+      redirect_to home_path, :flash => {:success => "Welcome back #{user.username}!"}
     else
       flash.now[:error] = "Sorry, username or password was incorrect, please try again."
       render :new
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_token] = nil
-    redirect_to root_path
+    redirect_to home_path
   end
 end

@@ -16,7 +16,7 @@ describe UsersController do
 			end
 			it "redirects to home page" do
 				post :create, :user => {username: "Joe", email: "joe@aol.com", password: "password"}
-				expect(response).to redirect_to stories_path
+				expect(response).to redirect_to home_path
 			end
 			it "displays flash message" do
 				post :create, :user => {username: "Joe", email: "joe@aol.com", password: "password"}

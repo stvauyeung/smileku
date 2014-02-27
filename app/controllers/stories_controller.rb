@@ -1,6 +1,5 @@
 class StoriesController < ApplicationController
   before_filter :require_login, except: [:index, :show]
-  before_filter(only: [:index]) { |c| c.set_recent_posts(2) }
 
   def new
     @story = Story.new
@@ -21,12 +20,7 @@ class StoriesController < ApplicationController
   end
 
   def index
-    if logged_in?
-      @stories = Story.most_recent(10)
-      @kus = Ku.most_recent
-    else
-      redirect_to '/front'
-    end
+    @stories = Story.all
   end
 
   def show

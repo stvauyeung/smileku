@@ -20,6 +20,6 @@ feature "signing out a user" do
 	end
 	scenario "it clears the session on logout" do
 		click_link 'Logout'
-		page.should have_content "What is Smileku?"
+		page.should have_content "Ready to write?"
 	end
 end
