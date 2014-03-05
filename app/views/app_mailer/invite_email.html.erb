@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>Hi <%= @invitee_name %>,</p> 
-		<p>Your friend <%= link_to "#{@user.username}", user_url(@user, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %> has invited you to join Smileku, a collaborative storytelling website.  Here's a message they wrote for you:</p>
-		<p>"<em><%= @message %></em>"</p>
-		<p><strong><%= link_to "Learn more about Smileku", root_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %></strong></p>
-		<p>- Team Smileku</p>
-  </body>
-</html>
+Hi <%= @invitee_name %>,
+<br><br>
+
+Your friend <%= link_to "#{@user.username}", user_url(@user, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %> has invited you to join Smileku, a collaborative storytelling website.  Here's a message they wrote for you:
+<br><br>
+
+"<em><%= @message %></em>"
+<br><br>
+
+<div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F">
+	<strong><%= link_to "Visit Smileku", root_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %></strong>
+</div>
+<br>
+
+- Team Smileku
+<br><br>
