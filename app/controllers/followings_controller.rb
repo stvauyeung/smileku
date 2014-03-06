@@ -4,6 +4,7 @@ class FollowingsController < ApplicationController
 	def create
 		@user = User.find(params[:following][:followed_id])
 		current_user.follow!(@user)
+		AppMailer.delay.new_follower_email(@user, current_user)
 		redirect_to @user
 	end
 

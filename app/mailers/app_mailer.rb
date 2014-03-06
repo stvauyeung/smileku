@@ -23,4 +23,12 @@ class AppMailer < ActionMailer::Base
 			to: invitee_email,
 			subject: "#{@invitee_name}, a friend on Smileku invites you to join")
 	end
+
+	def new_follower_email(followed, follower)
+		@user = followed
+		@follower = follower
+		mail(
+			to: @user.email,
+			subject: "#{@follower.username} is now following you on Smileku!")
+	end
 end
