@@ -1,0 +1,28 @@
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+	<tbody>
+    <tr>
+      <td style="font-size:11px;font-weight:italic;">
+        <%= link_to "Re-visit Your Ku", ku_url(@ku, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "edit_ku") %>
+      </td>
+    </tr>
+		<tr>
+			<td style="font-weight: bold; font-size: 16px; line-height: 24px; color: #D03C0F">
+				<%= "It's a good time to edit '#{@ku.story.title}' ##{@ku.number_in_story}" %>
+			</td>
+		</tr>
+    <tr>
+      <td style="text-align:center;padding-top:15px;">
+        <%= link_to image_tag(@ku.story.large_cover.preview, size: "120x120"), ku_url(@ku, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "edit_ku") %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="font-size:14px;padding-top:10px;padding-left:5px;padding-right:5px;text-align:center;">
+        Your writing deserves to shine. Let's see how <%= link_to "'#{@ku.story.title}'  ##{@ku.number_in_story}", ku_url(@ku, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "edit_ku") %> can be polished to perfection.
+        <br><br>
+        - Team Smileku
+      </td>
+    </tr>
+	</tbody>
+</table>
+<br><br>
