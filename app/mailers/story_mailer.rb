@@ -7,6 +7,6 @@ class StoryMailer < ActionMailer::Base
 		@user = @ku.user
 		mail(
 			to: @user.email,
-			subject: "[Smileku] Edit your ku for '#{@ku.story.title}'")
+			subject: "[Smileku] Edit your addition to '#{@ku.story.title}'")
 	end
 end

@@ -27,6 +27,7 @@ class AppMailer < ActionMailer::Base
 	def new_follower_email(followed, follower)
 		@user = followed
 		@follower = follower
+		@mailgun_tag = "new_follower_email"
 		mail(
 			to: @user.email,
 			subject: "#{@follower.username} is now following you on Smileku!")

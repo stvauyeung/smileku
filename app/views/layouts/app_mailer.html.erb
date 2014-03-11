@@ -5,8 +5,10 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
   <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
-
-  <title>Antwort - responsive Email Layout</title>
+  <% if @mailgun_tag %>
+    X-Mailgun-Variables:{"tag":"<%= @mailgun_tag %>"}
+  <% end %>
+  <title>A message from Smileku</title>
   <style type="text/css">
     /* Resets: see reset.css for details */
     .ReadMsgBody { width: 100%; background-color: #ebebeb;}
