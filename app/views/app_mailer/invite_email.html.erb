@@ -1,5 +1,6 @@
-Hi <%= @invitee_name %>,
-<br><br>
+<div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F">
+<%= @invitee_name %>, we've been told you're quite the writer...
+</div><br>
 
 Your friend <%= link_to "#{@user.username}", user_url(@user, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %> has invited you to join Smileku, a collaborative storytelling website.  Here's a message they wrote for you:
 <br><br>
@@ -7,8 +8,8 @@ Your friend <%= link_to "#{@user.username}", user_url(@user, :utm_source => "app
 "<em><%= @message %></em>"
 <br><br>
 
-<div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F">
-	<strong><%= link_to "Visit Smileku", root_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %></strong>
+<div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F; text-align: center">
+	<strong><%= link_to "Visit Smileku.com", root_url(:utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "invites") %></strong>
 </div>
 <br>
 
