@@ -5,16 +5,16 @@ class AppMailer < ActionMailer::Base
 		@user = user
 		mail(
 			to: @user.email,
-			subject: "Welcome to Smileku. So what's next?",
-			headers: 'X-Mailgun-Variable: {"tag": "welcome_email"}}')
+			subject: "Welcome to Smileku. So what's next?")
+		headers['X-Mailgun-Tag'] = "welcome_email"
 	end
 
 	def password_reset_email(user)
 		@user = user
 		mail(
 			to: @user.email,
-			subject: "Your password reset instructions - Smileku",
-			headers: 'X-Mailgun-Variable: {"tag": "password_reset_email"}}')
+			subject: "Your password reset instructions - Smileku")
+		headers['X-Mailgun-Tag'] = "password_reset_email"
 	end
 
 	def invite_email(user, invitee_name, invitee_email, message)
@@ -23,8 +23,8 @@ class AppMailer < ActionMailer::Base
 		@message = message
 		mail(
 			to: invitee_email,
-			subject: "#{@invitee_name}, you've been invited to join our writing community",
-			headers: 'X-Mailgun-Variable: {"tag": "invite_email"}}')
+			subject: "#{@invitee_name}, you've been invited to join our writing community")
+		headers['X-Mailgun-Tag'] = "invite_email"
 	end
 
 	def new_follower_email(followed, follower)
@@ -32,8 +32,8 @@ class AppMailer < ActionMailer::Base
 		@follower = follower
 		mail(
 			to: @user.email,
-			subject: "#{@follower.username} is now following you on Smileku!",
-			headers: 'X-Mailgun-Variable: {"tag": "new_follower_email"}}'
+			subject: "#{@follower.username} is now following you on Smileku!"
 			)
+		headers['X-Mailgun-Tag'] = "new_follower_email"
 	end
 end

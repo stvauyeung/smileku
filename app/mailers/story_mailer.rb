@@ -7,7 +7,7 @@ class StoryMailer < ActionMailer::Base
 		@user = @ku.user
 		mail(
 			to: @user.email,
-			subject: "[Smileku] Edit your addition to '#{@ku.story.title}'",
-			headers: 'X-Mailgun-Variable: {"tag": "edit_reminder_email"}}')
+			subject: "[Smileku] Edit your addition to '#{@ku.story.title}'")
+		headers['X-Mailgun-Tag'] = "edit_reminder_email"
 	end
 end
