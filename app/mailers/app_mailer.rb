@@ -6,6 +6,7 @@ class AppMailer < ActionMailer::Base
 		mail(
 			to: @user.email,
 			subject: "Welcome to Smileku. So what's next?")
+		headers['X-Mailgun-Tag'] = "welcome_email"
 	end
 
 	def password_reset_email(user)
@@ -13,6 +14,7 @@ class AppMailer < ActionMailer::Base
 		mail(
 			to: @user.email,
 			subject: "Your password reset instructions - Smileku")
+		headers['X-Mailgun-Tag'] = "password_reset_email"
 	end
 
 	def invite_email(user, invitee_name, invitee_email, message)
@@ -21,6 +23,17 @@ class AppMailer < ActionMailer::Base
 		@message = message
 		mail(
 			to: invitee_email,
-			subject: "#{@invitee_name}, a friend on Smileku invites you to join")
+			subject: "#{@invitee_name}, you've been invited to join our writing community")
+		headers['X-Mailgun-Tag'] = "invite_email"
+	end
+
+	def new_follower_email(followed, follower)
+		@user = followed
+		@follower = follower
+		mail(
+			to: @user.email,
+			subject: "#{@follower.username} is now following you on Smileku!"
+			)
+		headers['X-Mailgun-Tag'] = "new_follower_email"
 	end
 end

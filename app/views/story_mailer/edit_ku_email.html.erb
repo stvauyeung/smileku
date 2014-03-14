@@ -1,0 +1,30 @@
+<table border="0" cellspacing="0" cellpadding="0" align="center">
+	<tbody>
+    <tr>
+      <td style="font-size:11px;font-weight:italic;">
+        <%= link_to "Edit Your Ku!", ku_url(@ku, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "edit_ku") %>
+      </td>
+    </tr>
+		<tr>
+			<td style="font-weight: bold; font-size: 16px; line-height: 24px; color: #D03C0F">
+				<%= "First Drafts Are Just The Beginning - Time to edit '#{@ku.story.title}' ##{@ku.number_in_story}" %>
+			</td>
+		</tr>
+    <tr>
+      <td style="text-align:center;padding-top:15px;">
+        <%= link_to image_tag(@ku.story.large_cover.preview, size: "120x120"), ku_url(@ku, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "edit_ku") %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td style="font-size:14px;padding-top:10px;padding-left:5px;padding-right:5px;">
+        While Smileku stories are collaborative efforts, each writer is responsible for her or his own work. Editing improves the quality of reading on the site. Plus, your work will have more chances to be read and receive feedback. With a fresh perspective, it’s a good time to come back for edits.
+        <br><br>
+        Your writing deserves to shine. See how <%= link_to "'#{@ku.story.title} ##{@ku.number_in_story}'", ku_url(@ku, :utm_source => "appmailer", :utm_medium => "email", :utm_campaign => "edit_ku") %> can be polished to perfection.
+        <br><br>
+        - Team Smileku
+      </td>
+    </tr>
+	</tbody>
+</table>
+<br><br>
