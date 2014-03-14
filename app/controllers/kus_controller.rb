@@ -16,7 +16,7 @@ class KusController < ApplicationController
 		@story = Story.find(params[:story_id])
 		@ku = Ku.create(params[:ku].merge!(story_id: @story.id, user_id: current_user.id))
 		if @ku.save
-			StoryMailer.delay_for(1.day).edit_ku_email(@ku.id)
+			StoryMailer.delay_for(2.days).edit_ku_email(@ku.id)
 			flash[:success] = "You successfully published a ku."
 			redirect_to ku_path(@ku)
 		else
