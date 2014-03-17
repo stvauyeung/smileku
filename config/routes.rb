@@ -22,8 +22,9 @@ FirstBook::Application.routes.draw do
 
   match '/home', to: 'statics#home', as: 'home'
   match '/front', to: 'statics#front'
-  match '/contact', to: 'statics#contact'
+  match '/contact', to: 'statics#contact', as: 'contact'
   match '/faq', to: 'statics#faq', as: 'faq'
+  match '/terms', to: 'statics#terms', as: 'terms'
 
   resources :stories, :except => [:destroy] do
   	resources :kus, :only => [:new, :create]
