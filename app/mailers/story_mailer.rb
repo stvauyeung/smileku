@@ -1,5 +1,5 @@
 class StoryMailer < ActionMailer::Base
-	default from: "no-reply@smileku.com"
+	default from: "\"Smileku\" <no-reply@smileku.com>"
 	layout "layouts/app_mailer"
 
 	def edit_ku_email(ku_id)
