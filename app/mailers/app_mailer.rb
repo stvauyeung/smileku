@@ -1,5 +1,5 @@
 class AppMailer < ActionMailer::Base
-	default from: 'contact@smileku.com'
+	default from: "\"Smileku\" <contact@smileku.com>"
 
 	def welcome_email(user)
 		@user = user
