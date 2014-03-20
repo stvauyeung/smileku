@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :kus
   has_many :votes
   has_many :comments
+  has_many :activities
 
   has_secure_password
   before_create :generate_token

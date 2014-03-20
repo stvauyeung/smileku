@@ -5,6 +5,7 @@ class Ku < ActiveRecord::Base
 	has_many :children, class_name: 'Ku', foreign_key: 'parent_id'
 	has_many :votes, as: :voteable
 	has_many :comments
+	has_many :activities, as: :subject
 	validates :body, presence: true
 	include Markdown
 	extend FriendlyId

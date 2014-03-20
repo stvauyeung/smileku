@@ -17,6 +17,7 @@ class KusController < ApplicationController
 		@ku = Ku.create(params[:ku].merge!(story_id: @story.id, user_id: current_user.id))
 		if @ku.save
 			StoryMailer.delay_for(2.days).edit_ku_email(@ku.id)
+			ActivityWorker.perform_async(@ku.id, 'Ku', 'created_ku', current_user.id)
 			flash[:success] = "You successfully published a ku."
 			redirect_to ku_path(@ku)
 		else
