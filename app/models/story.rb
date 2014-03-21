@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :user
   has_many :kus
+  has_many :activities, as: :subject
   validates :title, presence: true
   validates :large_cover, presence: true
   mount_uploader :large_cover, CoverUploader

@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
     if @story.valid? && params[:ku][:body].length > 0
       @story.save
       @ku = Ku.create(params[:ku].merge!(story_id: @story.id, user_id: current_user.id))
+      ActivityWorker.perform_async(@story.id, 'Story', 'created_story', current_user.id)
       redirect_to story_path(@story)
     else
       flash[:error] = "Whoops! There was a problem saving your story. #{@story.errors.full_messages.join(', ')}"

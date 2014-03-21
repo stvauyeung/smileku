@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 		@ku = Ku.find(params[:ku_id])
 		comment = @ku.comments.build(params[:comment].merge!(user: current_user))
 		if comment.save
+			ActivityWorker.perform_async(comment.id, 'Comment', 'created_comment', current_user.id)
 			respond_to do |format|
 				format.html { redirect_to @ku }
 				format.js

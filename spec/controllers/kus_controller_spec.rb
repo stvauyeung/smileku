@@ -119,6 +119,10 @@ describe KusController do
 				put :update, id: ku.id, ku: { body: "test test" }
 				expect(ku.reload.body).to eq("test test")
 			end
+			it "creates an activity" do
+				put :update, id: ku.id, ku: { body: "test test" }
+				expect(Activity.count).to eq(1)
+			end
 			it "flashes success message" do
 				put :update, id: ku.id, ku: { body: "test test" }
 				expect(flash[:success]).to be_present

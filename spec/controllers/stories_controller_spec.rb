@@ -40,6 +40,9 @@ describe StoriesController do
 			it "should set the story to belong to current user" do
 				expect(Story.last.user).to eq(bob)
 			end
+			it "should create a new activity" do
+				expect(Activity.count).to eq(1)
+			end
 			it "should set the ku to belong to the current user" do
 				expect(Ku.last.user).to eq(bob)
 			end

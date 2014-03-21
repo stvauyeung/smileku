@@ -34,6 +34,7 @@ class KusController < ApplicationController
 	def update
 		@ku = Ku.find(params[:id])
 		if @ku.update_attributes(params[:ku])
+			ActivityWorker.perform_async(@ku.id, 'Ku', 'updated_ku', current_user.id)
 			flash[:success] = "You've updated your ku!"
 			redirect_to ku_path(@ku)
 		else
