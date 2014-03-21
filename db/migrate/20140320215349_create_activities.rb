@@ -5,6 +5,7 @@ class CreateActivities < ActiveRecord::Migration
   		t.string :subject_type, null: false
   		t.string :action, null: false
   		t.integer :user_id, null: false
+      t.timestamps null: false
   	end
 
   	add_index :activities, :subject_id

@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(:version => 20140320215349) do
 
   create_table "activities", :force => true do |t|
-    t.integer "subject_id",   :null => false
-    t.string  "subject_type", :null => false
-    t.string  "action",       :null => false
-    t.integer "user_id",      :null => false
+    t.integer  "subject_id",   :null => false
+    t.string   "subject_type", :null => false
+    t.string   "action",       :null => false
+    t.integer  "user_id",      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "activities", ["subject_id"], :name => "index_activities_on_subject_id"
