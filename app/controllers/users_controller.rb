@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @kus = @user.kus
+    @kus = @user.kus.sort_by(&:created_at).reverse
   end
 
   def update
