@@ -1,7 +1,7 @@
 - meta :title => "Smileku Recent Stories and Kus", :description => "The latest kus and stories written by Smileku writers."
 %section.container
   .row
-    .col-md-9
+    .col-md-9.col-sm-8
       .row
         .start_a_story{:onclick => "window.location='stories/new';", :style => "cursor: pointer;"}
           %h3 Are you a writer? Click here to start a story.
@@ -10,7 +10,6 @@
         - @activities.each do |a|
           .row
             = render "activities/#{a.action}", activity: a
-          %hr.short-hr
       .row
         %h2 Popular Stories
         - @top_stories.each do |story|

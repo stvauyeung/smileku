@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.all
+    @stories = Story.sort_by_length
   end
 
   def show

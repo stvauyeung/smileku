@@ -23,6 +23,10 @@ class Story < ActiveRecord::Base
     all.sort_by{ |story| story.kus.count }.last(number).reverse
   end
 
+  def self.sort_by_length
+    all.sort_by{ |story| story.kus.count }.reverse
+  end
+
   def truncated_title
   	title.truncate(25)
   end
