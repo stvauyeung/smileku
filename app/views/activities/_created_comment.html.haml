@@ -1,0 +1,4 @@
+.col-md-1
+	= link_to image_tag("#{activity.subject.ku.story.large_cover.preview}", style: "max-width:50px"), user_path(activity.user)
+.col-md-11
+	= link_to "A new comment was added to #{activity.subject.ku.story.title}", story_path(activity.subject.ku.story)
