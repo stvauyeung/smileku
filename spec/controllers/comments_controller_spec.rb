@@ -24,6 +24,10 @@ describe CommentsController do
 				post :create, comment: { body: "booga" }, ku_id: ku.id
 				expect(Comment.first.user).to eq(bob)
 			end
+			it "creates an activity" do
+				post :create, comment: { body: "booga" }, ku_id: ku.id
+				expect(Activity.count).to eq(1)
+			end
 		end
 
 		context "invalid comment" do

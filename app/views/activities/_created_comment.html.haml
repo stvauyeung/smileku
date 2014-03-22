@@ -1,0 +1,5 @@
+.col-md-1
+	= link_to image_tag("#{activity.story_image.preview}", style: "max-width:50px"), ku_path(activity.subject.ku)
+.col-md-11
+	%p= "#{activity.user.username} commented on #{link_to activity.story_title + ' Ku #' + activity.subject.ku.number_in_story.to_s, ku_path(activity.subject.ku)}".html_safe
+	%p.pull-right= "#{time_ago_in_words(activity.subject.created_at)} ago by #{link_to image_tag(activity.user.photo.preview, style: "max-width:30px"), user_path(activity.user)}".html_safe

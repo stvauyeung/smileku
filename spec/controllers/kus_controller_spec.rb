@@ -46,6 +46,10 @@ describe KusController do
 				post :create, ku: {parent_id: first_ku.id, body: "body"}, story_id: story.id
 				expect(Ku.last.parent_id).to eq(first_ku.id)
 			end
+			it "creates a new activity" do
+				post :create, ku: {parent_id: first_ku.id, body: "body"}, story_id: story.id
+				expect(Activity.count).to eq(1)
+			end
 			it "associates ku with story" do
 				post :create, ku: {parent_id: first_ku.id, body: "body"}, story_id: story.id
 				expect(Ku.last.story_id).to eq (story.id)
@@ -114,6 +118,10 @@ describe KusController do
 			it "changes the ku body" do
 				put :update, id: ku.id, ku: { body: "test test" }
 				expect(ku.reload.body).to eq("test test")
+			end
+			it "creates an activity" do
+				put :update, id: ku.id, ku: { body: "test test" }
+				expect(Activity.count).to eq(1)
 			end
 			it "flashes success message" do
 				put :update, id: ku.id, ku: { body: "test test" }

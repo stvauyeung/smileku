@@ -3,6 +3,6 @@
 		%br
 	- else
 		%hr.row
-	= link_to image_tag(c.user.photo, class: 'comment_thumb'), user_path(c.user)
+	= link_to image_tag(c.user.photo.preview, class: 'comment_thumb'), user_path(c.user)
 	= c.filter(:body).html_safe
 	%p.pull-right= "#{time_ago_in_words(c.created_at)} ago by #{link_to c.user.username, user_path(c.user), class: 'bold'}".html_safe

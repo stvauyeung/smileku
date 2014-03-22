@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :user
   has_many :kus
+  has_many :activities, as: :subject
   validates :title, presence: true
   validates :large_cover, presence: true
   mount_uploader :large_cover, CoverUploader
@@ -20,6 +21,10 @@ class Story < ActiveRecord::Base
 
   def self.find_longest(number)
     all.sort_by{ |story| story.kus.count }.last(number).reverse
+  end
+
+  def self.sort_by_length
+    all.sort_by{ |story| story.kus.count }.reverse
   end
 
   def truncated_title

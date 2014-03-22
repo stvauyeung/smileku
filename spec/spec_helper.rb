@@ -5,6 +5,8 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
 require 'capybara/rspec'
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -39,8 +41,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.before(:each) { ActionMailer::Base.deliveries.clear }
+  # Clears out the jobs for tests using the fake testing
+  config.before(:each) { Sidekiq::Worker.clear_all }
+    
   # configure database_cleaner
-
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end

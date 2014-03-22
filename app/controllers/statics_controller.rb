@@ -12,7 +12,7 @@ class StaticsController < ApplicationController
     if logged_in?
       @recent_stories = Story.most_recent(4)
       @top_stories = Story.find_longest(10)
-      @kus = Ku.most_recent
+      @activities = Activity.most_recent(10)
     else
       redirect_to '/front'
     end
