@@ -1,4 +1,5 @@
 .col-md-1
-	= link_to image_tag("#{activity.subject.ku.story.large_cover.preview}", style: "max-width:50px"), user_path(activity.user)
+	= link_to image_tag("#{activity.subject.ku.story.large_cover.preview}", style: "max-width:50px"), ku_path(activity.subject.ku)
 .col-md-11
-	= link_to "A new comment was added to #{activity.subject.ku.story.title}", story_path(activity.subject.ku.story)
+	%p= "#{activity.user.username} commented on #{link_to activity.subject.ku.story.title + ' Ku #' + activity.subject.ku.number_in_story.to_s, ku_path(activity.subject.ku)}".html_safe
+	%p.pull-right= "#{time_ago_in_words(activity.subject.created_at)} ago by #{link_to image_tag(activity.user.photo.preview, style: "max-width:30px"), user_path(activity.user)}".html_safe

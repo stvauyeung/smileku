@@ -12,11 +12,6 @@
             = render "activities/#{a.action}", activity: a
           %hr.short-hr
       .row
-        %h2 Recent Stories
-        - @recent_stories.each do |story|
-          .story
-            = link_to image_tag("#{story.large_cover.preview}", class: "story_image"), story_path(story)
-            %p= link_to "#{story.truncated_title} by #{story.user.username}", story_path(story)
         %h2 Popular Stories
         - @top_stories.each do |story|
           .story

@@ -1,0 +1,5 @@
+.col-md-1
+	= link_to image_tag("#{activity.subject.story.large_cover.preview}", style: "max-width:50px"), ku_path(activity.subject)
+.col-md-11
+	%p= "#{link_to activity.subject.story.title + ' Ku #' + activity.subject.number_in_story.to_s, ku_path(activity.subject)} was written by #{activity.user.username}".html_safe
+	%p.pull-right= "#{time_ago_in_words(activity.subject.created_at)} ago by #{link_to image_tag(activity.user.photo.preview, style: "max-width:30px"), user_path(activity.user)}".html_safe
