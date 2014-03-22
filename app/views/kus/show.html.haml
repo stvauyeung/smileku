@@ -15,7 +15,7 @@
 				= render "comments"
 	.col-md-7.col-md-offset-1
 		.row
-			= link_to image_tag(@ku.user.photo, class: 'profile_thumb'), user_path(@ku.user)
+			= link_to image_tag(@ku.user.photo.preview, class: 'profile_thumb'), user_path(@ku.user)
 			= link_to @ku.author_name, user_path(@ku.user), class: 'ku_navigation'
 			.ku_navigation.pull-right
 				ku number #{@ku.number_in_story} 
