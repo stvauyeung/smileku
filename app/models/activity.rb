@@ -3,7 +3,7 @@ class Activity < ActiveRecord::Base
 	belongs_to :user
 
 	def self.most_recent(number)
-		all.sort_by(&:created_at).last(number).reverse
+		all.sort_by{ |a| a.subject.created_at }.last(number).reverse
 	end
 
 	def story_image
