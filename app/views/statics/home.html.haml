@@ -5,7 +5,7 @@
       .row
         .start_a_story{:onclick => "window.location='stories/new';", :style => "cursor: pointer;"}
           %h3 Are you a writer? Click here to start a story.
-      .row
+      .row.activity-feed
         %h2 Recent Activity
         - @activities.each do |a|
           .row
