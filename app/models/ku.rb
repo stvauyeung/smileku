@@ -19,9 +19,13 @@ class Ku < ActiveRecord::Base
 		self.story.large_cover.preview
 	end
 
+	def recently_updated?
+		self.updated_at > 24.hours.ago
+	end
+
 	def self.most_recent
   	last(7).reverse
-  end
+	end
 
 	def number_in_story
 		ku_ids = self.story.kus.order('created_at ASC').pluck(:id)
