@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(params[:username])
+    user = User.find(:first, :conditions => ["lower(username) = ?", params[:username].downcase])
     if user && user.authenticate(params[:password])
       session[:user_token] = user.token
       redirect_to home_path, :flash => {:success => "Welcome back #{user.username}!"}
