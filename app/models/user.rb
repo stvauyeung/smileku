@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   before_create :default_values
   mount_uploader :photo, ProfileUploader
   validates :password, :presence => true,  :on => :create
-  validates :username, :presence => true, :uniqueness => true, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
+  validates :username, :presence => true, :uniqueness => { case_sensitive: false }, format: { with: /^[a-z0-9_]+$/i, message: "only letters, numbers or underscores"}, length: { maximum: 30 }
   validates :email, :presence => true, :uniqueness => true
 
   has_many :followings, foreign_key: :follower_id
