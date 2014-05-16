@@ -1,2 +1,2 @@
 .well.ku_navigation.center
-	= "#{link_to 'login', login_path} or #{link_to 'sign up', registration_path} </br> #{text}".html_safe
+  = "#{link_to 'login', login_path(ref_url: "#{original_url}")} or #{link_to 'sign  up', registration_path(ref_url: "#{original_url}")} </br> #{text}".html_safe
