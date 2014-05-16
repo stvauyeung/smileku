@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :logged_in?, :current_user
+  helper_method :logged_in?, :current_user, :original_url, :handle_login_redirect
 
   def set_recent_posts(number)
     @recent_posts = Post.last(number).reverse
@@ -49,5 +49,17 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def original_url
+    request.original_url
+  end
+
+  def handle_login_redirect(ref_url, user)
+    if ref_url.present?
+      redirect_to ref_url, :flash => {:success => "Welcome back #{user.username}!"}
+    else
+      redirect_to home_path, :flash => {:success => "Welcome back #{user.username}!"}
+    end
   end
 end
