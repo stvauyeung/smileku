@@ -1,5 +1,3 @@
-require 'pry'
-
 class SessionsController < ApplicationController
   before_filter :require_logged_out, only: [:new]
   
@@ -8,8 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    ref_url = flash[:ref_url]
     user = User.find(:first, :conditions => ["lower(username) = ?", params[:username].downcase])
+    ref_url = flash[:ref_url]
     if user && user.authenticate(params[:password])
       session[:user_token] = user.token
       handle_login_redirect(ref_url, user)

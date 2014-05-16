@@ -57,9 +57,9 @@ class ApplicationController < ActionController::Base
 
   def handle_login_redirect(ref_url, user)
     if ref_url.present?
-      redirect_to ref_url, :flash => {:success => "Welcome back #{user.username}!"}
+      redirect_to ref_url, :flash => {:success => "Welcome #{user.username}!"}
     else
-      redirect_to home_path, :flash => {:success => "Welcome back #{user.username}!"}
+      redirect_to home_path, :flash => {:success => "Welcome #{user.username}!"}
     end
   end
 end

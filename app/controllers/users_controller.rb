@@ -5,14 +5,16 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    flash[:ref_url] = params[:ref_url]
   end
 
   def create
     @user = User.new(params[:user])
+    ref_url = flash[:ref_url]
     if @user.save
       AppMailer.delay.welcome_email(@user)
       session[:user_token] = @user.token
-      redirect_to home_path, :flash => {:success => "You successfully created an account.  Welcome!"}
+      handle_login_redirect(ref_url, @user)
     else
       flash.now[:error] = "There was an issue creating your account, please see below."
       render :action => 'new'
